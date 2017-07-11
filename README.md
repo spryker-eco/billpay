@@ -3,7 +3,7 @@
 ## Installation
 
 ```
-composer require spryker/billpay
+composer require spryker-eco/billpay
 ```
 
 ## Documentation
