@@ -1,0 +1,9 @@
+<div class="billpay-form billpay-invoice-form payment-form" id="billpayInvoice">
+    <h3>{{ 'billpayInvoice.invoice' | trans }}</h3>
+
+    <label>{{ 'billpayInvoice.date_of_birth' | trans }}</label>
+    <div class="field">
+        {{ form_widget(form.billpayInvoice.date_of_birth, { 'attr': {'placeholder': 'billpayInvoice.date_of_birth' | trans } }) }}
+        {{ form_errors(form.billpayInvoice.date_of_birth) }}
+    </div>
+</div>

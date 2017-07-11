@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<statemachine
+        xmlns="http://static.spryker.com"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://static.spryker.com http://static.spryker.com/oms-01.xsd">
+
+    <process name="BillpayInvoice01" main="true">
+        <states>
+            <state name="new" reserved="true" />
+            <state name="preauthorized" reserved="true"/>
+            <state name="preauthorization failed" reserved="false"/>
+            <state name="invoice created" reserved="true"/>
+            <state name="paid" reserved="true"/>
+            <state name="cancelled" reserved="false" />
+            <state name="item cancelled" reserved="false" />
+            <state name="closed" reserved="true"/>
+        </states>
+
+        <events>
+            <event name="preauthorize" onEnter="true" command="Billpay/Preauthorize" />
+            <event name="create invoice" manual="true" command="Billpay/InvoiceCreated" />
+            <event name="cancel order" manual="true" command="Billpay/CancelOrder" timeout="14days" />
+            <event name="cancel item" manual="true" command="Billpay/CancelItem" />
+            <event name="close" manual="true" />
+            <event name="pay" manual="true" />
+            <event name="pay item" manual="true" />
+        </events>
+
+        <transitions>
+            <transition condition="Billpay/IsPreauthorized" happy="true">
+                <source>new</source>
+                <target>preauthorized</target>
+                <event>preauthorize</event>
+            </transition>
+
+            <transition>
+                <source>new</source>
+                <target>preauthorization failed</target>
+                <event>preauthorize</event>
+            </transition>
+
+            <transition condition="Billpay/IsInvoicePaid" happy="true">
+                <source>preauthorized</source>
+                <target>invoice created</target>
+                <event>create invoice</event>
+            </transition>
+
+            <transition condition="Billpay/IsCancelled">
+                <source>preauthorized</source>
+                <target>cancelled</target>
+                <event>cancel order</event>
+            </transition>
+
+            <transition condition="Billpay/IsCancelled">
+                <source>invoice created</source>
+                <target>cancelled</target>
+                <event>cancel order</event>
+            </transition>
+
+            <transition condition="Billpay/IsItemCancelled">
+                <source>preauthorized</source>
+                <target>item cancelled</target>
+                <event>cancel item</event>
+            </transition>
+
+            <transition condition="Billpay/IsItemCancelled">
+                <source>invoice created</source>
+                <target>item cancelled</target>
+                <event>cancel item</event>
+            </transition>
+
+            <transition happy="true" manual="true">
+                <source>invoice created</source>
+                <target>paid</target>
+                <event>pay</event>
+            </transition>
+
+            <transition happy="true" manual="true">
+                <source>paid</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+        </transitions>
+
+    </process>
+</statemachine>

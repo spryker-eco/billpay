@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="Address">
+        <property name="iso3Code" type="string" />
+    </transfer>
+
+    <transfer name="BillpayCorrectedAddress">
+        <property name="city" type="string" />
+        <property name="country" type="string" />
+        <property name="street" type="string" />
+        <property name="streetNo" type="string" />
+        <property name="zip" type="string" />
+    </transfer>
+
+    <transfer name="BillpayPaymentMethod">
+        <property name="name" type="string" />
+    </transfer>
+
+    <transfer name="BillpayPayment">
+        <property name="apiKey" type="string" />
+        <property name="salutation" type="string" />
+        <property name="firstName" type="string" />
+        <property name="lastName" type="string" />
+        <property name="street" type="string" />
+        <property name="streetNo" type="string" />
+        <property name="zip" type="string" />
+        <property name="city" type="string" />
+        <property name="phone" type="string" />
+        <property name="fkSalesOrder" type="int" />
+        <property name="bptid" type="string" />
+        <property name="reference" type="string" />
+        <property name="clientIp" type="string" />
+        <property name="dateOfBirth" type="string" />
+        <property name="termsOfService" type="bool" />
+        <property name="paymentMethod" type="string" />
+        <property name="isPartial" defaultValue="false" type="bool" />
+        <property name="items" type="Item[]" singular="item" />
+        <property name="billpayPrescoringTransactionResponse" type="BillpayPrescoringTransactionResponse" />
+    </transfer>
+
+    <transfer name="BillpayResponseHeader">
+        <property name="status" type="string" />
+        <property name="bptid" type="string" />
+        <property name="isSuccess" type="bool" />
+        <property name="errorCode" type="int" />
+        <property name="merchantMessage" type="string" />
+        <property name="customerMessage" type="string" />
+    </transfer>
+
+    <transfer name="BillpayInvoiceTotal">
+        <property name="shippingname" type="string" />
+        <property name="shippingprice" type="int" />
+        <property name="shippingpricegross" type="int" />
+        <property name="rebate" type="int" />
+        <property name="rebategross" type="int" />
+        <property name="carttotalprice" type="int" />
+        <property name="carttotalpricegross" type="int" />
+        <property name="currency" type="string" />
+        <property name="reference" type="string" />
+    </transfer>
+
+    <transfer name="BillpayPrescoringTransactionResponse">
+        <property name="header" type="BillpayResponseHeader"/>
+        <property name="correctedAddress" type="BillpayCorrectedAddress"/>
+        <property name="availablePaymentMethods" type="BillpayPaymentMethod[]" singular="availablePaymentMethod" />
+    </transfer>
+
+    <transfer name="BillpayPreauthorizeTransactionResponse">
+        <property name="header" type="BillpayResponseHeader"/>
+        <property name="correctedAddress" type="BillpayCorrectedAddress"/>
+        <property name="total" type="BillpayInvoiceTotal"/>
+        <property name="invoiceBankAccount" type="BillpayInvoiceBankAccount"/>
+    </transfer>
+
+    <transfer name="BillpayInvoiceCreatedResponse">
+        <property name="header" type="BillpayResponseHeader"/>
+        <property name="invoiceBankAccount" type="BillpayInvoiceBankAccount"/>
+    </transfer>
+
+    <transfer name="BillpayCancelResponse">
+        <property name="header" type="BillpayResponseHeader"/>
+    </transfer>
+
+    <transfer name="BillpayEditCartResponse">
+        <property name="header" type="BillpayResponseHeader"/>
+    </transfer>
+
+    <transfer name="BillpayInvoiceBankAccount">
+        <property name="accountHolder" type="string" />
+        <property name="accountNumber" type="string" />
+        <property name="bankCode" type="string" />
+        <property name="bankName" type="string" />
+        <property name="invoiceReference" type="string" />
+        <property name="invoiceDuedate" type="string" />
+        <property name="activationPerformed" type="bool"/>
+    </transfer>
+
+    <transfer name="Order">
+        <property name="billpayPayment" type="BillpayPayment" />
+    </transfer>
+
+    <transfer name="Quote">
+        <property name="billpaySessionId" type="string"/>
+        <property name="country" type="Country"/>
+    </transfer>
+
+    <transfer name="Payment">
+        <property name="billpay" type="BillpayPayment" />
+        <property name="billpayInvoice" type="BillpayPayment" />
+    </transfer>
+
+</transfers>
