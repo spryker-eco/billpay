@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\Billpay;
 
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCalculationBridge;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
+use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToMessengerBridge;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToOmsBridge;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToRefundBridge;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToSalesBridge;
@@ -43,7 +44,7 @@ class BillpayDependencyProvider extends AbstractBundleDependencyProvider
         };
 
         $container[self::FACADE_FLASH_MESSENGER] = function (Container $container) {
-            return new BillpayToCalculationBridge($container->getLocator()->messenger()->facade());
+            return new BillpayToMessengerBridge($container->getLocator()->messenger()->facade());
         };
 
         return $container;
