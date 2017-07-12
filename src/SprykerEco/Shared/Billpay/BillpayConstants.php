@@ -13,6 +13,7 @@ interface BillpayConstants
     const PAYMENT_PROVIDER = 'Billpay';
     const GATEWAY_URL = 'GATEWAY_URL';
     const IS_TEST_MODE = 'IS_TEST_MODE';
+    const VENDOR_ROOT = 'VENDOR_ROOT';
 
     const BILLPAY_MERCHANT_ID = 'BILLPAY_MERCHANT_ID';
     const BILLPAY_PORTAL_ID = 'BILLPAY_PORTAL_ID';
