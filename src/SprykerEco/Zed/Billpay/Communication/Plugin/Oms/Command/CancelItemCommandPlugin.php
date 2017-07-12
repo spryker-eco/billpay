@@ -11,9 +11,9 @@ use Orm\Zed\Sales\Persistence\Base\SpySalesOrderItemQuery;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
 use Propel\Runtime\ActiveQuery\Criteria;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface;
+use SprykerEco\Shared\Billpay\BillpayConstants;
 
 /**
  * @method \SprykerEco\Zed\Billpay\Business\BillpayFacade getFacade()

@@ -8,8 +8,8 @@
 namespace SprykerEco\Zed\Billpay\Communication\Plugin\Oms\Condition;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface;
+use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class IsItemCancelledConditionPlugin implements ConditionInterface
 {

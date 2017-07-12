@@ -8,9 +8,9 @@
 namespace SprykerEco\Yves\Billpay;
 
 use Spryker\Shared\Kernel\Store;
-use SprykerEco\Yves\Billpay\Dependency\Client\BillpayToQuoteBridge;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
+use SprykerEco\Yves\Billpay\Dependency\Client\BillpayToQuoteBridge;
 
 class BillpayDependencyProvider extends AbstractBundleDependencyProvider
 {

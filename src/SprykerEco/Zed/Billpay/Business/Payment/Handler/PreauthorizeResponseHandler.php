@@ -9,12 +9,12 @@ namespace SprykerEco\Zed\Billpay\Business\Payment\Handler;
 
 use Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
+use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayPreauthorizeException;
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLogger;
 use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountPersisterInterface;
 use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
-use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
 
 class PreauthorizeResponseHandler extends AbstractResponseHandler
 {

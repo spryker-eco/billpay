@@ -7,14 +7,14 @@
 
 namespace SprykerEco\Yves\Billpay\Dependency\Injector;
 
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use Spryker\Shared\Kernel\ContainerInterface;
 use Spryker\Shared\Kernel\Dependency\Injector\DependencyInjectorInterface;
-use SprykerEco\Yves\Billpay\Plugin\BillpayInvoiceSubFormPlugin;
-use SprykerEco\Yves\Billpay\Plugin\BillpayPaymentHandlerPlugin;
 use Spryker\Yves\Checkout\CheckoutDependencyProvider;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
+use SprykerEco\Shared\Billpay\BillpayConstants;
+use SprykerEco\Yves\Billpay\Plugin\BillpayInvoiceSubFormPlugin;
+use SprykerEco\Yves\Billpay\Plugin\BillpayPaymentHandlerPlugin;
 
 class CheckoutDependencyInjector implements DependencyInjectorInterface
 {

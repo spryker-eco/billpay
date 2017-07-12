@@ -7,8 +7,8 @@
 
 namespace SprykerEco\Zed\Billpay;
 
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
+use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class BillpayConfig extends AbstractBundleConfig
 {

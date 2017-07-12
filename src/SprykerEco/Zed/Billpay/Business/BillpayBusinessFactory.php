@@ -12,6 +12,7 @@ use ipl_edit_cart_content_request;
 use ipl_invoice_created_request;
 use ipl_preauthorize_request;
 use ipl_prescore_request;
+use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayDependencyProvider;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\CancelOrderApiAdapter;
@@ -39,7 +40,6 @@ use SprykerEco\Zed\Billpay\Business\Payment\Request\EditCartContentPaymentReques
 use SprykerEco\Zed\Billpay\Business\Payment\Request\Invoice\InvoiceCreatedPaymentRequest;
 use SprykerEco\Zed\Billpay\Business\Payment\Request\PreauthorizePaymentRequest;
 use SprykerEco\Zed\Billpay\Business\Payment\Request\PrescorePaymentRequest;
-use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
  * @method \SprykerEco\Zed\Billpay\BillpayConfig getConfig()

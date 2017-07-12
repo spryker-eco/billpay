@@ -7,8 +7,8 @@
 
 namespace SprykerEco\Client\Billpay;
 
-use SprykerEco\Client\Billpay\Zed\BillpayStub;
 use Spryker\Client\Kernel\AbstractFactory;
+use SprykerEco\Client\Billpay\Zed\BillpayStub;
 
 class BillpayFactory extends AbstractFactory
 {

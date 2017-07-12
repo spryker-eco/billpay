@@ -14,8 +14,8 @@ use Generated\Shared\Transfer\SaveOrderTransfer;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpayOrderItem;
 
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
+use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class OrderManager implements OrderManagerInterface
 {

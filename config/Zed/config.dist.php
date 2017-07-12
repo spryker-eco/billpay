@@ -3,11 +3,11 @@
  * Copy over the following configs to your config
  */
 
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\Oms\OmsConfig;
+use SprykerEco\Shared\Billpay\BillpayConstants;
 
 $config[BillpayConstants::VENDOR_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker-eco';
 
@@ -54,4 +54,3 @@ $config[BillpayConstants::USE_MD5_HASH] = 'USE_MD5_HASH';
 //$config[BillpayConstants::USE_PRESCORE] = 'USE_PRESCORE';
 //$config[BillpayConstants::IS_TEST_MODE] = 'IS_TEST_MODE';
 //$config[BillpayConstants::CUSTOMER_GROUP] = 'CUSTOMER_GROUP';
-

@@ -11,10 +11,10 @@ use Generated\Shared\Transfer\CountryTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractPlugin;
+use SprykerEco\Shared\Billpay\BillpayConstants;
 use Twig_SimpleFunction;
 
 /**

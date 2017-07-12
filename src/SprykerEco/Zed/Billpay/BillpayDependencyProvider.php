@@ -7,14 +7,14 @@
 
 namespace SprykerEco\Zed\Billpay;
 
+use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Zed\Kernel\Container;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCalculationBridge;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToMessengerBridge;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToOmsBridge;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToRefundBridge;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToSalesBridge;
-use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
-use Spryker\Zed\Kernel\Container;
 
 class BillpayDependencyProvider extends AbstractBundleDependencyProvider
 {

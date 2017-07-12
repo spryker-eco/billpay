@@ -8,8 +8,8 @@
 namespace SprykerEco\Zed\Billpay\Communication;
 
 use Generated\Shared\Transfer\MessageTransfer;
-use SprykerEco\Zed\Billpay\BillpayDependencyProvider;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
+use SprykerEco\Zed\Billpay\BillpayDependencyProvider;
 
 /**
  * @method \SprykerEco\Zed\Billpay\BillpayConfig getConfig()
