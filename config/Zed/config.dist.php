@@ -28,7 +28,7 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
 
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
-    $config[AfterpayConstants::VENDOR_ROOT] . '/billpay/config/Zed/Oms',
+    $config[BillpayConstants::VENDOR_ROOT] . '/billpay/config/Zed/Oms',
 ];
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [
