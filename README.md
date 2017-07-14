@@ -1,4 +1,4 @@
-# Billpay Bundle
+# Billpay Module
 
 ## Installation
 

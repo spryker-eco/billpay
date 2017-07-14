@@ -1,6 +1,6 @@
 {
   "name": "spryker-eco/billpay",
-  "description": "Billpay bundle",
+  "description": "Billpay Module",
   "autoload": {
     "psr-0": {
       "Spryker": "src/"
