@@ -42,7 +42,7 @@ class CancelItemCommandPlugin extends AbstractBillpayCommandPlugin implements Co
             $message = $this
                 ->getFactory()
                 ->createMessage()
-                ->setValue('You can not cancel the last item in the card');
+                ->setValue('In order to cancel the last item in an order, please use the cancel order button.');
 
             $this->getFactory()
                 ->getFlashMessengerFacade()
