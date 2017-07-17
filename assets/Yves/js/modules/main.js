@@ -6,9 +6,11 @@ var billpayValue = 'billpayInvoice';
 var $paymentForm = $('#payment-form');
 var $paymentChoices = $('[name="paymentForm[paymentSelection]"]:radio', $paymentForm);
 var $paymentContainer = $(paymentContainerSelector);
+var $billpayChoice = $('[value="' + billpayValue + '"]:radio', $paymentForm);
 
 function init() {
     mapEvents();
+    firstInit();
 }
 
 function mapEvents() {
@@ -23,6 +25,19 @@ function onChange() {
         return;
     }
 
+    billpayFormInit();
+}
+
+function firstInit()
+{
+    if ($billpayChoice.is(':checked'))
+    {
+        billpayFormInit();
+    }
+}
+
+function billpayFormInit()
+{
     if ($paymentContainer.hasClass('is-rendered')) {
         return;
     }
