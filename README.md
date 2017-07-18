@@ -248,6 +248,19 @@ Add
     
 ```
 
+8 In Pyz\Yves\Checkout\Theme\default\checkout\payment.twig
+  
+  Change
+  
+  ```
+    <li>
+  ```
+  to 
+  ```
+    <li {% if paymentForm[method.vars.value].vars.disabled == true %} style="display:none" {% endif %}>
+  ```
+
+
 ## Tests
 
 Run
