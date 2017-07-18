@@ -23,6 +23,7 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm
     const CART_AMOUNT = 'CART_AMOUNT';
     const ORDER_AMOUNT = 'ORDER_AMOUNT';
     const CURRENCY = 'CURRENCY';
+    const DISABLED = 'disabled';
 
     /**
      * @return string
@@ -103,6 +104,7 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm
         parent::buildView($view, $form, $options);
 
         if ($this->getValueFromOptions(self::INVOICE_PAYMENT_METHOD_AVAILABLE, $options)['data'] === false) {
+            $view->vars[self::DISABLED] = true;
             $view->vars[self::TEMPLATE_PATH] = $this->getAlternateTemplatePath();
             return;
         }
