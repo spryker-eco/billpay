@@ -226,7 +226,7 @@ abstract class AbstractManager implements AbstractManagerInterface
             self::ARTICLE_NAME => $itemTransfer->getName(),
             self::ARTICLE_DESCRIPTION => $itemTransfer->getDescription(),
             self::ARTICLE_PRICE => $itemTransfer->getUnitGrossPrice(),
-            self::ARTICLE_PRICE_GROSS => $itemTransfer->getUnitGrossPrice(),
+            self::ARTICLE_PRICE_GROSS => $itemTransfer->getUnitPriceToPayAggregation(),
         ];
     }
 
