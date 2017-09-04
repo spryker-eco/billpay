@@ -159,7 +159,7 @@ abstract class AbstractManager implements AbstractManagerInterface
             self::SHIPPING_PRICE => $shippingExpenseTransfer->getUnitGrossPrice(),
             self::SHIPPING_PRICE_GROSS => $shippingExpenseTransfer->getUnitGrossPrice(),
             self::CART_TOTAL_PRICE => $totalsTransfer->getExpenseTotal(),
-            self::CART_TOTAL_PRICE_GROSS => $totalsTransfer->getGrandTotal(),
+            self::CART_TOTAL_PRICE_GROSS => $totalsTransfer->getSubtotal(),
             self::CURRENCY => Store::getInstance()->getCurrencyIsoCode(),
         ];
 
