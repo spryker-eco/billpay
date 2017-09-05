@@ -159,7 +159,7 @@ abstract class AbstractManager implements AbstractManagerInterface
             self::SHIPPING_PRICE => $this->getShippingPrice($totalsTransfer, $shippingExpenseTransfer),
             self::SHIPPING_PRICE_GROSS => $totalsTransfer->getExpenseTotal(),
             self::CART_TOTAL_PRICE => $this->getCartTotalPrice($totalsTransfer),
-            self::CART_TOTAL_PRICE_GROSS => $this->getCartTotalPriceGross($totalsTransfer),
+            self::CART_TOTAL_PRICE_GROSS => $totalsTransfer->getGrandTotal(),
             self::CURRENCY => Store::getInstance()->getCurrencyIsoCode(),
         ];
 
@@ -191,21 +191,7 @@ abstract class AbstractManager implements AbstractManagerInterface
     protected function getCartTotalPrice(TotalsTransfer $totalsTransfer)
     {
         return $totalsTransfer->getGrandTotal()
-            + $totalsTransfer->getDiscountTotal()
             - $totalsTransfer->getTaxTotal()->getAmount();
-    }
-
-    /**
-     * Price without discount
-     *
-     * @param \Generated\Shared\Transfer\TotalsTransfer $totalsTransfer
-     *
-     * @return int
-     */
-    protected function getCartTotalPriceGross(TotalsTransfer $totalsTransfer)
-    {
-        return $totalsTransfer->getGrandTotal()
-            + $totalsTransfer->getDiscountTotal();
     }
 
     /**
