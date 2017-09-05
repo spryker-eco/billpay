@@ -251,9 +251,32 @@ abstract class AbstractManager implements AbstractManagerInterface
             self::ARTICLE_QUANTITY => $itemTransfer->getQuantity(),
             self::ARTICLE_NAME => $itemTransfer->getName(),
             self::ARTICLE_DESCRIPTION => $itemTransfer->getDescription(),
-            self::ARTICLE_PRICE => $itemTransfer->getUnitGrossPrice() - $itemTransfer->getSumTaxAmount(),
-            self::ARTICLE_PRICE_GROSS => $itemTransfer->getUnitGrossPrice(),
+            self::ARTICLE_PRICE => $this->getArticlePrice($itemTransfer),
+            self::ARTICLE_PRICE_GROSS => $this->getArticlePriceGross($itemTransfer),
         ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return int
+     */
+    protected function getArticlePrice(ItemTransfer $itemTransfer)
+    {
+        return $itemTransfer->getUnitPriceToPayAggregation()
+            - $itemTransfer->getUnitTaxAmountFullAggregation()
+            + $itemTransfer->getUnitDiscountAmountFullAggregation();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return int
+     */
+    protected function getArticlePriceGross(ItemTransfer $itemTransfer)
+    {
+        return $itemTransfer->getUnitPriceToPayAggregation()
+            + $itemTransfer->getUnitDiscountAmountFullAggregation();
     }
 
     /**
