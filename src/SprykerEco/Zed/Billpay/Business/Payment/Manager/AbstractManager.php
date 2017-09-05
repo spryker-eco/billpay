@@ -156,16 +156,56 @@ abstract class AbstractManager implements AbstractManagerInterface
             self::REBATE => $totalsTransfer->getDiscountTotal(),
             self::REBATE_GROSS => $totalsTransfer->getDiscountTotal(),
             self::SHIPPING_NAME => $shippingName,
-            self::SHIPPING_PRICE => $shippingExpenseTransfer->getUnitGrossPrice(),
-            self::SHIPPING_PRICE_GROSS => $shippingExpenseTransfer->getUnitGrossPrice(),
-            self::CART_TOTAL_PRICE => $totalsTransfer->getSubtotal(),
-            self::CART_TOTAL_PRICE_GROSS => $totalsTransfer->getGrandTotal(),
+            self::SHIPPING_PRICE => $this->getShippingPrice($totalsTransfer, $shippingExpenseTransfer),
+            self::SHIPPING_PRICE_GROSS => $totalsTransfer->getExpenseTotal(),
+            self::CART_TOTAL_PRICE => $this->getCartTotalPrice($totalsTransfer),
+            self::CART_TOTAL_PRICE_GROSS => $this->getCartTotalPriceGross($totalsTransfer),
             self::CURRENCY => Store::getInstance()->getCurrencyIsoCode(),
         ];
 
         $data[self::REFERENCE] = $reference;
 
         return $data;
+    }
+
+    /**
+     * Price without tax
+     *
+     * @param \Generated\Shared\Transfer\TotalsTransfer $totalsTransfer
+     * @param \Generated\Shared\Transfer\ExpenseTransfer $shippingExpenseTransfer
+     *
+     * @return int
+     */
+    protected function getShippingPrice(TotalsTransfer $totalsTransfer, ExpenseTransfer $shippingExpenseTransfer)
+    {
+        return $totalsTransfer->getExpenseTotal() - $shippingExpenseTransfer->getSumTaxAmount();
+    }
+
+    /**
+     * Price without discount and without tax
+     *
+     * @param \Generated\Shared\Transfer\TotalsTransfer $totalsTransfer
+     *
+     * @return int
+     */
+    protected function getCartTotalPrice(TotalsTransfer $totalsTransfer)
+    {
+        return $totalsTransfer->getGrandTotal()
+            + $totalsTransfer->getDiscountTotal()
+            - $totalsTransfer->getTaxTotal()->getAmount();
+    }
+
+    /**
+     * Price without discount
+     *
+     * @param \Generated\Shared\Transfer\TotalsTransfer $totalsTransfer
+     *
+     * @return int
+     */
+    protected function getCartTotalPriceGross(TotalsTransfer $totalsTransfer)
+    {
+        return $totalsTransfer->getGrandTotal()
+            + $totalsTransfer->getDiscountTotal();
     }
 
     /**
@@ -225,8 +265,8 @@ abstract class AbstractManager implements AbstractManagerInterface
             self::ARTICLE_QUANTITY => $itemTransfer->getQuantity(),
             self::ARTICLE_NAME => $itemTransfer->getName(),
             self::ARTICLE_DESCRIPTION => $itemTransfer->getDescription(),
-            self::ARTICLE_PRICE => $itemTransfer->getUnitGrossPrice(),
-            self::ARTICLE_PRICE_GROSS => $itemTransfer->getUnitPriceToPayAggregation(),
+            self::ARTICLE_PRICE => $itemTransfer->getUnitGrossPrice() - $itemTransfer->getSumTaxAmount(),
+            self::ARTICLE_PRICE_GROSS => $itemTransfer->getUnitGrossPrice(),
         ];
     }
 
