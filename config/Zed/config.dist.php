@@ -51,6 +51,6 @@ $config[BillpayConstants::BILLPAY_SECURITY_KEY] = 'BILLPAY_SECURITY_KEY';
 $config[BillpayConstants::BILLPAY_PUBLIC_API_KEY] = 'BILLPAY_PUBLIC_API_KEY';
 $config[BillpayConstants::BILLPAY_MAX_DELAY_IN_DAYS] = 'BILLPAY_MAX_DELAY_IN_DAYS';
 $config[BillpayConstants::USE_MD5_HASH] = 'USE_MD5_HASH';
-$config[BillpayConstants::USE_PRESCORE] = true;
+$config[BillpayConstants::USE_PRESCORE] = 1;
 //$config[BillpayConstants::IS_TEST_MODE] = 'IS_TEST_MODE';
 //$config[BillpayConstants::CUSTOMER_GROUP] = 'CUSTOMER_GROUP';
