@@ -9,7 +9,7 @@ namespace SprykerEco\Yves\Billpay\Form\DataProvider;
 
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
-use Spryker\Shared\Config\Config;
+use SprykerEco\Yves\Billpay\BillpayConfig;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerEco\Client\Billpay\BillpayClient;
@@ -25,15 +25,15 @@ class BillpayInvoiceFormDataProvider implements StepEngineFormDataProviderInterf
     protected $client;
 
     /**
-     * @var \Spryker\Shared\Config\Config
+     * @var \SprykerEco\Yves\Billpay\BillpayConfig
      */
     protected $config;
 
     /**
      * @param \SprykerEco\Client\Billpay\BillpayClient $client
-     * @param \Spryker\Shared\Config\Config $config
+     * @param \SprykerEco\Yves\Billpay\BillpayConfig $config
      */
-    public function __construct(BillpayClient $client, Config $config)
+    public function __construct(BillpayClient $client, BillpayConfig $config)
     {
         $this->client = $client;
         $this->config = $config;
