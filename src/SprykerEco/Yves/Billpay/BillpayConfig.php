@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Yves\Billpay;
 
+use Generated\Shared\Transfer\BillpayPaymentMethodTransfer;
 use Spryker\Yves\Kernel\AbstractBundleConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 
@@ -26,7 +27,13 @@ class BillpayConfig extends AbstractBundleConfig
      */
     public function getAvailableProviderMethods()
     {
-        return $this->get(BillpayConstants::AVAILABLE_PROVIDER_METHODS);
+        return array_map(
+            function($value) {
+                return (new BillpayPaymentMethodTransfer())
+                    ->setName($value);
+            },
+            BillpayConstants::AVAILABLE_PROVIDER_METHODS
+        );
     }
 
 }
