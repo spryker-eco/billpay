@@ -31,7 +31,10 @@ class BillpayFactory extends AbstractFactory
      */
     public function createInvoiceFormDataProvider()
     {
-        return new BillpayInvoiceFormDataProvider($this->getBillpayClient());
+        return new BillpayInvoiceFormDataProvider(
+            $this->getBillpayClient(),
+            $this->getConfig()
+        );
     }
 
     /**

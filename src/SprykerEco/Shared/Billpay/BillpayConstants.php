@@ -49,7 +49,7 @@ interface BillpayConstants
     const METHOD_INVOICE = 'INVOICE';
 
     /**
-     * A list of methods that
+     * A list of methods
      */
     const AVAILABLE_PROVIDER_METHODS = [
         self::INVOICE_B2C
