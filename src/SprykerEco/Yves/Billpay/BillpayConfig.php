@@ -10,7 +10,7 @@ namespace SprykerEco\Yves\Billpay;
 use Spryker\Yves\Kernel\AbstractBundleConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 
-class BillpayConfig implements AbstractBundleConfig
+class BillpayConfig extends AbstractBundleConfig
 {
 
     /**
