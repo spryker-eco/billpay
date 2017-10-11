@@ -14,12 +14,12 @@ matrix:
 addons:
   postgresql: 9.4
   apt:
-      packages:
-        - graphviz
+    packages:
+      - graphviz
 
- hosts:
-    - zed.de.spryker.test
-    - www.de.spryker.test
+hosts:
+  - zed.de.spryker.test
+  - www.de.spryker.test
 
 cache:
   directories:
