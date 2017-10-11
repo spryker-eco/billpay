@@ -1,3 +1,6 @@
+before_install:
+  - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
 language: php
 
 php:
@@ -10,6 +13,13 @@ matrix:
 
 addons:
   postgresql: 9.4
+  apt:
+      packages:
+        - graphviz
+
+ hosts:
+    - zed.de.spryker.test
+    - www.de.spryker.test
 
 cache:
   directories:
@@ -18,6 +28,7 @@ cache:
 
 services:
   - postgresql
+  - redis
 
 sudo: required
 
@@ -27,16 +38,38 @@ env:
     - APPLICATION_STORE=DE
 
 install:
+  - chmod +x move-module.sh
+  - chmod +x checkout-latest-tag.sh
+  - if [[ *$TRAVIS_EVENT_TYPE* = 'cron' ]]; then ./checkout-latest-tag.sh; fi
+  - ./move-module.sh
+  - echo "Cloning demoshop..."
+  - git clone https://github.com/spryker/demoshop.git current
+
+  - cd current/
+  - chmod -R a+x config/Shared/ci/travis/
   - composer self-update && composer --version
-  - composer install --no-interaction --prefer-dist
+  - composer install --no-interaction
+  - config/Shared/ci/travis/install_elasticsearch.sh
+
+before_script:
+  - nvm install 6
+
+  - mkdir -p shared/data/common/jenkins
+  - mkdir -p shared/data/common/jenkins/jobs
+  - mkdir -p data/DE/cache/Yves/twig -m 0777
+  - mkdir -p data/DE/cache/Zed/twig -m 0777
+  - mkdir -p data/DE/logs -m 0777
+  - chmod -R 777 data/
+
+  - mv config/Zed/propel.ci.yml config/Zed/propel.yml
+  - cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php
+  - cp config/Shared/ci/travis/config_ci.php config/Shared/config_default-devtest_DE.php
+  - cp config/Shared/ci/travis/params_test_env.sh deploy/setup/params_test_env.sh
+  - cd ..
+  - chmod a+x ./module/travis.sh
 
 script:
-  - rm tests/Acceptance.suite.yml # remove because -x option does not work, still asks for selenium or phantomjs
-  - vendor/bin/phpcs src --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml
-  - vendor/bin/codecept run --env isolated --coverage-xml
-
-after_success:
-  - vendor/bin/coveralls -vvv
+  - ./module/travis.sh
 
 notifications:
   email: false
