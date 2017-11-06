@@ -18,7 +18,6 @@ use SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm;
 
 class BillpayInvoiceFormDataProvider implements StepEngineFormDataProviderInterface
 {
-
     /**
      * @var \SprykerEco\Client\Billpay\BillpayClient
      */
@@ -93,14 +92,14 @@ class BillpayInvoiceFormDataProvider implements StepEngineFormDataProviderInterf
      */
     protected function getPaymentMethods(AbstractTransfer $quoteTransfer)
     {
-        $paymentMethods = $quoteTransfer
-            ->getPayment()
-            ->getBillpay()
-            ->getBillpayPrescoringTransactionResponse()
-            ->getAvailablePaymentMethods()
-        ;
+        if ($this->config->getUsePrescore()) {
+            return $quoteTransfer
+                ->getPayment()
+                ->getBillpay()
+                ->getBillpayPrescoringTransactionResponse()
+                ->getAvailablePaymentMethods();
+        }
 
-        return $this->config->getUsePrescore() ? $paymentMethods : $this->config->getAvailableProviderMethods();
+        return $this->config->getAvailableProviderMethods();
     }
-
 }
