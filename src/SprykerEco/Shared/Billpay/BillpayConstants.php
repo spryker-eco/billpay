@@ -9,7 +9,6 @@ namespace SprykerEco\Shared\Billpay;
 
 interface BillpayConstants
 {
-
     const PAYMENT_PROVIDER = 'Billpay';
     const GATEWAY_URL = 'GATEWAY_URL';
     const IS_TEST_MODE = 'IS_TEST_MODE';
@@ -52,7 +51,7 @@ interface BillpayConstants
      * A list of methods
      */
     const AVAILABLE_PROVIDER_METHODS = [
-        self::INVOICE_B2C
+        self::INVOICE_B2C,
     ];
 
     const PARAM_GROUP_CUSTOMER = 'customer';
@@ -108,5 +107,4 @@ interface BillpayConstants
     const IPL_CORE_ERROR_CODE_REDIRECT_RESPONSE_RECEIVED = 16;
     const IPL_CORE_ERROR_CODE_UNSUPPORTED_PROTOCOL_VERSION = 17;
     const IPL_CORE_ERROR_CODE_TOO_MANY_REDIRECTS = 18;
-
 }

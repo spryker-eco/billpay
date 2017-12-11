@@ -17,7 +17,6 @@ use SprykerEco\Yves\Billpay\Handler\BillpayPaymentHandler;
  */
 class BillpayFactory extends AbstractFactory
 {
-
     /**
      * @return \SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm
      */
@@ -90,5 +89,4 @@ class BillpayFactory extends AbstractFactory
     {
         return $this->getProvidedDependency(BillpayDependencyProvider::STORE);
     }
-
 }

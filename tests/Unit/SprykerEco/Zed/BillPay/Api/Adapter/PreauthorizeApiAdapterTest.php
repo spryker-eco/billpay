@@ -37,7 +37,6 @@ use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
  */
 class PreauthorizeApiAdapterTest extends Test
 {
-
     /**
      * @return void
      */
@@ -142,5 +141,4 @@ class PreauthorizeApiAdapterTest extends Test
         $items->append(new ItemTransfer());
         return $items;
     }
-
 }

@@ -20,7 +20,6 @@ use SprykerEco\Zed\Billpay\Business\BillpayFacade;
  */
 class PrescorePaymentTest extends PreauthorizeApiAdapterTest
 {
-
     use QuoteTransferTrait;
 
     /**
@@ -35,5 +34,4 @@ class PrescorePaymentTest extends PreauthorizeApiAdapterTest
 
         $this->assertInstanceOf(BillpayPrescoringTransactionResponseTransfer::class, $response);
     }
-
 }

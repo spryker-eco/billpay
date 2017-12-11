@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 interface BillpayToQuoteInterface
 {
-
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -23,5 +22,4 @@ interface BillpayToQuoteInterface
      * @return void
      */
     public function setQuote(QuoteTransfer $quoteTransfer);
-
 }

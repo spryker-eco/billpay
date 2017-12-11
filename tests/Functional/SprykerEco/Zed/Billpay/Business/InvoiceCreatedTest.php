@@ -20,7 +20,6 @@ use SprykerEco\Zed\Billpay\Business\BillpayFacade;
  */
 class InvoiceCreatedTest extends PreauthorizeApiAdapterTest
 {
-
     use OrderTransferTrait;
 
     /**
@@ -37,5 +36,4 @@ class InvoiceCreatedTest extends PreauthorizeApiAdapterTest
 
         $this->assertInstanceOf(BillpayInvoiceCreatedResponseTransfer::class, $response);
     }
-
 }

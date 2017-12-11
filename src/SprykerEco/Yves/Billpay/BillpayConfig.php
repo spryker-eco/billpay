@@ -13,13 +13,12 @@ use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class BillpayConfig extends AbstractBundleConfig
 {
-
     /**
      * @return bool
      */
     public function getUsePrescore()
     {
-        return (bool) $this->get(BillpayConstants::USE_PRESCORE);
+        return (bool)$this->get(BillpayConstants::USE_PRESCORE);
     }
 
     /**
@@ -28,12 +27,11 @@ class BillpayConfig extends AbstractBundleConfig
     public function getAvailableProviderMethods()
     {
         return array_map(
-            function($value) {
+            function ($value) {
                 return (new BillpayPaymentMethodTransfer())
                     ->setName($value);
             },
             BillpayConstants::AVAILABLE_PROVIDER_METHODS
         );
     }
-
 }

@@ -17,7 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class BillpayPaymentHandlerPlugin extends AbstractPlugin implements StepHandlerPluginInterface
 {
-
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
@@ -43,5 +42,4 @@ class BillpayPaymentHandlerPlugin extends AbstractPlugin implements StepHandlerP
 
         return $quoteTransfer;
     }
-
 }

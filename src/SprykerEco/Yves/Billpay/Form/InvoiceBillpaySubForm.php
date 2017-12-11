@@ -17,7 +17,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class InvoiceBillpaySubForm extends AbstractBillpaySubForm
 {
-
     const PAYMENT_METHOD = 'invoice';
     const PAYMENT_METHOD_NOT_AVAILABLE = 'not-available';
     const CART_AMOUNT = 'CART_AMOUNT';
@@ -111,5 +110,4 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm
 
         $view->vars[self::TEMPLATE_PATH] = $this->getTemplatePath();
     }
-
 }

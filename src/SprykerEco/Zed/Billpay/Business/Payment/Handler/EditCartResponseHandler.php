@@ -14,7 +14,6 @@ use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class EditCartResponseHandler extends AbstractResponseHandler
 {
-
     const METHOD = 'EDIT_CART';
 
     /**
@@ -40,5 +39,4 @@ class EditCartResponseHandler extends AbstractResponseHandler
             $item->save();
         }
     }
-
 }

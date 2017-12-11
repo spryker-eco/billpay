@@ -6,7 +6,6 @@ use Codeception\Scenario;
 
 class YvesAcceptanceTester extends AcceptanceTester
 {
-
     /**
      * Tell WebDriver to execute url calls on yves
      * `$i->amOnPage('/foo/bar/baz');` will use yves host
@@ -20,5 +19,4 @@ class YvesAcceptanceTester extends AcceptanceTester
         $i = $this;
         $i->amYves();
     }
-
 }

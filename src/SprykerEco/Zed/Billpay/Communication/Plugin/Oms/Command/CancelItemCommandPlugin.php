@@ -16,11 +16,10 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 
 /**
- * @method \SprykerEco\Zed\Billpay\Business\BillpayFacade getFacade()
+ * @method \SprykerEco\Zed\Billpay\Business\BillpayFacadeInterface getFacade()
  */
 class CancelItemCommandPlugin extends AbstractBillpayCommandPlugin implements CommandByItemInterface
 {
-
     /**
      *
      * Command which is executed per order item basis
@@ -84,5 +83,4 @@ class CancelItemCommandPlugin extends AbstractBillpayCommandPlugin implements Co
                 ->endUse()
             ->find();
     }
-
 }

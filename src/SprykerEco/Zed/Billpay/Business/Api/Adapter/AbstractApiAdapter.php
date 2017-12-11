@@ -16,7 +16,6 @@ use SprykerEco\Zed\Billpay\Business\Exception\BillpayPaymentMethodException;
 
 abstract class AbstractApiAdapter implements AdapterInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\BillpayConfig
      */
@@ -103,5 +102,4 @@ abstract class AbstractApiAdapter implements AdapterInterface
      * @return void
      */
     abstract protected function prepareData(array $data);
-
 }

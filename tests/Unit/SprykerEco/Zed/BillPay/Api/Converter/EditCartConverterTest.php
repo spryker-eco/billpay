@@ -24,7 +24,6 @@ use SprykerEco\Zed\Billpay\Business\Api\Converter\EditCartContentConverter;
  */
 class EditCartConverterTest extends Test
 {
-
     /**
      * @var \Billpay\UnitTester
      */
@@ -82,5 +81,4 @@ class EditCartConverterTest extends Test
 
         return $stub;
     }
-
 }

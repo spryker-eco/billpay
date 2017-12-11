@@ -18,7 +18,6 @@ use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 class PreauthorizeResponseHandler extends AbstractResponseHandler
 {
-
     use DatabaseTransactionHandlerTrait;
 
     const METHOD = 'PREAUTHORIZE';
@@ -90,5 +89,4 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
             $item->save();
         }
     }
-
 }

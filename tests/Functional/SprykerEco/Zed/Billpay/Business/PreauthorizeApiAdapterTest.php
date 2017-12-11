@@ -31,7 +31,6 @@ use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainer;
  */
 class PreauthorizeApiAdapterTest extends Test
 {
-
     const BPTID = 'dummybptid';
 
     /**
@@ -221,5 +220,4 @@ class PreauthorizeApiAdapterTest extends Test
 
         return $data;
     }
-
 }

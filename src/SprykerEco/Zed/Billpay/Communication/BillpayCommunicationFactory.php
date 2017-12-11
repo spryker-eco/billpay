@@ -17,7 +17,6 @@ use SprykerEco\Zed\Billpay\BillpayDependencyProvider;
  */
 class BillpayCommunicationFactory extends AbstractCommunicationFactory
 {
-
     /**
      * @return \SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToOmsInterface
      */
@@ -75,5 +74,4 @@ class BillpayCommunicationFactory extends AbstractCommunicationFactory
     {
          return new MessageTransfer();
     }
-
 }

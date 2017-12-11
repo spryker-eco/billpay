@@ -11,7 +11,6 @@ use Spryker\Zed\Sales\Business\SalesFacadeInterface;
 
 class BillpayToSalesBridge implements BillpayToSalesInterface
 {
-
     /**
      * @var \Spryker\Zed\Sales\Business\SalesFacadeInterface
      */
@@ -38,5 +37,4 @@ class BillpayToSalesBridge implements BillpayToSalesInterface
                 $idSalesOrder
             );
     }
-
 }

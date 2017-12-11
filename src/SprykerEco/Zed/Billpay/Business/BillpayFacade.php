@@ -18,7 +18,6 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
  */
 class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
 {
-
     /**
      * {@inheritdoc}
      *
@@ -171,5 +170,4 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
     {
         return $this->getFactory()->getCountry()->getCountryByIso2Code($iso2code);
     }
-
 }

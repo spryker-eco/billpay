@@ -12,7 +12,6 @@ use Spryker\Zed\Refund\Business\RefundFacadeInterface;
 
 class BillpayToRefundBridge implements BillpayToRefundInterface
 {
-
     /**
      * @var \Spryker\Zed\Refund\Business\RefundFacadeInterface
      */
@@ -41,5 +40,4 @@ class BillpayToRefundBridge implements BillpayToRefundInterface
                 $orderEntity
             );
     }
-
 }

@@ -11,7 +11,6 @@ use Spryker\Zed\Country\Business\CountryFacadeInterface;
 
 class BillpayToCountryBridge implements BillpayToCountryBridgeInterface
 {
-
     /** @var \Spryker\Zed\Country\Business\CountryFacadeInterface */
     protected $countryFacade;
 
@@ -32,5 +31,4 @@ class BillpayToCountryBridge implements BillpayToCountryBridgeInterface
     {
         return $this->countryFacade->getCountryByIso2Code($iso2code);
     }
-
 }

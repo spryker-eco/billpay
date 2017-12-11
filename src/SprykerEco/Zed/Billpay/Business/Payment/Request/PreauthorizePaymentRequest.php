@@ -15,7 +15,6 @@ use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 class PreauthorizePaymentRequest extends AbstractPaymentRequest implements TransactionInterface, OrderTransactionInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface
      */
@@ -57,5 +56,4 @@ class PreauthorizePaymentRequest extends AbstractPaymentRequest implements Trans
 
         return $this->sendRequest($requestData);
     }
-
 }

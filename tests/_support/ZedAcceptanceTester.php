@@ -6,7 +6,6 @@ use Codeception\Scenario;
 
 class ZedAcceptanceTester extends AcceptanceTester
 {
-
     /**
      * @param \Codeception\Scenario $scenario
      */
@@ -18,5 +17,4 @@ class ZedAcceptanceTester extends AcceptanceTester
         $i->amZed();
         $i->amLoggedInUser();
     }
-
 }

@@ -12,7 +12,6 @@ use SprykerEco\Client\Billpay\Zed\BillpayStub;
 
 class BillpayFactory extends AbstractFactory
 {
-
     /**
      * @return \SprykerEco\Client\Billpay\Zed\BillpayStub
      */
@@ -28,5 +27,4 @@ class BillpayFactory extends AbstractFactory
     {
         return $this->getProvidedDependency(BillpayDependencyProvider::CLIENT_ZED_REQUEST);
     }
-
 }

@@ -11,12 +11,10 @@ use Generated\Shared\Transfer\OrderTransfer;
 
 interface OrderTransactionInterface extends TransactionInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
      * @return mixed
      */
     public function request(OrderTransfer $orderTransfer);
-
 }

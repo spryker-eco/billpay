@@ -25,7 +25,6 @@ use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridgeInterface;
 
 abstract class AbstractManager implements AbstractManagerInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\BillpayConfig
      */
@@ -430,5 +429,4 @@ abstract class AbstractManager implements AbstractManagerInterface
 
         return array_shift($selectedShipmentMethods)->getCarrierName();
     }
-
 }

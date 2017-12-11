@@ -16,7 +16,6 @@ use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 class PrescorePaymentRequest extends AbstractPaymentRequest implements TransactionInterface, QuoteTransactionInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface
      */
@@ -56,5 +55,4 @@ class PrescorePaymentRequest extends AbstractPaymentRequest implements Transacti
 
         return $this->sendRequest($requestData);
     }
-
 }

@@ -24,7 +24,6 @@ use SprykerEco\Zed\Billpay\Business\Api\Converter\PreauthorizeConverter;
  */
 class PreauthorizeConverterTest extends Test
 {
-
     /**
      * @var \Billpay\UnitTester
      */
@@ -81,5 +80,4 @@ class PreauthorizeConverterTest extends Test
 
         return $stub;
     }
-
 }

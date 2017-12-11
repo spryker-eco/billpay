@@ -20,7 +20,6 @@ use Orm\Zed\Sales\Persistence\SpySalesOrderAddress;
 
 trait OrderTransferTrait
 {
-
     /**
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
@@ -112,5 +111,4 @@ trait OrderTransferTrait
         $data->save();
         return $data;
     }
-
 }

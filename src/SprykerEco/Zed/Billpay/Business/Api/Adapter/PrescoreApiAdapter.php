@@ -14,7 +14,6 @@ use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManagerInterf
 
 class PrescoreApiAdapter extends AbstractApiAdapter
 {
-
     /**
      * @var \ipl_prescore_request
      */
@@ -131,5 +130,4 @@ class PrescoreApiAdapter extends AbstractApiAdapter
     {
         return $this->xmlRequest;
     }
-
 }

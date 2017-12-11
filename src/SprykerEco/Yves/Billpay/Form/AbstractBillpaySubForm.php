@@ -17,7 +17,6 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 abstract class AbstractBillpaySubForm extends AbstractSubFormType implements SubFormInterface
 {
-
     const FIELD_API_KEY = 'api_key';
     const FIELD_SALUTATION = 'salutation';
     const FIELD_FIRST_NAME = 'first_name';
@@ -108,5 +107,4 @@ abstract class AbstractBillpaySubForm extends AbstractSubFormType implements Sub
             'groups' => $this->getPropertyPath(),
         ]);
     }
-
 }

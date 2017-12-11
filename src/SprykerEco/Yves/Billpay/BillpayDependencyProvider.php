@@ -14,7 +14,6 @@ use SprykerEco\Yves\Billpay\Dependency\Client\BillpayToQuoteBridge;
 
 class BillpayDependencyProvider extends AbstractBundleDependencyProvider
 {
-
     const CLIENT_CUSTOMER = 'customer client';
     const CLIENT_BILLPAY = 'billpay_cllient';
     const CLIENT_QUOTE = 'quote_client';
@@ -45,5 +44,4 @@ class BillpayDependencyProvider extends AbstractBundleDependencyProvider
 
         return $container;
     }
-
 }

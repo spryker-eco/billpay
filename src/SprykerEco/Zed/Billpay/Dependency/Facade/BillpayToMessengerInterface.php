@@ -11,12 +11,10 @@ use Generated\Shared\Transfer\MessageTransfer;
 
 interface BillpayToMessengerInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\MessageTransfer $message
      *
      * @return void
      */
     public function addErrorMessage(MessageTransfer $message);
-
 }

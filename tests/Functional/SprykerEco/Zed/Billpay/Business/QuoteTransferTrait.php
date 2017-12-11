@@ -18,7 +18,6 @@ use Generated\Shared\Transfer\TotalsTransfer;
 
 trait QuoteTransferTrait
 {
-
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -76,5 +75,4 @@ trait QuoteTransferTrait
         $address->setIso2Code('DE');
         return $address;
     }
-
 }

@@ -30,7 +30,6 @@ use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
  */
 class CancelOrderApiAdapterTest extends Test
 {
-
     /**
      * @return void
      */
@@ -117,5 +116,4 @@ class CancelOrderApiAdapterTest extends Test
         $orderTransfer->setTotals(new TotalsTransfer());
         return $orderTransfer;
     }
-
 }

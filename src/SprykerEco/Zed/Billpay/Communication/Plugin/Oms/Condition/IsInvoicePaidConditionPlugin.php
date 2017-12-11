@@ -12,7 +12,6 @@ use Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface;
 
 class IsInvoicePaidConditionPlugin implements ConditionInterface
 {
-
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
      *
@@ -25,5 +24,4 @@ class IsInvoicePaidConditionPlugin implements ConditionInterface
 
         return !empty($billpaymentOrderItem->getInvoiceDuedate());
     }
-
 }

@@ -20,7 +20,6 @@ use SprykerEco\Zed\Billpay\Business\BillpayFacade;
  */
 class CancelOrderTest extends PreauthorizeApiAdapterTest
 {
-
     use OrderTransferTrait;
 
     /**
@@ -35,5 +34,4 @@ class CancelOrderTest extends PreauthorizeApiAdapterTest
 
         $this->assertInstanceOf(BillpayCancelResponseTransfer::class, $response);
     }
-
 }

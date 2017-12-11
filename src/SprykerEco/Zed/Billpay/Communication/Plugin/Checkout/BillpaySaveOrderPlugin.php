@@ -13,12 +13,11 @@ use Spryker\Zed\Checkout\Dependency\Plugin\CheckoutSaveOrderInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
- * @method \SprykerEco\Zed\Billpay\Business\BillpayFacade getFacade()
+ * @method \SprykerEco\Zed\Billpay\Business\BillpayFacadeInterface getFacade()
  * @method \SprykerEco\Zed\Billpay\Communication\BillpayCommunicationFactory getFactory()
  */
 class BillpaySaveOrderPlugin extends AbstractPlugin implements CheckoutSaveOrderInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponse
@@ -29,5 +28,4 @@ class BillpaySaveOrderPlugin extends AbstractPlugin implements CheckoutSaveOrder
     {
         $this->getFacade()->saveOrderPayment($quoteTransfer, $checkoutResponse);
     }
-
 }

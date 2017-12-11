@@ -12,7 +12,6 @@ use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class BillpayConfig extends AbstractBundleConfig
 {
-
     /**
      * @return string
      */
@@ -66,5 +65,4 @@ class BillpayConfig extends AbstractBundleConfig
     {
         return $this->get(BillpayConstants::BILLPAY_MAX_DELAY_IN_DAYS);
     }
-
 }

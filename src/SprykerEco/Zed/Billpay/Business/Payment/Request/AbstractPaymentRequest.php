@@ -15,7 +15,6 @@ use SprykerEco\Zed\Billpay\Business\Payment\Manager\AbstractManagerInterface;
 
 abstract class AbstractPaymentRequest
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface
      */
@@ -96,5 +95,4 @@ abstract class AbstractPaymentRequest
 
         return $responseTransfer;
     }
-
 }

@@ -14,7 +14,6 @@ use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvide
 
 class Functional extends Module
 {
-
     /**
      * @param array|null $config
      */
@@ -70,5 +69,4 @@ class Functional extends Module
             session_destroy();
         }
     }
-
 }

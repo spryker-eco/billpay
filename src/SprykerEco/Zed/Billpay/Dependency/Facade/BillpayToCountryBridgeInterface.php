@@ -9,12 +9,10 @@ namespace SprykerEco\Zed\Billpay\Dependency\Facade;
 
 interface BillpayToCountryBridgeInterface
 {
-
     /**
      * @param string $iso2code
      *
      * @return \Generated\Shared\Transfer\CountryTransfer
      */
     public function getCountryByIso2Code($iso2code);
-
 }

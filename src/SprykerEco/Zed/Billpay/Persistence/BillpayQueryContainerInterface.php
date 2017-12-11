@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\Billpay\Persistence;
 
 interface BillpayQueryContainerInterface
 {
-
     /**
      * @api
      *
@@ -45,5 +44,4 @@ interface BillpayQueryContainerInterface
      * @return \Orm\Zed\Billpay\Persistence\SpyPaymentBillpayQuery
      */
     public function queryPaymentByReference($reference);
-
 }

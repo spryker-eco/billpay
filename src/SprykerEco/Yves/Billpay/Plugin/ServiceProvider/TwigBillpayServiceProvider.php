@@ -22,7 +22,6 @@ use Twig_SimpleFunction;
  */
 class TwigBillpayServiceProvider extends AbstractPlugin implements ServiceProviderInterface
 {
-
     const MONEY_DIVIDER = 100;
 
     /**
@@ -132,7 +131,6 @@ class TwigBillpayServiceProvider extends AbstractPlugin implements ServiceProvid
                 }
 
                 return null;
-
             });
     }
 
@@ -304,5 +302,4 @@ class TwigBillpayServiceProvider extends AbstractPlugin implements ServiceProvid
     {
         return $this->getFactory()->getBillpayClient()->getSessionId();
     }
-
 }

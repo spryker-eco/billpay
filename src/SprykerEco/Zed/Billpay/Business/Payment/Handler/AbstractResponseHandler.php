@@ -13,7 +13,6 @@ use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 abstract class AbstractResponseHandler
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface
      */
@@ -46,5 +45,4 @@ abstract class AbstractResponseHandler
     {
         return $this->logger->log($headerTransfer, $method);
     }
-
 }

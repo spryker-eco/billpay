@@ -12,12 +12,10 @@ use SprykerEco\Zed\Billpay\Business\Payment\Manager\AbstractManagerInterface;
 
 interface InvoiceManagerInterface extends AbstractManagerInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
      * @return array
      */
     public function buildInvoiceCreatedOrderRequest(OrderTransfer $orderTransfer);
-
 }

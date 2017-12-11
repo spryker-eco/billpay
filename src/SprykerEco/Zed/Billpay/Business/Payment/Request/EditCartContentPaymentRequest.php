@@ -15,7 +15,6 @@ use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 class EditCartContentPaymentRequest extends AbstractPaymentRequest implements TransactionInterface, OrderTransactionInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface
      */
@@ -57,5 +56,4 @@ class EditCartContentPaymentRequest extends AbstractPaymentRequest implements Tr
 
         return $this->sendRequest($requestData);
     }
-
 }

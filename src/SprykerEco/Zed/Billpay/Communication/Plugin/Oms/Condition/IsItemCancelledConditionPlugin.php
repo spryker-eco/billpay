@@ -13,7 +13,6 @@ use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class IsItemCancelledConditionPlugin implements ConditionInterface
 {
-
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
      *
@@ -26,5 +25,4 @@ class IsItemCancelledConditionPlugin implements ConditionInterface
 
         return ($billpaymentOrderItem->getStatus() === BillpayConstants::BILLPAY_OMS_STATUS_CANCELLED);
     }
-
 }

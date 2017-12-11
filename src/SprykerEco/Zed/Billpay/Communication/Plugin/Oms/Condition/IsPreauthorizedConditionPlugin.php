@@ -12,7 +12,6 @@ use Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface;
 
 class IsPreauthorizedConditionPlugin implements ConditionInterface
 {
-
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
      *
@@ -25,5 +24,4 @@ class IsPreauthorizedConditionPlugin implements ConditionInterface
 
         return !empty($billpaymentOrderItem->getFkPaymentBillpayInvoiceBankAccount());
     }
-
 }

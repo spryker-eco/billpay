@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\BillpayInvoiceBankAccountTransfer;
 
 interface InvoiceBankAccountPersisterInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\BillpayInvoiceBankAccountTransfer $invoiceBankAccountTransfer
      * @param \Orm\Zed\Billpay\Persistence\SpyPaymentBillpayInvoiceBankAccount|null $invoiceBankAccountEntity
@@ -19,5 +18,4 @@ interface InvoiceBankAccountPersisterInterface
      * @return mixed
      */
     public function persist(BillpayInvoiceBankAccountTransfer $invoiceBankAccountTransfer, $invoiceBankAccountEntity = null);
-
 }

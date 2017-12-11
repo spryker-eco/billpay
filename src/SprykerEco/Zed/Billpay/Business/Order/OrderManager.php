@@ -19,7 +19,6 @@ use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class OrderManager implements OrderManagerInterface
 {
-
     use DatabaseTransactionHandlerTrait;
 
     /**
@@ -58,7 +57,10 @@ class OrderManager implements OrderManagerInterface
         $paymentEntity->setClientIp($paymentTransfer->getBillpay()->getClientIp());
         $paymentEntity->setPaymentMethod($paymentTransfer->getPaymentMethod());
         $paymentEntity->setReference($saveOrderTransfer->getOrderReference());
-        $paymentEntity->setBptid($paymentTransfer->getBillpay()->getBillpayPrescoringTransactionResponse()->getHeader()->getBptid());
+        $paymentEntity->setBptid(null);
+        if ($paymentTransfer->getBillpay()->getBillpayPrescoringTransactionResponse() !== null) {
+            $paymentEntity->setBptid($paymentTransfer->getBillpay()->getBillpayPrescoringTransactionResponse()->getHeader()->getBptid());
+        }
         $paymentEntity->setFkSalesOrder($saveOrderTransfer->getIdSalesOrder());
         $paymentEntity->setDateOfBirth($paymentTransfer->getBillpay()->getDateOfBirth());
         $paymentEntity->save();
@@ -85,5 +87,4 @@ class OrderManager implements OrderManagerInterface
             $paymentOrderItemEntity->save();
         }
     }
-
 }

@@ -13,7 +13,6 @@ use SprykerEco\Zed\Billpay\Business\Payment\Manager\AbstractManager;
 
 class InvoiceManager extends AbstractManager implements InvoiceManagerInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
@@ -36,5 +35,4 @@ class InvoiceManager extends AbstractManager implements InvoiceManagerInterface
     {
         return BillpayConstants::INVOICE;
     }
-
 }

@@ -14,7 +14,6 @@ use SprykerEco\Yves\Billpay\Exception\PaymentMethodNotFoundException;
 
 class BillpayPaymentHandler
 {
-
     /**
      * @var array
      */
@@ -125,5 +124,4 @@ class BillpayPaymentHandler
 
         return $billpayPaymentTransfer;
     }
-
 }

@@ -25,7 +25,6 @@ use SprykerEco\Zed\Billpay\Business\Api\Converter\PrescoreConverter;
  */
 class PrescoreConverterTest extends Test
 {
-
     /**
      * @var \Billpay\UnitTester
      */
@@ -81,5 +80,4 @@ class PrescoreConverterTest extends Test
 
         return $stub;
     }
-
 }

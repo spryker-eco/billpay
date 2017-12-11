@@ -37,7 +37,6 @@ use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
  */
 class PrescoreApiAdapterTest extends Test
 {
-
     /**
      * @return void
      */
@@ -151,5 +150,4 @@ class PrescoreApiAdapterTest extends Test
         $shipment->setMethod(new ShipmentMethodTransfer());
         return $shipment;
     }
-
 }

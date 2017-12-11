@@ -24,7 +24,6 @@ use SprykerEco\Zed\Billpay\Business\Api\Converter\CancelOrderConverter;
  */
 class CancelOrderConverterTest extends Test
 {
-
     /**
      * @var \Billpay\UnitTester
      */
@@ -82,5 +81,4 @@ class CancelOrderConverterTest extends Test
 
         return $stub;
     }
-
 }

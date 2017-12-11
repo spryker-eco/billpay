@@ -20,11 +20,9 @@ use Codeception\Actor;
  */
 class AcceptanceTester extends Actor
 {
-
     use _generated\AcceptanceTesterActions;
 
    /**
     * Define custom actions here
     */
-
 }

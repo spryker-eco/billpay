@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 class BillpayToQuoteBridge implements BillpayToQuoteInterface
 {
-
     /**
      * @var \Spryker\Client\Quote\QuoteClientInterface
      */
@@ -42,5 +41,4 @@ class BillpayToQuoteBridge implements BillpayToQuoteInterface
     {
         $this->quoteClient->setQuote($quoteTransfer);
     }
-
 }

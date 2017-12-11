@@ -11,7 +11,6 @@ use Codeception\Module;
 
 class Billpay extends Module
 {
-
     /**
      * @param array $settings
      *
@@ -60,5 +59,4 @@ class Billpay extends Module
             unlink($configFile);
         }
     }
-
 }

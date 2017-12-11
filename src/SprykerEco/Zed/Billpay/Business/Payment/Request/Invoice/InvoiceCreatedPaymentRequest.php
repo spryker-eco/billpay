@@ -18,7 +18,6 @@ use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 class InvoiceCreatedPaymentRequest extends AbstractPaymentRequest implements TransactionInterface, OrderTransactionInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface
      */
@@ -58,5 +57,4 @@ class InvoiceCreatedPaymentRequest extends AbstractPaymentRequest implements Tra
 
         return $this->sendRequest($requestData);
     }
-
 }

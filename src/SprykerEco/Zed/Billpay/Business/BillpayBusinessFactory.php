@@ -47,7 +47,6 @@ use SprykerEco\Zed\Billpay\Business\Payment\Request\PrescorePaymentRequest;
  */
 class BillpayBusinessFactory extends AbstractBusinessFactory
 {
-
     /**
      * @return \SprykerEco\Zed\Billpay\Business\Payment\Request\QuoteTransactionInterface
      */
@@ -405,5 +404,4 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     {
         return new ipl_edit_cart_content_request($this->getConfig()->getGatewayUrl());
     }
-
 }

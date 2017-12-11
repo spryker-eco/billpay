@@ -13,7 +13,6 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 
 class PreauthorizeCommandPlugin extends AbstractBillpayCommandPlugin implements CommandByOrderInterface
 {
-
     /**
      * @inheritdoc
      */
@@ -25,5 +24,4 @@ class PreauthorizeCommandPlugin extends AbstractBillpayCommandPlugin implements 
 
         return [];
     }
-
 }

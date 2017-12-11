@@ -9,11 +9,11 @@ namespace SprykerEco\Yves\Billpay\Form\DataProvider;
 
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
-use SprykerEco\Yves\Billpay\BillpayConfig;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerEco\Client\Billpay\BillpayClient;
 use SprykerEco\Shared\Billpay\BillpayConstants;
+use SprykerEco\Yves\Billpay\BillpayConfig;
 use SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm;
 
 class BillpayInvoiceFormDataProvider implements StepEngineFormDataProviderInterface

@@ -14,7 +14,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
  */
 interface BillpayClientInterface
 {
-
     /**
      * @api
      *
@@ -43,5 +42,4 @@ interface BillpayClientInterface
      * @return string
      */
     public function getSessionId();
-
 }

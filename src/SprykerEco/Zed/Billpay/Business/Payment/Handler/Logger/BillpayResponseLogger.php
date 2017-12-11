@@ -12,7 +12,6 @@ use Orm\Zed\Billpay\Persistence\SpyPaymentBillpayApiLog;
 
 class BillpayResponseLogger implements BillpayResponseLoggerInterface
 {
-
     /**
      * {@inheritdoc}
      */
@@ -25,5 +24,4 @@ class BillpayResponseLogger implements BillpayResponseLoggerInterface
 
         return $logEntity;
     }
-
 }

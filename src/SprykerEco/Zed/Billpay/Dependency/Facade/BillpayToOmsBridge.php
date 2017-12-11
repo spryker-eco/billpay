@@ -12,7 +12,6 @@ use Spryker\Zed\Oms\Business\OmsFacadeInterface;
 
 class BillpayToOmsBridge implements BillpayToOmsInterface
 {
-
     /**
      * @var \Spryker\Zed\Oms\Business\OmsFacadeInterface
      */
@@ -45,5 +44,4 @@ class BillpayToOmsBridge implements BillpayToOmsInterface
                 $data
             );
     }
-
 }

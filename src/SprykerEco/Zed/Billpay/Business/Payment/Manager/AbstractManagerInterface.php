@@ -13,7 +13,6 @@ use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 
 interface AbstractManagerInterface
 {
-
     const CURRENCY = 'currency';
     const CART_TOTAL_PRICE_GROSS = 'cart_total_price_gross';
     const CART_TOTAL_PRICE = 'cart_total_price';
@@ -102,5 +101,4 @@ interface AbstractManagerInterface
      * @return array
      */
     public function buildPreauthorizeOrderRequest(OrderTransfer $orderTransfer);
-
 }

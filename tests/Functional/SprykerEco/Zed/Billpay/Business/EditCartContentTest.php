@@ -21,7 +21,6 @@ use SprykerEco\Zed\Billpay\Business\BillpayFacade;
  */
 class EditCartContentTest extends PreauthorizeApiAdapterTest
 {
-
     use OrderTransferTrait;
 
     /**
@@ -44,5 +43,4 @@ class EditCartContentTest extends PreauthorizeApiAdapterTest
     {
         return new ItemTransfer();
     }
-
 }

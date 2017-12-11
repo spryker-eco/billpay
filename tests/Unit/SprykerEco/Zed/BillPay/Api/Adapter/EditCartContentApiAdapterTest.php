@@ -33,7 +33,6 @@ use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
  */
 class EditCartContentApiAdapterTest extends Test
 {
-
     /**
      * @return void
      */
@@ -143,5 +142,4 @@ class EditCartContentApiAdapterTest extends Test
         $item->setQuantity(1);
         return $item;
     }
-
 }

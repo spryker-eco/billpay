@@ -11,12 +11,10 @@ use ipl_xml_request;
 
 interface ConverterInterface
 {
-
     /**
      * @param \ipl_xml_request $xmlRequest
      *
      * @return mixed
      */
     public function toTransactionResponseTransfer(ipl_xml_request $xmlRequest);
-
 }

@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 interface OrderManagerInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
@@ -20,5 +19,4 @@ interface OrderManagerInterface
      * @return void
      */
     public function saveOrderPayment(QuoteTransfer $quoteTransfer, CheckoutResponseTransfer $checkoutResponseTransfer);
-
 }

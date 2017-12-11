@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\MessageTransfer;
 
 class BillpayToMessengerBridge implements BillpayToMessengerInterface
 {
-
     /**
      * @var \Spryker\Zed\Calculation\Business\BillpayToMessengerInterface
      */
@@ -34,5 +33,4 @@ class BillpayToMessengerBridge implements BillpayToMessengerInterface
     {
         return $this->messengerFacade->addErrorMessage($message);
     }
-
 }

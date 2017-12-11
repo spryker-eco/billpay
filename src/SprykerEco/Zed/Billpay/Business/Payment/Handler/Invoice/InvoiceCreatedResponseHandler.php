@@ -19,7 +19,6 @@ use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 class InvoiceCreatedResponseHandler extends AbstractResponseHandler
 {
-
     const METHOD = 'INVOICE';
 
     /**
@@ -95,5 +94,4 @@ class InvoiceCreatedResponseHandler extends AbstractResponseHandler
             }
         }
     }
-
 }

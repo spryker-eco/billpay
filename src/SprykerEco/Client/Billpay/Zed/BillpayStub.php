@@ -12,7 +12,6 @@ use Spryker\Client\ZedRequest\Stub\ZedRequestStub;
 
 class BillpayStub extends ZedRequestStub
 {
-
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
@@ -40,5 +39,4 @@ class BillpayStub extends ZedRequestStub
     {
         return $this->zedStub->call('/billpay/gateway/get-session-id', new QuoteTransfer());
     }
-
 }

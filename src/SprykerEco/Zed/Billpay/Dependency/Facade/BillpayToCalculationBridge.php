@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\OrderTransfer;
 
 class BillpayToCalculationBridge implements BillpayToCalculationInterface
 {
-
     /**
      * @var \Spryker\Zed\Calculation\Business\CalculationFacadeInterface
      */
@@ -34,5 +33,4 @@ class BillpayToCalculationBridge implements BillpayToCalculationInterface
     {
         return $this->calculationFacade->recalculateOrder($orderTransfer);
     }
-
 }

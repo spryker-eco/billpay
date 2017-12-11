@@ -14,7 +14,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
  */
 class BillpayQueryContainer extends AbstractQueryContainer implements BillpayQueryContainerInterface
 {
-
     /**
      * @api
      *
@@ -96,5 +95,4 @@ class BillpayQueryContainer extends AbstractQueryContainer implements BillpayQue
             ->getFactory()
             ->createPaymentBillpayOrderItemQuery();
     }
-
 }

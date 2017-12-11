@@ -12,7 +12,6 @@ use Orm\Zed\Billpay\Persistence\SpyPaymentBillpayInvoiceBankAccount;
 
 class InvoiceBankAccountPersister implements InvoiceBankAccountPersisterInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\BillpayInvoiceBankAccountTransfer $invoiceBankAccountTransfer
      * @param \Orm\Zed\Billpay\Persistence\SpyPaymentBillpayInvoiceBankAccount|null $invoiceBankAccountEntity
@@ -35,5 +34,4 @@ class InvoiceBankAccountPersister implements InvoiceBankAccountPersisterInterfac
 
         return $invoiceBankAccountEntity;
     }
-
 }

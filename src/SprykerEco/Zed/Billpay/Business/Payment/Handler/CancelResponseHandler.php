@@ -13,7 +13,6 @@ use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class CancelResponseHandler extends AbstractResponseHandler
 {
-
     const METHOD = 'CANCEL';
 
     /**
@@ -45,5 +44,4 @@ class CancelResponseHandler extends AbstractResponseHandler
             }
         }
     }
-
 }

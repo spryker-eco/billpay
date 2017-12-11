@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 class PrescoreResponseHandler extends AbstractResponseHandler
 {
-
     const METHOD = 'PRESCORE';
 
     /**
@@ -35,5 +34,4 @@ class PrescoreResponseHandler extends AbstractResponseHandler
                 $responseTransfer->getHeader()->getBptid()
             );
     }
-
 }

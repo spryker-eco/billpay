@@ -24,7 +24,6 @@ use SprykerEco\Zed\Billpay\Business\Api\Converter\InvoiceCreatedConverter;
  */
 class InvoiceCreatedConverterTest extends Test
 {
-
     /**
      * @var \Billpay\UnitTester
      */
@@ -81,5 +80,4 @@ class InvoiceCreatedConverterTest extends Test
 
         return $stub;
     }
-
 }

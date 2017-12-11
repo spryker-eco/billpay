@@ -14,7 +14,6 @@ use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManagerInterf
 
 class PreauthorizeApiAdapter extends AbstractApiAdapter
 {
-
     /**
      * @var \ipl_preauthorize_request
      */
@@ -149,5 +148,4 @@ class PreauthorizeApiAdapter extends AbstractApiAdapter
     {
         return $this->xmlRequest;
     }
-
 }

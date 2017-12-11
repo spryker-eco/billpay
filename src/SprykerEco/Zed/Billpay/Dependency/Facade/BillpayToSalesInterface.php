@@ -9,12 +9,10 @@ namespace SprykerEco\Zed\Billpay\Dependency\Facade;
 
 interface BillpayToSalesInterface
 {
-
     /**
      * @param int $idSalesOrder
      *
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
     public function getOrderByIdSalesOrder($idSalesOrder);
-
 }
