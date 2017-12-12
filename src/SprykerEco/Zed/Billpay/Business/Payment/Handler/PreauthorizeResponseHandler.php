@@ -71,7 +71,7 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
      *
      * @return void
      */
-    private function saveBillpayOrderDetails(
+    protected function saveBillpayOrderDetails(
         BillpayPreauthorizeTransactionResponseTransfer $responseTransfer,
         OrderTransfer $orderTransfer
     ) {
@@ -91,7 +91,7 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
     /**
      * @param \Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer $responseTransfer
      *
-     * @return mixed
+     * @return \Orm\Zed\Billpay\Persistence\SpyPaymentBillpayInvoiceBankAccount
      */
     protected function saveInvoiceBankAccount(BillpayPreauthorizeTransactionResponseTransfer $responseTransfer)
     {
@@ -104,7 +104,7 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
      *
      * @return void
      */
-    private function saveBptid(BillpayPreauthorizeTransactionResponseTransfer $responseTransfer, SpyPaymentBillpay $paymentEntity)
+    protected function saveBptid(BillpayPreauthorizeTransactionResponseTransfer $responseTransfer, SpyPaymentBillpay $paymentEntity)
     {
         if ($paymentEntity->getBptid() == null) {
             $paymentEntity->setBptid($responseTransfer->getHeader()->getBptid());
@@ -119,7 +119,7 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
      *
      * @return \Orm\Zed\Billpay\Persistence\SpyPaymentBillpay $paymentEntity
      */
-    private function getPaymentEntity(OrderTransfer $orderTransfer)
+    protected function getPaymentEntity(OrderTransfer $orderTransfer)
     {
         /** @var \Orm\Zed\Billpay\Persistence\SpyPaymentBillpay $paymentEntity */
         $paymentEntity = $this
@@ -130,6 +130,7 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
         if (!$paymentEntity instanceof SpyPaymentBillpay) {
             throw new BillpayPreauthorizeException(sprintf('Missing payment for Billpay sales order id %s', $orderTransfer->getIdSalesOrder()));
         }
+
         return $paymentEntity;
     }
 }
