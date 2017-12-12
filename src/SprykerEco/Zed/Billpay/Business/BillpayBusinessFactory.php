@@ -56,7 +56,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->createPrescoreAdapter(),
             $this->createPrescoreConverter(),
             $this->getQueryContainer(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createPrescoreResponseHandler()
         );
 
         //have no clue what is this
@@ -363,7 +364,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \ipl_invoice_created_request
      */
-    protected function createInvoiceCreatedApiRequest(): \ipl_invoice_created_request
+    protected function createInvoiceCreatedApiRequest()
     {
         return new ipl_invoice_created_request($this->getConfig()->getGatewayUrl());
     }
@@ -371,7 +372,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \ipl_cancel_request
      */
-    protected function createCancelApiRequest(): \ipl_cancel_request
+    protected function createCancelApiRequest()
     {
         return new ipl_cancel_request($this->getConfig()->getGatewayUrl());
     }
@@ -381,7 +382,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
      *
      * @return \ipl_preauthorize_request
      */
-    protected function createPreauthorizeApiRequest($paymentMethod): \ipl_preauthorize_request
+    protected function createPreauthorizeApiRequest($paymentMethod)
     {
         return new ipl_preauthorize_request(
             $this->getConfig()->getGatewayUrl(),
@@ -392,7 +393,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \ipl_prescore_request
      */
-    protected function createPrescoreApiRequest(): \ipl_prescore_request
+    protected function createPrescoreApiRequest()
     {
         return new ipl_prescore_request($this->getConfig()->getGatewayUrl());
     }
@@ -400,7 +401,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \ipl_edit_cart_content_request
      */
-    protected function createEditCartContentApiRequest(): \ipl_edit_cart_content_request
+    protected function createEditCartContentApiRequest()
     {
         return new ipl_edit_cart_content_request($this->getConfig()->getGatewayUrl());
     }

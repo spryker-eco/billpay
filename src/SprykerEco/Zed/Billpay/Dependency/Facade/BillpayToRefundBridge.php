@@ -8,7 +8,6 @@
 namespace SprykerEco\Zed\Billpay\Dependency\Facade;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
-use Spryker\Zed\Refund\Business\RefundFacadeInterface;
 
 class BillpayToRefundBridge implements BillpayToRefundInterface
 {
@@ -20,7 +19,7 @@ class BillpayToRefundBridge implements BillpayToRefundInterface
     /**
      * @param \Spryker\Zed\Refund\Business\RefundFacadeInterface $refundFacade
      */
-    public function __construct(RefundFacadeInterface $refundFacade)
+    public function __construct($refundFacade)
     {
         $this->refundFacade = $refundFacade;
     }

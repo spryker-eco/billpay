@@ -7,8 +7,6 @@
 
 namespace SprykerEco\Zed\Billpay\Dependency\Facade;
 
-use Spryker\Zed\Country\Business\CountryFacadeInterface;
-
 class BillpayToCountryBridge implements BillpayToCountryBridgeInterface
 {
     /** @var \Spryker\Zed\Country\Business\CountryFacadeInterface */
@@ -17,7 +15,7 @@ class BillpayToCountryBridge implements BillpayToCountryBridgeInterface
     /**
      * @param \Spryker\Zed\Country\Business\CountryFacadeInterface $countryFacade
      */
-    public function __construct(CountryFacadeInterface $countryFacade)
+    public function __construct($countryFacade)
     {
         $this->countryFacade = $countryFacade;
     }

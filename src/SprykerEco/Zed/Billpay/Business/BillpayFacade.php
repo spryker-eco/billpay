@@ -29,17 +29,10 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
      */
     public function prescorePayment(QuoteTransfer $quoteTransfer)
     {
-        $billpayResponseTransfer = $this
+        return $this
             ->getFactory()
             ->createPrescorePaymentRequest()
             ->request($quoteTransfer);
-
-        $this
-            ->getFactory()
-            ->createPrescoreResponseHandler()
-            ->handle($billpayResponseTransfer, $quoteTransfer);
-
-        return $billpayResponseTransfer;
     }
 
     /**

@@ -12,6 +12,7 @@ use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface;
 use SprykerEco\Zed\Billpay\Business\Api\Converter\ConverterInterface;
+use SprykerEco\Zed\Billpay\Business\Payment\Handler\PrescoreResponseHandler;
 use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 class PrescorePaymentRequest extends AbstractPaymentRequest implements TransactionInterface, QuoteTransactionInterface
@@ -22,16 +23,23 @@ class PrescorePaymentRequest extends AbstractPaymentRequest implements Transacti
     protected $queryContainer;
 
     /**
+     * @var \SprykerEco\Zed\Billpay\Business\Payment\Handler\PrescoreResponseHandler
+     */
+    protected $prescoreResponseHandler;
+
+    /**
      * @param \SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface $adapter
      * @param \SprykerEco\Zed\Billpay\Business\Api\Converter\ConverterInterface $converter
      * @param \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface $queryContainer
      * @param \SprykerEco\Zed\Billpay\BillpayConfig $config
+     * @param \SprykerEco\Zed\Billpay\Business\Payment\Handler\PrescoreResponseHandler $prescoreResponseHandler
      */
     public function __construct(
         AdapterInterface $adapter,
         ConverterInterface $converter,
         BillpayQueryContainerInterface $queryContainer,
-        BillpayConfig $config
+        BillpayConfig $config,
+        PrescoreResponseHandler $prescoreResponseHandler
     ) {
         parent::__construct(
             $adapter,
@@ -40,12 +48,13 @@ class PrescorePaymentRequest extends AbstractPaymentRequest implements Transacti
         );
 
         $this->queryContainer = $queryContainer;
+        $this->prescoreResponseHandler = $prescoreResponseHandler;
     }
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return \Generated\Shared\Transfer\BillpayPrescoringTransactionResponseTransfer
+     * @return \Generated\Shared\Transfer\BillpayPrescoringTransactionResponseTransfer $billpayResponseTransfer
      */
     public function request(QuoteTransfer $quoteTransfer)
     {
@@ -53,6 +62,11 @@ class PrescorePaymentRequest extends AbstractPaymentRequest implements Transacti
             ->getMethodMapper(BillpayConstants::INVOICE)
             ->buildPrescoreRequest($quoteTransfer);
 
-        return $this->sendRequest($requestData);
+        $billpayResponseTransfer = $this->sendRequest($requestData);
+        $this
+            ->prescoreResponseHandler
+            ->handle($billpayResponseTransfer, $quoteTransfer);
+
+        return $billpayResponseTransfer;
     }
 }

@@ -10,7 +10,6 @@ namespace SprykerEco\Zed\Billpay\Business\Payment\Handler;
 use Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
-use Orm\Zed\Billpay\Persistence\SpyPaymentBillpayInvoiceBankAccount;
 use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayPreauthorizeException;
@@ -54,7 +53,6 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
     public function handle(
         BillpayPreauthorizeTransactionResponseTransfer $responseTransfer,
         OrderTransfer $orderTransfer
-
     ) {
         $this->logHeader($responseTransfer->getHeader(), self::METHOD);
 
@@ -71,7 +69,7 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
      * @param \Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer $responseTransfer
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
-     * @throws \SprykerEco\Zed\Billpay\Business\Exception\BillpayPreauthorizeException
+     * @return void
      */
     private function saveBillpayOrderDetails(
         BillpayPreauthorizeTransactionResponseTransfer $responseTransfer,
@@ -92,19 +90,19 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
 
     /**
      * @param \Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer $responseTransfer
+     *
      * @return mixed
      */
     protected function saveInvoiceBankAccount(BillpayPreauthorizeTransactionResponseTransfer $responseTransfer)
     {
         return $this->invoiceBankAccountSaver->persist($responseTransfer->getInvoiceBankAccount());
-
     }
 
     /**
      * @param \Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer $responseTransfer
      * @param \Orm\Zed\Billpay\Persistence\SpyPaymentBillpay $paymentEntity
      *
-     * @param $paymentEntity
+     * @return void
      */
     private function saveBptid(BillpayPreauthorizeTransactionResponseTransfer $responseTransfer, SpyPaymentBillpay $paymentEntity)
     {
@@ -116,8 +114,10 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
 
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @return \Orm\Zed\Billpay\Persistence\SpyPaymentBillpay
+     *
      * @throws \SprykerEco\Zed\Billpay\Business\Exception\BillpayPreauthorizeException
+     *
+     * @return \Orm\Zed\Billpay\Persistence\SpyPaymentBillpay $paymentEntity
      */
     private function getPaymentEntity(OrderTransfer $orderTransfer)
     {

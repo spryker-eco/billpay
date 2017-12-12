@@ -7,8 +7,6 @@
 
 namespace SprykerEco\Zed\Billpay\Dependency\Facade;
 
-use Spryker\Zed\Sales\Business\SalesFacadeInterface;
-
 class BillpayToSalesBridge implements BillpayToSalesInterface
 {
     /**
@@ -19,7 +17,7 @@ class BillpayToSalesBridge implements BillpayToSalesInterface
     /**
      * @param \Spryker\Zed\Sales\Business\SalesFacadeInterface $salesFacade
      */
-    public function __construct(SalesFacadeInterface $salesFacade)
+    public function __construct($salesFacade)
     {
         $this->salesFacade = $salesFacade;
     }
