@@ -396,10 +396,21 @@ abstract class AbstractManager implements AbstractManagerInterface
      */
     protected function preparePrescoreData($bptid)
     {
+
+        if ($this->config->getUsePrescore()) {
+
+            return [
+                self::IS_PRESCORED => 1,
+                self::BPTID => $bptid,
+            ];
+
+        }
+
         return [
-            self::IS_PRESCORED => 1,
-            self::BPTID => $bptid,
+            self::IS_PRESCORED => false,
+            self::BPTID => null,
         ];
+
     }
 
     /**

@@ -63,7 +63,7 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
         $this
             ->getFactory()
             ->createPreauthorizeResponseHandler()
-            ->handle($billpayResponseTransfer);
+            ->handle($billpayResponseTransfer, $orderTransfer);
 
         return $billpayResponseTransfer;
     }

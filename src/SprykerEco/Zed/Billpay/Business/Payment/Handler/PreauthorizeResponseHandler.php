@@ -8,7 +8,9 @@
 namespace SprykerEco\Zed\Billpay\Business\Payment\Handler;
 
 use Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
+use Orm\Zed\Billpay\Persistence\SpyPaymentBillpayInvoiceBankAccount;
 use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayPreauthorizeException;
@@ -25,7 +27,7 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
     /**
      * @var \SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountPersisterInterface
      */
-    protected $invoiceBankAccountPersister;
+    protected $invoiceBankAccountSaver;
 
     /**
      * @param \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface $queryContainer
@@ -40,16 +42,19 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
 
         parent::__construct($queryContainer, $logger);
 
-        $this->invoiceBankAccountPersister = $invoiceBankAccountPersister;
+        $this->invoiceBankAccountSaver = $invoiceBankAccountPersister;
     }
 
     /**
      * @param \Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer $responseTransfer
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
      * @return void
      */
     public function handle(
-        BillpayPreauthorizeTransactionResponseTransfer $responseTransfer
+        BillpayPreauthorizeTransactionResponseTransfer $responseTransfer,
+        OrderTransfer $orderTransfer
+
     ) {
         $this->logHeader($responseTransfer->getHeader(), self::METHOD);
 
@@ -57,36 +62,74 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
             return;
         }
 
-        $this->handleDatabaseTransaction(function () use ($responseTransfer) {
-            $this->saveBillpayOrderDetails($responseTransfer);
+        $this->handleDatabaseTransaction(function () use ($responseTransfer, $orderTransfer) {
+            $this->saveBillpayOrderDetails($responseTransfer, $orderTransfer);
         });
     }
 
     /**
      * @param \Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer $responseTransfer
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
      * @throws \SprykerEco\Zed\Billpay\Business\Exception\BillpayPreauthorizeException
-     *
-     * @return void
      */
-    private function saveBillpayOrderDetails(BillpayPreauthorizeTransactionResponseTransfer $responseTransfer)
-    {
-        /** @var \Orm\Zed\Billpay\Persistence\SpyPaymentBillpay $paymentEntity */
-        $paymentEntity = $this
-            ->queryContainer
-            ->queryPaymentByBptid($responseTransfer->getHeader()->getBptid())
-            ->findOne();
+    private function saveBillpayOrderDetails(
+        BillpayPreauthorizeTransactionResponseTransfer $responseTransfer,
+        OrderTransfer $orderTransfer
+    ) {
+        $paymentEntity = $this->getPaymentEntity($orderTransfer);
 
-        if (!$paymentEntity instanceof SpyPaymentBillpay) {
-            throw new BillpayPreauthorizeException(sprintf('Missing payment for Billpay transaction %s', $responseTransfer->getHeader()->getBptid()));
-        }
+        $this->saveBptid($responseTransfer, $paymentEntity);
 
-        $invoiceBankAccount = $this->invoiceBankAccountPersister->persist($responseTransfer->getInvoiceBankAccount());
+        $invoiceBankAccount = $this->saveInvoiceBankAccount($responseTransfer);
 
         foreach ($paymentEntity->getSpyPaymentBillpayOrderItems() as $item) {
             $item->setSpyPaymentBillpayInvoiceBankAccount($invoiceBankAccount);
             $item->setStatus(BillpayConstants::BILLPAY_OMS_STATUS_PREAUTHORIZED);
             $item->save();
         }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer $responseTransfer
+     * @return mixed
+     */
+    protected function saveInvoiceBankAccount(BillpayPreauthorizeTransactionResponseTransfer $responseTransfer)
+    {
+        return $this->invoiceBankAccountSaver->persist($responseTransfer->getInvoiceBankAccount());
+
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer $responseTransfer
+     * @param \Orm\Zed\Billpay\Persistence\SpyPaymentBillpay $paymentEntity
+     *
+     * @param $paymentEntity
+     */
+    private function saveBptid(BillpayPreauthorizeTransactionResponseTransfer $responseTransfer, SpyPaymentBillpay $paymentEntity)
+    {
+        if ($paymentEntity->getBptid() == null) {
+            $paymentEntity->setBptid($responseTransfer->getHeader()->getBptid());
+            $paymentEntity->save();
+        }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @return \Orm\Zed\Billpay\Persistence\SpyPaymentBillpay
+     * @throws \SprykerEco\Zed\Billpay\Business\Exception\BillpayPreauthorizeException
+     */
+    private function getPaymentEntity(OrderTransfer $orderTransfer)
+    {
+        /** @var \Orm\Zed\Billpay\Persistence\SpyPaymentBillpay $paymentEntity */
+        $paymentEntity = $this
+            ->queryContainer
+            ->queryPaymentBySalesOrderId($orderTransfer->getIdSalesOrder())
+            ->findOne();
+
+        if (!$paymentEntity instanceof SpyPaymentBillpay) {
+            throw new BillpayPreauthorizeException(sprintf('Missing payment for Billpay sales order id %s', $orderTransfer->getIdSalesOrder()));
+        }
+        return $paymentEntity;
     }
 }

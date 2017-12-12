@@ -13,6 +13,14 @@ use SprykerEco\Shared\Billpay\BillpayConstants;
 class BillpayConfig extends AbstractBundleConfig
 {
     /**
+     * @return bool
+     */
+    public function getUsePrescore()
+    {
+        return (bool)$this->get(BillpayConstants::USE_PRESCORE);
+    }
+
+    /**
      * @return string
      */
     public function getGatewayUrl()
