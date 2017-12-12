@@ -31,6 +31,7 @@ class PreauthorizePaymentRequest extends AbstractPaymentRequest implements Trans
      * @param \SprykerEco\Zed\Billpay\Business\Api\Converter\ConverterInterface $converter
      * @param \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface $queryContainer
      * @param \SprykerEco\Zed\Billpay\BillpayConfig $config
+     * @param \SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandler $preauthorizeResponseHandler
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -62,6 +63,11 @@ class PreauthorizePaymentRequest extends AbstractPaymentRequest implements Trans
             ->getMethodMapper($paymentMethod)
             ->buildPreauthorizeOrderRequest($orderTransfer);
 
-        return $this->sendRequest($requestData);
+        $billpayResponseTransfer = $this->sendRequest($requestData);
+
+        $this->preauthorizeResponseHandler
+            ->handle($billpayResponseTransfer, $orderTransfer);
+
+        return $billpayResponseTransfer;
     }
 }

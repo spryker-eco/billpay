@@ -99,7 +99,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->createInvoiceCreatedAdapter(),
             $this->createInvoiceCreatedConverter(),
             $this->getQueryContainer(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createInvoiceCreatedResponseHandler()
         );
 
         $invoiceCreatedPaymentRequest->registerManager(
@@ -118,7 +119,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->createCancelOrderAdapter(),
             $this->createCancelOrderConverter(),
             $this->getQueryContainer(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createCancelResponseHandler()
         );
 
         $cancelOrderPaymentRequest->registerManager(

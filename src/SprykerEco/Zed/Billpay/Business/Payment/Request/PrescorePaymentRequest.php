@@ -63,10 +63,22 @@ class PrescorePaymentRequest extends AbstractPaymentRequest implements Transacti
             ->buildPrescoreRequest($quoteTransfer);
 
         $billpayResponseTransfer = $this->sendRequest($requestData);
+
+        $this->handle($quoteTransfer, $billpayResponseTransfer);
+
+        return $billpayResponseTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param $billpayResponseTransfer
+     *
+     * @return void
+     */
+    protected function handle(QuoteTransfer $quoteTransfer, $billpayResponseTransfer)
+    {
         $this
             ->prescoreResponseHandler
             ->handle($billpayResponseTransfer, $quoteTransfer);
-
-        return $billpayResponseTransfer;
     }
 }

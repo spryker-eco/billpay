@@ -46,19 +46,10 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
      */
     public function preauthorizePayment(OrderTransfer $orderTransfer)
     {
-        $paymentMethod = $orderTransfer->getBillpayPayment()->getPaymentMethod();
-
-        $billpayResponseTransfer = $this
+        return $this
             ->getFactory()
-            ->createPreauthorizePaymentRequest($paymentMethod)
+            ->createPreauthorizePaymentRequest($orderTransfer->getBillpayPayment()->getPaymentMethod())
             ->request($orderTransfer);
-
-        $this
-            ->getFactory()
-            ->createPreauthorizeResponseHandler()
-            ->handle($billpayResponseTransfer, $orderTransfer);
-
-        return $billpayResponseTransfer;
     }
 
     /**
@@ -72,17 +63,10 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
      */
     public function invoiceCreated(OrderTransfer $orderTransfer)
     {
-        $billpayResponseTransfer = $this
+        return $this
             ->getFactory()
             ->createInvoiceCreatedPaymentRequest()
             ->request($orderTransfer);
-
-        $this
-            ->getFactory()
-            ->createInvoiceCreatedResponseHandler()
-            ->handle($billpayResponseTransfer, $orderTransfer);
-
-        return $billpayResponseTransfer;
     }
 
     /**
@@ -96,17 +80,10 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
      */
     public function cancelOrder(OrderTransfer $orderTransfer)
     {
-        $billpayResponseTransfer = $this
+        return $this
             ->getFactory()
             ->createCancelOrderRequest()
             ->request($orderTransfer);
-
-        $this
-            ->getFactory()
-            ->createCancelResponseHandler()
-            ->handle($billpayResponseTransfer, $orderTransfer);
-
-        return $billpayResponseTransfer;
     }
 
     /**
