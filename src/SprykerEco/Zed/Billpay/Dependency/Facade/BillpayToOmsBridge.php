@@ -8,7 +8,6 @@
 namespace SprykerEco\Zed\Billpay\Dependency\Facade;
 
 use Propel\Runtime\Collection\ObjectCollection;
-use Spryker\Zed\Oms\Business\OmsFacadeInterface;
 
 class BillpayToOmsBridge implements BillpayToOmsInterface
 {
@@ -20,7 +19,7 @@ class BillpayToOmsBridge implements BillpayToOmsInterface
     /**
      * @param \Spryker\Zed\Oms\Business\OmsFacadeInterface $omsFacade
      */
-    public function __construct(OmsFacadeInterface $omsFacade)
+    public function __construct($omsFacade)
     {
         $this->omsFacade = $omsFacade;
     }

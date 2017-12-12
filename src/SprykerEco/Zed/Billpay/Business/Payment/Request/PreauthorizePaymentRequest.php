@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\OrderTransfer;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface;
 use SprykerEco\Zed\Billpay\Business\Api\Converter\ConverterInterface;
+use SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandler;
 use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 class PreauthorizePaymentRequest extends AbstractPaymentRequest implements TransactionInterface, OrderTransactionInterface
@@ -19,6 +20,11 @@ class PreauthorizePaymentRequest extends AbstractPaymentRequest implements Trans
      * @var \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface
      */
     protected $queryContainer;
+
+    /**
+     * @var \SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandler
+     */
+    protected $preauthorizeResponseHandler;
 
     /**
      * @param \SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface $adapter
@@ -30,7 +36,8 @@ class PreauthorizePaymentRequest extends AbstractPaymentRequest implements Trans
         AdapterInterface $adapter,
         ConverterInterface $converter,
         BillpayQueryContainerInterface $queryContainer,
-        BillpayConfig $config
+        BillpayConfig $config,
+        PreauthorizeResponseHandler $preauthorizeResponseHandler
     ) {
         parent::__construct(
             $adapter,
@@ -39,6 +46,7 @@ class PreauthorizePaymentRequest extends AbstractPaymentRequest implements Trans
         );
 
         $this->queryContainer = $queryContainer;
+        $this->preauthorizeResponseHandler = $preauthorizeResponseHandler;
     }
 
     /**

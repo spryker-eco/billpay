@@ -15,6 +15,9 @@ use Generated\Shared\Transfer\QuoteTransfer;
 interface BillpayClientInterface
 {
     /**
+     * Method is intended to run so-called pre-score query in prescore mode
+     * and write returned bptid (Billpay transaction id) to session
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer

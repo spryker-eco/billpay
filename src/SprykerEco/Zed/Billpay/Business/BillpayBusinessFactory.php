@@ -79,7 +79,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->createPreauthorizeAdapter($paymentMethod),
             $this->createPreauthorizeConverter(),
             $this->getQueryContainer(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createPreauthorizeResponseHandler()
         );
 
         $preauthorizePaymentRequest->registerManager(
