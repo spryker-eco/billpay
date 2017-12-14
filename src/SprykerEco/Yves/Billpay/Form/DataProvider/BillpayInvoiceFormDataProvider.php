@@ -92,7 +92,7 @@ class BillpayInvoiceFormDataProvider implements StepEngineFormDataProviderInterf
      */
     protected function getPaymentMethods(AbstractTransfer $quoteTransfer)
     {
-        if ($this->config->getUsePrescore()) {
+        if ($this->config->isPrescoreUsed()) {
             return $quoteTransfer
                 ->getPayment()
                 ->getBillpay()

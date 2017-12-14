@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\Billpay;
 
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
+use SprykerEco\Zed\Billpay\Business\Exception\BillpayPaymentMethodException;
 
 class BillpayConfig extends AbstractBundleConfig
 {
@@ -72,5 +73,21 @@ class BillpayConfig extends AbstractBundleConfig
     public function getMaxDelayInDays()
     {
         return $this->get(BillpayConstants::BILLPAY_MAX_DELAY_IN_DAYS);
+    }
+
+    /**
+     * @param string $methodName
+     *
+     * @throws \SprykerEco\Zed\Billpay\Business\Exception\BillpayPaymentMethodException
+     *
+     * @return int
+     */
+    public function extractPaymentTypeFromMethod($methodName)
+    {
+        if (!array_key_exists($methodName, BillpayConstants::PAYMENT_METHODS_MAP)) {
+            throw new BillpayPaymentMethodException();
+        }
+
+        return BillpayConstants::PAYMENT_METHODS_MAP[$methodName];
     }
 }

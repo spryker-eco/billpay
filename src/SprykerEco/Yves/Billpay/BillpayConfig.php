@@ -16,7 +16,7 @@ class BillpayConfig extends AbstractBundleConfig
     /**
      * @return bool
      */
-    public function getUsePrescore()
+    public function isPrescoreUsed()
     {
         return (bool)$this->get(BillpayConstants::USE_PRESCORE);
     }

@@ -139,7 +139,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->createEditCartContentAdapter(),
             $this->createEditCartContentConverter(),
             $this->getQueryContainer(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createEditCartResponseHandler()
         );
 
         $paymentTransactionHandler->registerManager(
@@ -191,6 +192,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
         return new EditCartResponseHandler(
             $this->getQueryContainer(),
             $this->createBillpayLogger()
+
         );
     }
 
@@ -236,22 +238,6 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->getConfig(),
             $this->createPreauthorizeApiRequest($paymentMethod)
         );
-    }
-
-    /**
-     * @param string $methodName
-     *
-     * @throws \SprykerEco\Zed\Billpay\Business\Exception\BillpayPaymentMethodException
-     *
-     * @return int
-     */
-    protected function extractPaymentTypeFromMethod($methodName)
-    {
-        if (!array_key_exists($methodName, BillpayConstants::PAYMENT_METHODS_MAP)) {
-            throw new BillpayPaymentMethodException();
-        }
-
-        return BillpayConstants::PAYMENT_METHODS_MAP[$methodName];
     }
 
     /**
@@ -389,7 +375,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     {
         return new ipl_preauthorize_request(
             $this->getConfig()->getGatewayUrl(),
-            $this->extractPaymentTypeFromMethod($paymentMethod)
+            $this->getConfig()->extractPaymentTypeFromMethod($paymentMethod)
         );
     }
 
