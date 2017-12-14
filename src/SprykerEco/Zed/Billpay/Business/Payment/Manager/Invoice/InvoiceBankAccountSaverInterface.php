@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice;
 
 use Generated\Shared\Transfer\BillpayInvoiceBankAccountTransfer;
 
-interface InvoiceBankAccountPersisterInterface
+interface InvoiceBankAccountSaverInterface
 {
     /**
      * @param \Generated\Shared\Transfer\BillpayInvoiceBankAccountTransfer $invoiceBankAccountTransfer

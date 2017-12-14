@@ -35,8 +35,6 @@ abstract class AbstractPaymentRequest
      */
     protected $methodMappers = [];
 
-
-
     /**
      * @param \SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface $adapter
      * @param \SprykerEco\Zed\Billpay\Business\Api\Converter\ConverterInterface $converter

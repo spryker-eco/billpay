@@ -38,7 +38,7 @@ class BillpayDependencyProvider extends AbstractBundleDependencyProvider
             return new BillpayToQuoteBridge($container->getLocator()->quote()->client());
         };
 
-        $container[self::STORE] = function () use ($container) {
+        $container[self::STORE] = function () {
             return Store::getInstance();
         };
 

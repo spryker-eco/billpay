@@ -98,12 +98,10 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
      */
     public function editCartContent(OrderTransfer $orderTransfer, ItemTransfer $itemTransfer)
     {
-        $billpayResponseTransfer = $this
+        return $this
             ->getFactory()
             ->createEditCartContentTransactionHandler()
             ->request($orderTransfer, $itemTransfer);
-
-        return $billpayResponseTransfer;
     }
 
     /**

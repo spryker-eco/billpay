@@ -12,12 +12,12 @@ use Generated\Shared\Transfer\MessageTransfer;
 class BillpayToMessengerBridge implements BillpayToMessengerInterface
 {
     /**
-     * @var \Spryker\Zed\Calculation\Business\BillpayToMessengerInterface
+     * @var \SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToMessengerInterface
      */
     protected $messengerFacade;
 
     /**
-     * @param \Spryker\Zed\Calculation\Business\BillpayToMessengerInterface $messengerFacade
+     * @param \SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToMessengerInterface $messengerFacade
      */
     public function __construct($messengerFacade)
     {
@@ -31,6 +31,6 @@ class BillpayToMessengerBridge implements BillpayToMessengerInterface
      */
     public function addErrorMessage(MessageTransfer $message)
     {
-        return $this->messengerFacade->addErrorMessage($message);
+        $this->messengerFacade->addErrorMessage($message);
     }
 }

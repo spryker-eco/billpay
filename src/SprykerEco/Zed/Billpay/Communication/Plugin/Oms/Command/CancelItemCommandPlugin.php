@@ -22,7 +22,7 @@ class CancelItemCommandPlugin extends AbstractBillpayCommandPlugin implements Co
 {
     /**
      *
-     * Command which is executed per order item basis
+     * Command which is executed per order item basis cancels specific item from order
      *
      * @api
      *

@@ -13,8 +13,8 @@ use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayPreauthorizeException;
-use SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLogger;
-use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountPersisterInterface;
+use SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLoggerInterface;
+use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountSaverInterface;
 use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 class PreauthorizeResponseHandler extends AbstractResponseHandler
@@ -24,24 +24,24 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler
     const METHOD = 'PREAUTHORIZE';
 
     /**
-     * @var \SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountPersisterInterface
+     * @var \SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountSaverInterface
      */
     protected $invoiceBankAccountSaver;
 
     /**
      * @param \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface $queryContainer
-     * @param \SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLogger $logger
-     * @param \SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountPersisterInterface $invoiceBankAccountPersister
+     * @param \SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLoggerInterface $logger
+     * @param \SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountSaverInterface $invoiceBankAccountSaver
      */
     public function __construct(
         BillpayQueryContainerInterface $queryContainer,
-        BillpayResponseLogger $logger,
-        InvoiceBankAccountPersisterInterface $invoiceBankAccountPersister
+        BillpayResponseLoggerInterface $logger,
+        InvoiceBankAccountSaverInterface $invoiceBankAccountSaver
     ) {
 
         parent::__construct($queryContainer, $logger);
 
-        $this->invoiceBankAccountSaver = $invoiceBankAccountPersister;
+        $this->invoiceBankAccountSaver = $invoiceBankAccountSaver;
     }
 
     /**

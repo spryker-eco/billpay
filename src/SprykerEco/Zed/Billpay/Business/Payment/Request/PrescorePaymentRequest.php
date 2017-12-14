@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\Billpay\Business\Payment\Request;
 
+use Generated\Shared\Transfer\BillpayPrescoringTransactionResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayConfig;
@@ -71,11 +72,11 @@ class PrescorePaymentRequest extends AbstractPaymentRequest implements Transacti
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param $billpayResponseTransfer
+     * @param \Generated\Shared\Transfer\BillpayPrescoringTransactionResponseTransfer $billpayResponseTransfer
      *
      * @return void
      */
-    protected function handle(QuoteTransfer $quoteTransfer, $billpayResponseTransfer)
+    protected function handle(QuoteTransfer $quoteTransfer, BillpayPrescoringTransactionResponseTransfer $billpayResponseTransfer)
     {
         $this
             ->prescoreResponseHandler

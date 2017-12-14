@@ -55,7 +55,7 @@ class EditCartContentPaymentRequest extends AbstractPaymentRequest implements Tr
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
-     * @return \Generated\Shared\Transfer\BillpayCancelResponseTransfer
+     * @return \Generated\Shared\Transfer\BillpayEditCartResponseTransfer
      */
     public function request(OrderTransfer $orderTransfer, ItemTransfer $itemTransfer)
     {
@@ -65,7 +65,7 @@ class EditCartContentPaymentRequest extends AbstractPaymentRequest implements Tr
             ->getMethodMapper($paymentTransfer->getPaymentMethod())
             ->buildEditCartContentRequest($orderTransfer);
 
-        $billpayResponseTransfer =  $this->sendRequest($requestData);
+        $billpayResponseTransfer = $this->sendRequest($requestData);
 
         $this->editCartResponseHandler->handle($billpayResponseTransfer, $itemTransfer);
 

@@ -38,7 +38,7 @@ class GatewayController extends AbstractGatewayController
     }
 
     /**
-     * @return string
+     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function getSessionIdAction()
     {

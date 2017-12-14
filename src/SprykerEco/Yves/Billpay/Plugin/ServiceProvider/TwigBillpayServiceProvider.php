@@ -62,72 +62,9 @@ class TwigBillpayServiceProvider extends AbstractPlugin implements ServiceProvid
                     return $this->getSalutation($quoteClient->getQuote());
                 }
 
-                if ($identifier === 'firstName') {
-                    return $this->getFirstName($quoteClient->getQuote());
-                }
-
-                if ($identifier === 'lastName') {
-                    return $this->getLastName($quoteClient->getQuote());
-                }
-
-                if ($identifier === 'address') {
-                    return $this->getAddress($quoteClient->getQuote());
-                }
-
-                if ($identifier === 'addressNo') {
-                    return $this->getAddressNo($quoteClient->getQuote());
-                }
-
-                if ($identifier === 'zip') {
-                    return $this->getZip($quoteClient->getQuote());
-                }
-
-                if ($identifier === 'city') {
-                    return $this->getCity($quoteClient->getQuote());
-                }
-
-                if ($identifier === 'phone') {
-                    return $this->getPhone($quoteClient->getQuote());
-                }
-
-                if ($identifier === 'dateOfBirth') {
-                    return $this->getDateOfBirth($quoteClient->getQuote());
-                }
-
-                if ($identifier === 'cartAmount') {
-                    return $this->getCartAmount($quoteClient->getQuote());
-                }
-
-                if ($identifier === 'orderAmount') {
-                    return $this->getOrderAmount($quoteClient->getQuote());
-                }
-
-                if ($identifier === 'currency') {
-                    return $this->getCurrency();
-                }
-
-                if ($identifier === 'language') {
-                    return $this->getLanguage();
-                }
-
-                if ($identifier === 'customerGroup') {
-                    return $this->getCustomerGroup();
-                }
-
-                if ($identifier === 'countryIso3Code') {
-                    return $this->getCountryIso3Code();
-                }
-
-                if ($identifier === 'countryIso2Code') {
-                    return $this->getCountryIso2Code();
-                }
-
-                if ($identifier === 'identifier') {
-                    return $this->getSessionId();
-                }
-
-                if ($identifier === 'apiKey') {
-                    return $this->getApiKey();
+                $methodName = 'get' . ucfirst($identifier);
+                if (method_exists($this, $methodName)) {
+                    return $this->$methodName($quoteClient->getQuote());
                 }
 
                 return null;
@@ -245,60 +182,74 @@ class TwigBillpayServiceProvider extends AbstractPlugin implements ServiceProvid
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return string
      */
-    protected function getCurrency()
+    protected function getCurrency(QuoteTransfer $quoteTransfer)
     {
         return Store::getInstance()->getCurrencyIsoCode();
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return string
      */
-    protected function getLanguage()
+    protected function getLanguage(QuoteTransfer $quoteTransfer)
     {
         return Store::getInstance()->getCurrentLanguage();
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return string
      */
-    protected function getCustomerGroup()
+    protected function getCustomerGroup(QuoteTransfer $quoteTransfer)
     {
         return BillpayConstants::CUSTOMER_GROUP_B2C;
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return mixed
      */
-    protected function getApiKey()
+    protected function getApiKey(QuoteTransfer $quoteTransfer)
     {
         return Config::get(BillpayConstants::BILLPAY_PUBLIC_API_KEY);
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return string
      */
-    protected function getCountryIso3Code()
+    protected function getCountryIso3Code(QuoteTransfer $quoteTransfer)
     {
         $countryTransfer = new CountryTransfer();
-        $countryTransfer->setIso2Code($this->getCountryIso2Code());
+        $countryTransfer->setIso2Code($this->getCountryIso2Code($quoteTransfer));
         $countryTransfer = $this->getFactory()->getCurrentCountry($countryTransfer);
         return $countryTransfer->getIso3Code();
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return string
      */
-    protected function getCountryIso2Code()
+    protected function getCountryIso2Code(QuoteTransfer $quoteTransfer)
     {
         return $this->getFactory()->getStore()->getCurrentCountry();
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return string
      */
-    protected function getSessionId()
+    protected function getSessionId(QuoteTransfer $quoteTransfer)
     {
         return $this->getFactory()->getBillpayClient()->getSessionId();
     }

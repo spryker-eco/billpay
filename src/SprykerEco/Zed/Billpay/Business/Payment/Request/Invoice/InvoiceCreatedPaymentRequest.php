@@ -8,9 +8,7 @@
 namespace SprykerEco\Zed\Billpay\Business\Payment\Request\Invoice;
 
 use Generated\Shared\Transfer\BillpayInvoiceCreatedResponseTransfer;
-use Generated\Shared\Transfer\BillpayResponseHeaderTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
-use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface;
 use SprykerEco\Zed\Billpay\Business\Api\Converter\ConverterInterface;
@@ -67,7 +65,7 @@ class InvoiceCreatedPaymentRequest extends AbstractPaymentRequest implements Tra
             ->getMethodMapper($orderTransfer->getBillpayPayment()->getPaymentMethod())
             ->buildInvoiceCreatedOrderRequest($orderTransfer);
 
-        $billpayResponseTransfer =  $this->sendRequest($requestData);
+        $billpayResponseTransfer = $this->sendRequest($requestData);
 
         $this
             ->handle($billpayResponseTransfer, $orderTransfer);

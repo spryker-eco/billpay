@@ -11,6 +11,9 @@ use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 
+/**
+ * @method \SprykerEco\Zed\Billpay\Business\BillpayFacadeInterface getFacade()
+ */
 class PreauthorizeCommandPlugin extends AbstractBillpayCommandPlugin implements CommandByOrderInterface
 {
     /**
