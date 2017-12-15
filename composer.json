@@ -6,6 +6,12 @@
       "Spryker": "src/"
     }
   },
+  "autoload": {
+    "psr-4": {
+      "SprykerEco\\": "src/SprykerEco/",
+      "SprykerEcoTest\\": "tests/SprykerEcoTest/"
+    }
+  },
   "autoload-dev": {
     "psr-4": {
       "SprykerEco\\": "src/SprykerEco/",
