@@ -2,11 +2,6 @@
   "name": "spryker-eco/billpay",
   "description": "Billpay Module",
   "autoload": {
-    "psr-0": {
-      "Spryker": "src/"
-    }
-  },
-  "autoload": {
     "psr-4": {
       "SprykerEco\\": "src/SprykerEco/",
       "SprykerEcoTest\\": "tests/SprykerEcoTest/"
