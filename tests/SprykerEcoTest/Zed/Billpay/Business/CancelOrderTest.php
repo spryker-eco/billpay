@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Functional\SprykerEco\Zed\Billpay\Business;
+namespace SprykerEcoTest\Zed\Billpay\Business;
 
 use Generated\Shared\Transfer\BillpayCancelResponseTransfer;
 use SprykerEco\Zed\Billpay\Business\BillpayFacade;
