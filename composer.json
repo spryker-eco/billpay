@@ -30,6 +30,7 @@
     "spryker/symfony": "^3.0.0",
     "spryker/transfer": "^3.0.0",
     "spryker/url": "^3.0.0",
+    "spryker/install" : "dev-master",
     "php": "^7.1"
   },
   "require-dev": {
@@ -37,7 +38,7 @@
     "spryker/customer": "^2.0.0 || ^3.0.0",
     "spryker/testify": "*"
   },
-  "repositories" : [
+  "repositories": [
     {
       "type": "git",
       "url": "git@github.com:spryker/install.git"
