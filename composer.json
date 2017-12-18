@@ -30,7 +30,7 @@
     "spryker/symfony": "^3.0.0",
     "spryker/transfer": "^3.0.0",
     "spryker/url": "^3.0.0",
-    "spryker/install" : "dev-master",
+    "spryker/install": "dev-master",
     "php": "^7.1"
   },
   "require-dev": {
