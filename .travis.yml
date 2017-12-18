@@ -48,7 +48,7 @@ install:
   - echo "Cloning Demo Shop..."
 #  - ls -la '/home/travis/.cache/composer/vcs/git-github.com-spryker-install.git/'
   - pwd
-    - >     
+  - >     
 	if [ -n "$GITHUB_APITOKEN" ]; then
                 composer config github-oauth.github.com $GITHUB_APITOKEN;
                 echo 'auth.json' >> .git/info/exclude
