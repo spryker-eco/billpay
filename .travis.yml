@@ -48,7 +48,8 @@ install:
   - echo "Cloning Demo Shop..."
 #  - ls -la '/home/travis/.cache/composer/vcs/git-github.com-spryker-install.git/'
   - pwd
-  - git clone --mirror 'git@github.com:spryker/install.git' '/home/travis/.cache/composer/vcs/git-github.com-spryker-install.git/'
+  - git clone --mirror 'git@github.com:spryker/install.git' /home/travis/build/spryker-eco/billpay
+  - ls -la /home/travis/build/spryker-eco/billpay/*
   - git clone https://github.com/spryker/demoshop.git $SHOP_DIR
   - cd $SHOP_DIR
   - composer self-update && composer --version
