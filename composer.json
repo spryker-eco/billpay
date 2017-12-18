@@ -37,6 +37,12 @@
     "spryker/customer": "^2.0.0 || ^3.0.0",
     "spryker/testify": "*"
   },
+  "repositories" : [
+    {
+      "type": "git",
+      "url": "git@github.com:spryker/install.git"
+    }
+  ],
   "license": "proprietary",
   "minimum-stability": "dev",
   "prefer-stable": true,
