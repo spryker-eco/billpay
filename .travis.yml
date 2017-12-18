@@ -46,7 +46,8 @@ install:
   - if [[ *$TRAVIS_EVENT_TYPE* = 'cron' ]]; then git checkout $(git tag | tail -n 1); fi
   - mkdir $MODULE_DIR && ls -1 | grep -v ^$MODULE_DIR | xargs -I{} mv {} $MODULE_DIR
   - echo "Cloning Demo Shop..."
-  - ls -la '/home/travis/.cache/composer/vcs/git-github.com-spryker-install.git/'
+#  - ls -la '/home/travis/.cache/composer/vcs/git-github.com-spryker-install.git/'
+  - pwd
   - git clone --mirror 'git@github.com:spryker/install.git' '/home/travis/.cache/composer/vcs/git-github.com-spryker-install.git/'
   - git clone https://github.com/spryker/demoshop.git $SHOP_DIR
   - cd $SHOP_DIR
