@@ -8,7 +8,7 @@ sudo: required
 matrix:
   fast_finish: true
   include:
-     - php: "7.1"
+     - php: "7.1.3"
 
 services:
   - postgresql
@@ -31,7 +31,7 @@ env:
     - APPLICATION_STORE=DE
     - MODULE_DIR=module
     - SHOP_DIR=current
-    - MODULE_NAME=heidelpay
+    - MODULE_NAME=billpay
 
 cache:
   directories:
