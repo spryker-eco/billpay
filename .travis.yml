@@ -33,10 +33,10 @@ env:
     - SHOP_DIR=current
     - MODULE_NAME=billpay
 
-cache:
-  directories:
-    - $SHOP_DIR/current/vendor
-    - $HOME/.composer/cache
+#cache:
+#  directories:
+#    - $SHOP_DIR/current/vendor
+#    - $HOME/.composer/cache
 
 before_install:
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
