@@ -92,6 +92,7 @@ function checkPHPStan {
 function checkWithLatestDemoShop {
     echo "Checking module with latest Demo Shop..."
     composer config repositories.ecomodule path "$TRAVIS_BUILD_DIR/$MODULE_DIR"
+    composer config repositories.eco0 '{"type":"package","package":{"name":"billpay/lib","version":"1.6.0","dist":{"url":"https://www.billpay.de/wp-content/uploads/2016/11/billpay_core_api_php_v1.6.0.zip","type":"zip"},"autoload":{"classmap":["","php5/"]}}}'
     composer require "spryker-eco/$MODULE_NAME @dev"
     result=$?
     if [ "$result" = 0 ]; then
