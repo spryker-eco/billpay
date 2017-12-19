@@ -8,12 +8,10 @@
 namespace SprykerEcoTest\Zed\Billpay\Business\Api\Adapter;
 
 use ArrayObject;
-use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
-use Generated\Shared\Transfer\TotalsTransfer;
 use ipl_edit_cart_content_request;
 use ipl_xml_request;
 use SprykerEco\Zed\Billpay\BillpayConfig;
@@ -21,6 +19,7 @@ use SprykerEco\Zed\Billpay\Business\Api\Adapter\EditCartContentApiAdapter;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayApiException;
 use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManager;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
+use SprykerEcoTest\Zed\Billpay\Business\BillpayUnitTest;
 use SprykerEcoTest\Zed\Billpay\Business\Mock\TotalsTransferTrait;
 
 /**
@@ -32,7 +31,7 @@ use SprykerEcoTest\Zed\Billpay\Business\Mock\TotalsTransferTrait;
  * @group Adapter
  * @group EditCartContentApiAdapterTest
  */
-class EditCartContentApiAdapterTest extends Test
+class EditCartContentApiAdapterTest extends BillpayUnitTest
 {
     use TotalsTransferTrait;
 

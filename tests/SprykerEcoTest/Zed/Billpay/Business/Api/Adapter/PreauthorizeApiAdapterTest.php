@@ -8,7 +8,6 @@
 namespace SprykerEcoTest\Zed\Billpay\Business\Api\Adapter;
 
 use ArrayObject;
-use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use Generated\Shared\Transfer\CountryTransfer;
@@ -16,7 +15,6 @@ use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
-use Generated\Shared\Transfer\TotalsTransfer;
 use ipl_preauthorize_request;
 use ipl_xml_request;
 use SprykerEco\Shared\Billpay\BillpayConstants;
@@ -25,6 +23,7 @@ use SprykerEco\Zed\Billpay\Business\Api\Adapter\PreauthorizeApiAdapter;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayApiException;
 use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManager;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
+use SprykerEcoTest\Zed\Billpay\Business\BillpayUnitTest;
 use SprykerEcoTest\Zed\Billpay\Business\Mock\TotalsTransferTrait;
 
 /**
@@ -36,7 +35,7 @@ use SprykerEcoTest\Zed\Billpay\Business\Mock\TotalsTransferTrait;
  * @group Adapter
  * @group PreauthorizeApiAdapterTest
  */
-class PreauthorizeApiAdapterTest extends Test
+class PreauthorizeApiAdapterTest extends BillpayUnitTest
 {
     use TotalsTransferTrait;
 

@@ -14,8 +14,6 @@ use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
-use Generated\Shared\Transfer\TaxTotalTransfer;
-use Generated\Shared\Transfer\TotalsTransfer;
 
 trait QuoteTransferTrait
 {

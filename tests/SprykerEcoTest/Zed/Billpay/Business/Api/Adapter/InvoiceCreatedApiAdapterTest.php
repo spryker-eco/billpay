@@ -8,7 +8,6 @@
 namespace SprykerEcoTest\Zed\Billpay\Business\Api\Adapter;
 
 use ArrayObject;
-use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
@@ -20,6 +19,7 @@ use SprykerEco\Zed\Billpay\Business\Api\Adapter\InvoiceCreatedApiAdapter;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayApiException;
 use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManager;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
+use SprykerEcoTest\Zed\Billpay\Business\BillpayUnitTest;
 
 /**
  * @group Unit
@@ -30,7 +30,7 @@ use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
  * @group Adapter
  * @group InvoiceCreatedApiAdapterTest
  */
-class InvoiceCreatedApiAdapterTest extends Test
+class InvoiceCreatedApiAdapterTest extends BillpayUnitTest
 {
     /**
      * @return void

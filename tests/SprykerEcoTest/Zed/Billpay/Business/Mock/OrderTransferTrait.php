@@ -13,7 +13,6 @@ use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
-use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Orm\Zed\Sales\Persistence\SpySalesOrderAddress;

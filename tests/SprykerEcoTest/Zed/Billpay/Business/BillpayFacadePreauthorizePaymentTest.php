@@ -12,7 +12,6 @@ use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 use SprykerEco\Zed\Billpay\Business\BillpayFacade;
 use SprykerEcoTest\Zed\Billpay\Business\Mock\OrderTransferTrait;
 
-
 /**
  * @group Functional
  * @group Spryker
@@ -39,7 +38,6 @@ class BillpayFacadePreauthorizePaymentTest extends PreauthorizeApiAdapterTest
 
         $this->assertInstanceOf(BillpayPreauthorizeTransactionResponseTransfer::class, $response);
     }
-
 
     /**
      *

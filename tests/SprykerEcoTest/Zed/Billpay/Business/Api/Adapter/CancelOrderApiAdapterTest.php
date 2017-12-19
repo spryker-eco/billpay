@@ -7,7 +7,6 @@
 
 namespace SprykerEcoTest\Zed\Billpay\Business\Api\Adapter;
 
-use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
@@ -18,6 +17,7 @@ use SprykerEco\Zed\Billpay\Business\Api\Adapter\CancelOrderApiAdapter;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayApiException;
 use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManager;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
+use SprykerEcoTest\Zed\Billpay\Business\BillpayUnitTest;
 
 /**
  * @group Unit
@@ -28,7 +28,7 @@ use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
  * @group Adapter
  * @group CancelOrderApiAdapterTest
  */
-class CancelOrderApiAdapterTest extends Test
+class CancelOrderApiAdapterTest extends BillpayUnitTest
 {
     /**
      * @return void

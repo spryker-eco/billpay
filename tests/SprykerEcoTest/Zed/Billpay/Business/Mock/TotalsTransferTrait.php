@@ -7,7 +7,6 @@
 
 namespace SprykerEcoTest\Zed\Billpay\Business\Mock;
 
-
 use Generated\Shared\Transfer\TaxTotalTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 
