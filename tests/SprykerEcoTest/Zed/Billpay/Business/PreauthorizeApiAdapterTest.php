@@ -20,6 +20,7 @@ use SprykerEco\Zed\Billpay\BillpayDependencyProvider;
 use SprykerEco\Zed\Billpay\Business\BillpayBusinessFactory;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge;
 use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainer;
+use SprykerTest\Shared\Testify\Helper\ConfigHelper;
 
 /**
  * @group Functional
@@ -32,6 +33,28 @@ use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainer;
 class PreauthorizeApiAdapterTest extends Test
 {
     const BPTID = 'dummybptid';
+
+    /**
+     * @return void
+     */
+    protected function _before()
+    {
+        parent::_before();
+
+        $config = $this->getConfigOptions();
+        foreach ($config as $key => $value) {
+            $this->getModule('\\' . ConfigHelper::class)
+                ->setConfig($key, $value);
+        }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getConfigOptions()
+    {
+        return (new BillpayConfiguratorBuilder())->getBillpayConfigurationOptions();
+    }
 
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject | BillpayBusinessFactory

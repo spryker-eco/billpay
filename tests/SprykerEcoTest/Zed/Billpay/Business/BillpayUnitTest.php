@@ -27,6 +27,9 @@ class BillpayUnitTest extends Test
         }
     }
 
+    /**
+     * @return array
+     */
     protected function getConfigOptions()
     {
         return (new BillpayConfiguratorBuilder())->getBillpayConfigurationOptions();
