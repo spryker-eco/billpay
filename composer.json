@@ -13,7 +13,7 @@
     }
   },
   "require": {
-    "mykyta65536/billpay-lib": "^1.0.0",
+    "billpay/lib": "1.6.0",
     "spryker/application": "^3.0.0",
     "spryker/config": "^3.0.0",
     "spryker/country": "^3.0.0",
@@ -47,6 +47,25 @@
   },
   "config": {
     "sort-packages": true
-  }
+  },
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "billpay/lib",
+        "version": "1.6.0",
+        "dist": {
+          "url": "https://www.billpay.de/wp-content/uploads/2016/11/billpay_core_api_php_v1.6.0.zip",
+          "type": "zip"
+        },
+        "autoload": {
+          "classmap": [
+            "",
+            "php5/"
+          ]
+        }
+      }
+    }
+  ]
 }
 
