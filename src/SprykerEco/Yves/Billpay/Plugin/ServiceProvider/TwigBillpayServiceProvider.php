@@ -230,7 +230,7 @@ class TwigBillpayServiceProvider extends AbstractPlugin implements ServiceProvid
     {
         $countryTransfer = new CountryTransfer();
         $countryTransfer->setIso2Code($this->getCountryIso2Code($quoteTransfer));
-        $countryTransfer = $this->getFactory()->getCurrentCountry($countryTransfer);
+        $countryTransfer = $this->getFactory()->getBillpayClient()->getCountry($countryTransfer);
         return $countryTransfer->getIso3Code();
     }
 

@@ -73,16 +73,6 @@ class BillpayFactory extends AbstractFactory
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CountryTransfer $countryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer
-     */
-    public function getCurrentCountry(CountryTransfer $countryTransfer)
-    {
-        return $this->getBillpayClient()->getCountry($countryTransfer);
-    }
-
-    /**
      * @return \Spryker\Shared\Kernel\Store
      */
     public function getStore()

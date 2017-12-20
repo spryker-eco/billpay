@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\PaymentTransfer;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerEco\Client\Billpay\BillpayClient;
+use SprykerEco\Client\Billpay\BillpayClientInterface;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Yves\Billpay\BillpayConfig;
 use SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm;
@@ -19,7 +20,7 @@ use SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm;
 class BillpayInvoiceFormDataProvider implements StepEngineFormDataProviderInterface
 {
     /**
-     * @var \SprykerEco\Client\Billpay\BillpayClient
+     * @var \SprykerEco\Client\Billpay\BillpayClientInterface
      */
     protected $client;
 
@@ -29,10 +30,10 @@ class BillpayInvoiceFormDataProvider implements StepEngineFormDataProviderInterf
     protected $config;
 
     /**
-     * @param \SprykerEco\Client\Billpay\BillpayClient $client
+     * @param \SprykerEco\Client\Billpay\BillpayClientInterface $client
      * @param \SprykerEco\Yves\Billpay\BillpayConfig $config
      */
-    public function __construct(BillpayClient $client, BillpayConfig $config)
+    public function __construct(BillpayClientInterface $client, BillpayConfig $config)
     {
         $this->client = $client;
         $this->config = $config;
