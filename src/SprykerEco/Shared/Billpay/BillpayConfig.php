@@ -74,4 +74,14 @@ class BillpayConfig
 
     const PROVIDER_NAME = 'billpay';
     const PAYMENT_METHOD_INVOICE = 'billpayInvoice';
+    /**
+     * A list of methods
+     */
+    const AVAILABLE_PROVIDER_METHODS = [
+        self::INVOICE_B2C,
+    ];
+    
+    const PAYMENT_METHODS_MAP = [
+        self::METHOD_INVOICE => self::IPL_CORE_PAYMENT_TYPE_INVOICE,
+    ];
 }

@@ -27,7 +27,6 @@ class CancelOrderApiAdapter extends AbstractApiAdapter
     {
         parent::__construct($config);
 
-        //$this->xmlRequest = new ipl_cancel_request($this->gatewayUrl);
         $this->xmlRequest = $xmlRequest;
     }
 

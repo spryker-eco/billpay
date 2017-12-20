@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\Billpay\Business\Api\Adapter;
 
 use Exception;
 use ipl_xml_request;
-use SprykerEco\Shared\Billpay\BillpayConstants;
+use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayApiException;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayPaymentMethodException;
@@ -84,11 +84,11 @@ abstract class AbstractApiAdapter implements AdapterInterface
      */
     protected function extractPaymentTypeFromMethod($methodName)
     {
-        if (!array_key_exists($methodName, BillpayConstants::PAYMENT_METHODS_MAP)) {
+        if (!array_key_exists($methodName, BillpayConfig1::PAYMENT_METHODS_MAP)) {
             throw new BillpayPaymentMethodException();
         }
 
-        return BillpayConstants::PAYMENT_METHODS_MAP[$methodName];
+        return BillpayConfig1::PAYMENT_METHODS_MAP[$methodName];
     }
 
     /**

@@ -8,6 +8,7 @@
 namespace SprykerEco\Zed\Billpay;
 
 use Spryker\Zed\Kernel\AbstractBundleConfig;
+use SprykerEco\Shared\Billpay\BillpayConfig as BillpaySharedConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayPaymentMethodException;
 
@@ -84,10 +85,10 @@ class BillpayConfig extends AbstractBundleConfig
      */
     public function extractPaymentTypeFromMethod($methodName)
     {
-        if (!array_key_exists($methodName, BillpayConstants::PAYMENT_METHODS_MAP)) {
+        if (!array_key_exists($methodName, BillpaySharedConfig::PAYMENT_METHODS_MAP)) {
             throw new BillpayPaymentMethodException();
         }
 
-        return BillpayConstants::PAYMENT_METHODS_MAP[$methodName];
+        return BillpaySharedConfig::PAYMENT_METHODS_MAP[$methodName];
     }
 }
