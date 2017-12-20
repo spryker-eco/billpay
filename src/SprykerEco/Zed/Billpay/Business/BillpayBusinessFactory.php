@@ -149,7 +149,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandler
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandlerInterface
      */
     public function createPreauthorizeResponseHandler()
     {
