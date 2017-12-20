@@ -11,7 +11,7 @@ use Generated\Shared\Transfer\BillpayCancelResponseTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 
-class CancelResponseHandler extends AbstractResponseHandler
+class CancelResponseHandler extends AbstractResponseHandler implements CancelResponseHandlerInterface
 {
     const METHOD = 'CANCEL';
 

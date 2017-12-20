@@ -12,7 +12,7 @@ use Generated\Shared\Transfer\ItemTransfer;
 use Orm\Zed\Billpay\Persistence\Base\SpyPaymentBillpayOrderItemQuery;
 use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 
-class EditCartResponseHandler extends AbstractResponseHandler
+class EditCartResponseHandler extends AbstractResponseHandler implements EditCartResponseHandlerInterface
 {
     const METHOD = 'EDIT_CART';
 

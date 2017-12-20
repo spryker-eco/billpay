@@ -161,7 +161,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\PrescoreResponseHandler
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\PrescoreResponseHandlerInterface
      */
     public function createPrescoreResponseHandler()
     {
@@ -172,7 +172,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\CancelResponseHandler
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\CancelResponseHandlerInterface
      */
     public function createCancelResponseHandler()
     {
@@ -183,7 +183,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\EditCartResponseHandler
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\EditCartResponseHandlerInterface
      */
     public function createEditCartResponseHandler()
     {
@@ -194,7 +194,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\Invoice\InvoiceCreatedResponseHandler
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\Invoice\InvoiceCreatedResponseHandlerInterface
      */
     public function createInvoiceCreatedResponseHandler()
     {

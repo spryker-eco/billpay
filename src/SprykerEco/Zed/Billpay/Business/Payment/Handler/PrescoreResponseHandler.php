@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\Billpay\Business\Payment\Handler;
 use Generated\Shared\Transfer\BillpayPrescoringTransactionResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 
-class PrescoreResponseHandler extends AbstractResponseHandler
+class PrescoreResponseHandler extends AbstractResponseHandler implements PrescoreResponseHandlerInterface
 {
     const METHOD = 'PRESCORE';
 

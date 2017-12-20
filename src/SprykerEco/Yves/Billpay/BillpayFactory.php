@@ -56,7 +56,7 @@ class BillpayFactory extends AbstractFactory
     /**
      * @return \Spryker\Client\Customer\CustomerClientInterface
      */
-    public function createCustomerClient()
+    public function getCustomerClient()
     {
         return $this->getProvidedDependency(
             BillpayDependencyProvider::CLIENT_CUSTOMER

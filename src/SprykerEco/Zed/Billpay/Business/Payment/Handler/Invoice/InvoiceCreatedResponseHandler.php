@@ -17,7 +17,7 @@ use SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLogger
 use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountSaverInterface;
 use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
-class InvoiceCreatedResponseHandler extends AbstractResponseHandler
+class InvoiceCreatedResponseHandler extends AbstractResponseHandler implements InvoiceCreatedResponseHandlerInterface
 {
     const METHOD = 'INVOICE';
 
