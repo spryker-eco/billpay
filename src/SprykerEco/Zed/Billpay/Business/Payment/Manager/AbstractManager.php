@@ -116,7 +116,7 @@ abstract class AbstractManager implements AbstractManagerInterface
     public function buildCancelOrderRequest(OrderTransfer $orderTransfer)
     {
         return [
-            BillpayConfig::PARAM_GROUP_CANCEL => $this->prepareCancelOrderData($orderTransfer),
+            BillpayConstants::PARAM_GROUP_CANCEL => $this->prepareCancelOrderData($orderTransfer),
         ];
     }
 
