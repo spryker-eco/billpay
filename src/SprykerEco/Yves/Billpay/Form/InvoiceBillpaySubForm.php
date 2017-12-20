@@ -15,7 +15,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class InvoiceBillpaySubForm extends AbstractBillpaySubForm
+class InvoiceBillpaySubForm extends AbstractBillpaySubForm implements InvoiceBillpaySubFormInterface
 {
     const PAYMENT_METHOD = 'invoice';
     const PAYMENT_METHOD_NOT_AVAILABLE = 'not-available';

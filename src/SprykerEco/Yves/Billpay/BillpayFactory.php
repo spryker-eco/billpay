@@ -18,7 +18,7 @@ use SprykerEco\Yves\Billpay\Handler\BillpayPaymentHandler;
 class BillpayFactory extends AbstractFactory
 {
     /**
-     * @return \SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm
+     * @return \SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubFormInterface
      */
     public function createInvoiceForm()
     {

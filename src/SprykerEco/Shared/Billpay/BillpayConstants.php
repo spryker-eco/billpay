@@ -45,7 +45,7 @@ interface BillpayConstants
     /**
      * Payment methods
      */
-    const METHOD_INVOICE = 'BILLPAY:INVOICE';
+    const METHOD_INVOICE = 'INVOICE';
 
     /**
      * A list of methods
