@@ -8,6 +8,7 @@
 namespace SprykerEco\Yves\Billpay;
 
 use Spryker\Yves\Kernel\AbstractFactory;
+use SprykerEco\Yves\Billpay\Dependency\Facade\BillpayToStoreInterface;
 use SprykerEco\Yves\Billpay\Form\DataProvider\BillpayInvoiceFormDataProvider;
 use SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm;
 use SprykerEco\Yves\Billpay\Handler\BillpayPaymentHandler;
@@ -72,7 +73,7 @@ class BillpayFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Shared\Kernel\Store
+     * @return \SprykerEco\Yves\Billpay\Dependency\Facade\BillpayToStoreInterface
      */
     public function getStore()
     {
