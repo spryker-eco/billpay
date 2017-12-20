@@ -7,10 +7,8 @@
 
 namespace SprykerEco\Shared\Billpay;
 
-
 class BillpayConfig
 {
-
     const PAYMENT_PROVIDER = 'Billpay';
     const INVOICE = 'INVOICE';
 

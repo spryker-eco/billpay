@@ -10,7 +10,6 @@ namespace SprykerEco\Yves\Billpay\Handler;
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerEco\Shared\Billpay\BillpayConfig;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Yves\Billpay\Exception\PaymentMethodNotFoundException;
 
 class BillpayPaymentHandler implements BillpayPaymentHandlerInterface

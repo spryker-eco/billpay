@@ -12,7 +12,6 @@ use SprykerTest\Shared\Testify\Helper\ConfigHelper;
 
 class BillpayUnitTest extends Test
 {
-
     /**
      * @return void
      */
@@ -34,6 +33,4 @@ class BillpayUnitTest extends Test
     {
         return (new BillpayConfiguratorBuilder())->getBillpayConfigurationOptions();
     }
-
-
 }

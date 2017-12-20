@@ -1,6 +1,8 @@
 <?php
 namespace SprykerEcoTest\Zed\Billpay;
 
+use Codeception\Actor;
+
 /**
  * Inherited Methods
  * @method void wantToTest($text)
@@ -15,8 +17,8 @@ namespace SprykerEcoTest\Zed\Billpay;
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
  *
  * @SuppressWarnings(PHPMD)
-*/
-class HeidelpayZedTester extends \Codeception\Actor
+ */
+class HeidelpayZedTester extends Actor
 {
     use _generated\HeidelpayZedTesterActions;
 

@@ -18,7 +18,6 @@ use Generated\Shared\Transfer\ShipmentTransfer;
 use ipl_prescore_request;
 use ipl_xml_request;
 use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\PrescoreApiAdapter;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayApiException;

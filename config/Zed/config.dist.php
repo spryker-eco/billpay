@@ -3,7 +3,6 @@
  * Copy over the following configs to your config
  */
 
-use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\Oms\OmsConfig;
@@ -11,7 +10,6 @@ use SprykerEco\Shared\Billpay\BillpayConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 
 $config[BillpayConstants::VENDOR_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker-eco';
-
 
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,

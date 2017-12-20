@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\BillpayInvoiceCreatedResponseTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 use SprykerEco\Shared\Billpay\BillpayConfig;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayInvoiceException;
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\AbstractResponseHandler;
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLoggerInterface;

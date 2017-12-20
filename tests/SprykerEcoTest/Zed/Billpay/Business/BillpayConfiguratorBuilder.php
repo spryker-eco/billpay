@@ -7,7 +7,6 @@
 
 namespace SprykerEcoTest\Zed\Billpay\Business;
 
-
 use SprykerEco\Shared\Billpay\BillpayConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 
@@ -18,7 +17,6 @@ class BillpayConfiguratorBuilder
      */
     public function getBillpayConfigurationOptions()
     {
-
         $config[BillpayConstants::GATEWAY_URL] = 'https://test-api.billpay.de/xml/offline';
         $config[BillpayConstants::BILLPAY_MERCHANT_ID] = 'merchant';
 //

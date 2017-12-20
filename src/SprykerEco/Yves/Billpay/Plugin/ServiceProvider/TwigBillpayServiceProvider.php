@@ -56,20 +56,19 @@ class TwigBillpayServiceProvider extends AbstractPlugin implements ServiceProvid
     {
         $quoteClient = $this->getFactory()->getQuoteClient();
 
-        return
-            new Twig_SimpleFunction('billpay', function ($identifier) use ($quoteClient) {
+        return new Twig_SimpleFunction('billpay', function ($identifier) use ($quoteClient) {
 
-                if ($identifier === 'salutation') {
-                    return $this->getSalutation($quoteClient->getQuote());
-                }
+            if ($identifier === 'salutation') {
+                return $this->getSalutation($quoteClient->getQuote());
+            }
 
                 $methodName = 'get' . ucfirst($identifier);
-                if (method_exists($this, $methodName)) {
-                    return $this->$methodName($quoteClient->getQuote());
-                }
+            if (method_exists($this, $methodName)) {
+                return $this->$methodName($quoteClient->getQuote());
+            }
 
                 return null;
-            });
+        });
     }
 
     /**

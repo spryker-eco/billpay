@@ -14,7 +14,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface;
 use SprykerEco\Shared\Billpay\BillpayConfig;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 
 /**
  * @method \SprykerEco\Zed\Billpay\Business\BillpayFacadeInterface getFacade()

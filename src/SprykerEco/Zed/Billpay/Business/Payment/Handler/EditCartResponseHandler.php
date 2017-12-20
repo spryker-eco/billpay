@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\BillpayEditCartResponseTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Orm\Zed\Billpay\Persistence\Base\SpyPaymentBillpayOrderItemQuery;
 use SprykerEco\Shared\Billpay\BillpayConfig;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class EditCartResponseHandler extends AbstractResponseHandler
 {

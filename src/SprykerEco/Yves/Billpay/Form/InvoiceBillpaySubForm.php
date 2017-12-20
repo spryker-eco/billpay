@@ -9,7 +9,6 @@ namespace SprykerEco\Yves\Billpay\Form;
 
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use SprykerEco\Shared\Billpay\BillpayConfig;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;

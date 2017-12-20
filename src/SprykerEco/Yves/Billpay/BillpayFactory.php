@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Yves\Billpay;
 
-use Generated\Shared\Transfer\CountryTransfer;
 use Spryker\Yves\Kernel\AbstractFactory;
 use SprykerEco\Yves\Billpay\Form\DataProvider\BillpayInvoiceFormDataProvider;
 use SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm;

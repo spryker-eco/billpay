@@ -18,7 +18,6 @@ use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use ipl_preauthorize_request;
 use ipl_xml_request;
 use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\PreauthorizeApiAdapter;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayApiException;

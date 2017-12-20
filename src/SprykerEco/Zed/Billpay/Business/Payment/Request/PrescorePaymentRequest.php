@@ -10,7 +10,6 @@ namespace SprykerEco\Zed\Billpay\Business\Payment\Request;
 use Generated\Shared\Transfer\BillpayPrescoringTransactionResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface;
 use SprykerEco\Zed\Billpay\Business\Api\Converter\ConverterInterface;

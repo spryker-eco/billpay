@@ -10,7 +10,6 @@ namespace SprykerEco\Zed\Billpay\Business\Payment\Handler;
 use Generated\Shared\Transfer\BillpayCancelResponseTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use SprykerEco\Shared\Billpay\BillpayConfig;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class CancelResponseHandler extends AbstractResponseHandler
 {

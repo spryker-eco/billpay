@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\Billpay\Business\Api\Adapter;
 
 use ipl_cancel_request;
 use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManagerInterface;
 
