@@ -10,7 +10,7 @@ namespace SprykerEco\Client\Billpay\Zed;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Client\ZedRequest\Stub\ZedRequestStub;
 
-class BillpayStub extends ZedRequestStub
+class BillpayStub extends ZedRequestStub implements BillpayStubInterface
 {
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer

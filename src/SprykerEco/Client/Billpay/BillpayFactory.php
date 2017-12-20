@@ -13,7 +13,7 @@ use SprykerEco\Client\Billpay\Zed\BillpayStub;
 class BillpayFactory extends AbstractFactory
 {
     /**
-     * @return \SprykerEco\Client\Billpay\Zed\BillpayStub
+     * @return \SprykerEco\Client\Billpay\Zed\BillpayStubInterface
      */
     public function createZedStub()
     {

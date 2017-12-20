@@ -10,16 +10,16 @@ namespace SprykerEco\Shared\Billpay;
 interface BillpayConstants
 {
     const PAYMENT_PROVIDER = 'Billpay';
-    const GATEWAY_URL = 'GATEWAY_URL';
-    const IS_TEST_MODE = 'IS_TEST_MODE';
-    const VENDOR_ROOT = 'VENDOR_ROOT';
+    const GATEWAY_URL = 'BILLPAY:GATEWAY_URL';
+    const IS_TEST_MODE = 'BILLPAY:IS_TEST_MODE';
+    const VENDOR_ROOT = 'BILLPAY:VENDOR_ROOT';
 
-    const BILLPAY_MERCHANT_ID = 'BILLPAY_MERCHANT_ID';
-    const BILLPAY_PORTAL_ID = 'BILLPAY_PORTAL_ID';
-    const BILLPAY_SECURITY_KEY = 'BILLPAY_SECURITY_KEY';
-    const BILLPAY_PUBLIC_API_KEY = 'BILLPAY_PUBLIC_API_KEY';
-    const BILLPAY_MAX_DELAY_IN_DAYS = 'BILLPAY_MAX_DELAY_IN_DAYS';
-    const USE_MD5_HASH = 'USE_MD5_HASH';
+    const BILLPAY_MERCHANT_ID = 'BILLPAY:BILLPAY_MERCHANT_ID';
+    const BILLPAY_PORTAL_ID = 'BILLPAY:BILLPAY_PORTAL_ID';
+    const BILLPAY_SECURITY_KEY = 'BILLPAY:BILLPAY_SECURITY_KEY';
+    const BILLPAY_PUBLIC_API_KEY = 'BILLPAY:BILLPAY_PUBLIC_API_KEY';
+    const BILLPAY_MAX_DELAY_IN_DAYS = 'BILLPAY:BILLPAY_MAX_DELAY_IN_DAYS';
+    const USE_MD5_HASH = 'BILLPAY:USE_MD5_HASH';
 
     /** Billpay payment method codes */
     const INVOICE_B2C = 'INVOICE_B2C';
@@ -31,7 +31,7 @@ interface BillpayConstants
     const INVOICE = 'INVOICE';
 
     const USE_PRESCORE = 'USE_PRESCORE';
-    const CUSTOMER_GROUP = 'CUSTOMER_GROUP';
+    const CUSTOMER_GROUP = 'BILLPAY::CUSTOMER_GROUP';
 
     const BILLPAY_OMS_STATUS_NEW = 'new';
     const BILLPAY_OMS_STATUS_PREAUTHORIZED = 'preauthorized';
@@ -45,7 +45,7 @@ interface BillpayConstants
     /**
      * Payment methods
      */
-    const METHOD_INVOICE = 'INVOICE';
+    const METHOD_INVOICE = 'BILLPAY:INVOICE';
 
     /**
      * A list of methods
