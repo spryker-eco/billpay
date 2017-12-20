@@ -14,6 +14,7 @@ use Silex\ServiceProviderInterface;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractPlugin;
+use SprykerEco\Shared\Billpay\BillpayConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use Twig_SimpleFunction;
 
@@ -208,7 +209,7 @@ class TwigBillpayServiceProvider extends AbstractPlugin implements ServiceProvid
      */
     protected function getCustomerGroup(QuoteTransfer $quoteTransfer)
     {
-        return BillpayConstants::CUSTOMER_GROUP_B2C;
+        return BillpayConfig::CUSTOMER_GROUP_B2C;
     }
 
     /**

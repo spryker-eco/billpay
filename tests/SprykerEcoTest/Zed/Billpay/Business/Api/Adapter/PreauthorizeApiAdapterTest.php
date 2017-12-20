@@ -17,6 +17,7 @@ use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use ipl_preauthorize_request;
 use ipl_xml_request;
+use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\PreauthorizeApiAdapter;
@@ -82,7 +83,7 @@ class PreauthorizeApiAdapterTest extends BillpayUnitTest
     {
         $builder = $this->getMockBuilder(ipl_preauthorize_request::class);
         $builder->setMethods(['_send']);
-        $builder->setConstructorArgs(['dummy_url', BillpayConstants::INVOICE_B2C]);
+        $builder->setConstructorArgs(['dummy_url', BillpayConfig1::INVOICE_B2C]);
 
         // Create a stub for the SomeClass class.
         $stub = $builder->getMock();

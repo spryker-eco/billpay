@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\Billpay\Business\Payment\Request;
 
 use Generated\Shared\Transfer\BillpayPrescoringTransactionResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface;
@@ -60,7 +61,7 @@ class PrescorePaymentRequest extends AbstractPaymentRequest implements Transacti
     public function request(QuoteTransfer $quoteTransfer)
     {
         $requestData = $this
-            ->getMethodMapper(BillpayConstants::INVOICE)
+            ->getMethodMapper(BillpayConfig1::INVOICE)
             ->buildPrescoreRequest($quoteTransfer);
 
         $billpayResponseTransfer = $this->sendRequest($requestData);

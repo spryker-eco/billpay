@@ -13,6 +13,7 @@ use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface;
+use SprykerEco\Shared\Billpay\BillpayConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 
 /**
@@ -73,11 +74,11 @@ class CancelItemCommandPlugin extends AbstractBillpayCommandPlugin implements Co
             ->filterByIdSalesOrderItem($orderItem->getIdSalesOrderItem(), Criteria::NOT_EQUAL)
                 ->useStateQuery()
                     ->filterByName(
-                        BillpayConstants::BILLPAY_OMS_STATUS_CANCELLED,
+                        BillpayConfig::BILLPAY_OMS_STATUS_CANCELLED,
                         Criteria::NOT_EQUAL
                     )
                     ->filterByName(
-                        BillpayConstants::BILLPAY_OMS_STATUS_ITEM_CANCELLED,
+                        BillpayConfig::BILLPAY_OMS_STATUS_ITEM_CANCELLED,
                         Criteria::NOT_EQUAL
                     )
                 ->endUse()

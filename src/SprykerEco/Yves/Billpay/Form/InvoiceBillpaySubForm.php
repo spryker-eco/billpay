@@ -8,6 +8,7 @@
 namespace SprykerEco\Yves\Billpay\Form;
 
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
+use SprykerEco\Shared\Billpay\BillpayConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -29,7 +30,7 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm implements InvoiceBil
      */
     public function getName()
     {
-        return BillpayConstants::PAYMENT_METHOD_INVOICE;
+        return BillpayConfig::PAYMENT_METHOD_INVOICE;
     }
 
     /**
@@ -37,7 +38,7 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm implements InvoiceBil
      */
     public function getPropertyPath()
     {
-        return BillpayConstants::PAYMENT_METHOD_INVOICE;
+        return BillpayConfig::PAYMENT_METHOD_INVOICE;
     }
 
     /**
@@ -45,7 +46,7 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm implements InvoiceBil
      */
     public function getTemplatePath()
     {
-        return BillpayConstants::PROVIDER_NAME . '/' . self::PAYMENT_METHOD;
+        return BillpayConfig::PROVIDER_NAME . '/' . self::PAYMENT_METHOD;
     }
 
     /**
@@ -53,7 +54,7 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm implements InvoiceBil
      */
     protected function getAlternateTemplatePath()
     {
-        return BillpayConstants::PROVIDER_NAME . '/' . self::PAYMENT_METHOD_NOT_AVAILABLE;
+        return BillpayConfig::PROVIDER_NAME . '/' . self::PAYMENT_METHOD_NOT_AVAILABLE;
     }
 
     /**

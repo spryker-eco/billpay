@@ -15,6 +15,7 @@ use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpayOrderItem;
 
 use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
+use SprykerEco\Shared\Billpay\BillpayConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class OrderManager implements OrderManagerInterface
@@ -29,7 +30,7 @@ class OrderManager implements OrderManagerInterface
      */
     public function saveOrderPayment(QuoteTransfer $quoteTransfer, CheckoutResponseTransfer $checkoutResponseTransfer)
     {
-        if ($quoteTransfer->getPayment()->getPaymentProvider() === BillpayConstants::PAYMENT_PROVIDER) {
+        if ($quoteTransfer->getPayment()->getPaymentProvider() === BillpayConfig::PAYMENT_PROVIDER) {
             $this->handleDatabaseTransaction(function () use ($quoteTransfer, $checkoutResponseTransfer) {
 
                 $paymentEntity = $this->savePaymentForOrder(
@@ -82,7 +83,7 @@ class OrderManager implements OrderManagerInterface
             $paymentOrderItemEntity
                 ->setFkPaymentBillpay($idPayment)
                 ->setFkSalesOrderItem($orderItemTransfer->getIdSalesOrderItem());
-            $paymentOrderItemEntity->setStatus(BillpayConstants::BILLPAY_OMS_STATUS_NEW);
+            $paymentOrderItemEntity->setStatus(BillpayConfig::BILLPAY_OMS_STATUS_NEW);
 
             $paymentOrderItemEntity->save();
         }

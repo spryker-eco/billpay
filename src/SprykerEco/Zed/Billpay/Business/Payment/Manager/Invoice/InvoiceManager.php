@@ -8,6 +8,7 @@
 namespace SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice;
 
 use Generated\Shared\Transfer\OrderTransfer;
+use SprykerEco\Shared\Billpay\BillpayConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\Business\Payment\Manager\AbstractManager;
 
@@ -33,6 +34,6 @@ class InvoiceManager extends AbstractManager implements InvoiceManagerInterface
      */
     public function getMethodName()
     {
-        return BillpayConstants::INVOICE;
+        return BillpayConfig::INVOICE;
     }
 }

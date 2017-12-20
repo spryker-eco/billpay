@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\BillpayPreauthorizeTransactionResponseTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
+use SprykerEco\Shared\Billpay\BillpayConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayPreauthorizeException;
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLoggerInterface;
@@ -83,7 +84,7 @@ class PreauthorizeResponseHandler extends AbstractResponseHandler implements Pre
 
         foreach ($paymentEntity->getSpyPaymentBillpayOrderItems() as $item) {
             $item->setSpyPaymentBillpayInvoiceBankAccount($invoiceBankAccount);
-            $item->setStatus(BillpayConstants::BILLPAY_OMS_STATUS_PREAUTHORIZED);
+            $item->setStatus(BillpayConfig::BILLPAY_OMS_STATUS_PREAUTHORIZED);
             $item->save();
         }
     }
