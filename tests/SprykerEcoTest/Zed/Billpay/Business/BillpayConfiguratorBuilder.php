@@ -7,7 +7,7 @@
 
 namespace SprykerEcoTest\Zed\Billpay\Business;
 
-use SprykerEco\Shared\Billpay\BillpayConfig;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class BillpayConfiguratorBuilder
@@ -34,7 +34,7 @@ class BillpayConfiguratorBuilder
         $config[BillpayConstants::USE_MD5_HASH] = 1;
         $config[BillpayConstants::USE_PRESCORE] = 1;
         $config[BillpayConstants::IS_TEST_MODE] = 1;
-        $config[BillpayConfig::CUSTOMER_GROUP] = BillpayConfig::CUSTOMER_GROUP_B2C;
+        $config[BillpaySharedConfig::CUSTOMER_GROUP] = BillpaySharedConfig::CUSTOMER_GROUP_B2C;
         return $config;
     }
 }

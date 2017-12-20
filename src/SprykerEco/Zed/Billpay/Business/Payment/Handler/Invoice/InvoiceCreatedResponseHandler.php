@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\Billpay\Business\Payment\Handler\Invoice;
 use Generated\Shared\Transfer\BillpayInvoiceCreatedResponseTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
-use SprykerEco\Shared\Billpay\BillpayConfig;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayInvoiceException;
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\AbstractResponseHandler;
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLoggerInterface;
@@ -88,7 +88,7 @@ class InvoiceCreatedResponseHandler extends AbstractResponseHandler
                         $item->getSpyPaymentBillpayInvoiceBankAccount()
                     );
                     $item->setInvoiceDuedate($responseTransfer->getInvoiceBankAccount()->getInvoiceDuedate());
-                    $item->setStatus(BillpayConfig::BILLPAY_OMS_STATUS_INVOICE_CREATED);
+                    $item->setStatus(BillpaySharedConfig::BILLPAY_OMS_STATUS_INVOICE_CREATED);
                     $item->save();
                 }
             }

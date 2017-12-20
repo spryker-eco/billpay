@@ -10,7 +10,7 @@ namespace SprykerEco\Yves\Billpay\Form;
 use Spryker\Yves\StepEngine\Dependency\Form\AbstractSubFormType;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
-use SprykerEco\Shared\Billpay\BillpayConfig;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Callback;
@@ -40,7 +40,7 @@ abstract class AbstractBillpaySubForm extends AbstractSubFormType implements Sub
      */
     public function getProviderName()
     {
-        return BillpayConfig::PROVIDER_NAME;
+        return BillpaySharedConfig::PROVIDER_NAME;
     }
 
     /**

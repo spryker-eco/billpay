@@ -9,7 +9,7 @@ namespace SprykerEco\Yves\Billpay;
 
 use Generated\Shared\Transfer\BillpayPaymentMethodTransfer;
 use Spryker\Yves\Kernel\AbstractBundleConfig;
-use SprykerEco\Shared\Billpay\BillpayConfig as BillpaySharedConfig;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig as BillpaySharedConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 
 class BillpayConfig extends AbstractBundleConfig

@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\Billpay\Communication\Plugin\Oms\Condition;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface;
-use SprykerEco\Shared\Billpay\BillpayConfig;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 
 class IsCancelledConditionPlugin implements ConditionInterface
 {
@@ -23,6 +23,6 @@ class IsCancelledConditionPlugin implements ConditionInterface
         /** @var \Orm\Zed\Billpay\Persistence\SpyPaymentBillpayOrderItem $billpaymentOrderItem */
         $billpaymentOrderItem = $orderItem->getSpyPaymentBillpayOrderItems()->getLast();
 
-        return ($billpaymentOrderItem->getStatus() === BillpayConfig::BILLPAY_OMS_STATUS_CANCELLED);
+        return ($billpaymentOrderItem->getStatus() === BillpaySharedConfig::BILLPAY_OMS_STATUS_CANCELLED);
     }
 }

@@ -8,7 +8,7 @@
 namespace SprykerEco\Zed\Billpay;
 
 use Spryker\Zed\Kernel\AbstractBundleConfig;
-use SprykerEco\Shared\Billpay\BillpayConfig as BillpaySharedConfig;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig as BillpaySharedConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayPaymentMethodException;
 

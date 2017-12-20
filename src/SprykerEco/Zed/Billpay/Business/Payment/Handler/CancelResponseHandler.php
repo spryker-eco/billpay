@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\Billpay\Business\Payment\Handler;
 
 use Generated\Shared\Transfer\BillpayCancelResponseTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
-use SprykerEco\Shared\Billpay\BillpayConfig;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 
 class CancelResponseHandler extends AbstractResponseHandler
 {
@@ -38,7 +38,7 @@ class CancelResponseHandler extends AbstractResponseHandler
         foreach ($orderTransfer->getItems() as $selectedItem) {
             foreach ($paymentEntity->getSpyPaymentBillpayOrderItems() as $item) {
                 if ($item->getFkSalesOrderItem() === $selectedItem->getIdSalesOrderItem()) {
-                    $item->setStatus(BillpayConfig::BILLPAY_OMS_STATUS_CANCELLED);
+                    $item->setStatus(BillpaySharedConfig::BILLPAY_OMS_STATUS_CANCELLED);
                     $item->save();
                 }
             }

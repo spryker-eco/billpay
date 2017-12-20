@@ -14,7 +14,7 @@ use ipl_invoice_created_request;
 use ipl_preauthorize_request;
 use ipl_prescore_request;
 use Spryker\Zed\Country\Business\CountryFacade;
-use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig as BillpayConfig1;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\BillpayDependencyProvider;
 use SprykerEco\Zed\Billpay\Business\BillpayBusinessFactory;

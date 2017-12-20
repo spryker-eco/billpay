@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\Billpay\Business\Api\Adapter;
 
 use Exception;
 use ipl_xml_request;
-use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig as BillpayConfig1;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayApiException;
 use SprykerEco\Zed\Billpay\Business\Exception\BillpayPaymentMethodException;

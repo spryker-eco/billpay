@@ -12,7 +12,7 @@ use Generated\Shared\Transfer\PaymentTransfer;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerEco\Client\Billpay\BillpayClientInterface;
-use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig as BillpayConfig1;
 use SprykerEco\Yves\Billpay\BillpayConfig;
 use SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm;
 

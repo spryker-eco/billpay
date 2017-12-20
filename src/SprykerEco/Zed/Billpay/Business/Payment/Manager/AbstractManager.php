@@ -19,7 +19,7 @@ use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Shipment\ShipmentConstants;
-use SprykerEco\Shared\Billpay\BillpayConfig as BillpayConfig1;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig as BillpayConfig1;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridgeInterface;

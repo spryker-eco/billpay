@@ -6,7 +6,7 @@
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\Oms\OmsConfig;
-use SprykerEco\Shared\Billpay\BillpayConfig;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 
 $config[BillpayConstants::VENDOR_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker-eco';
@@ -21,7 +21,7 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
 ];
 
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
-    BillpayConfig::PAYMENT_METHOD_INVOICE => 'BillpayInvoice01',
+    BillpaySharedConfig::PAYMENT_METHOD_INVOICE => 'BillpayInvoice01',
 ];
 
 // TEST system

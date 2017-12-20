@@ -8,7 +8,7 @@
 namespace SprykerEco\Yves\Billpay\Form;
 
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
-use SprykerEco\Shared\Billpay\BillpayConfig;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -29,7 +29,7 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm implements InvoiceBil
      */
     public function getName()
     {
-        return BillpayConfig::PAYMENT_METHOD_INVOICE;
+        return BillpaySharedConfig::PAYMENT_METHOD_INVOICE;
     }
 
     /**
@@ -37,7 +37,7 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm implements InvoiceBil
      */
     public function getPropertyPath()
     {
-        return BillpayConfig::PAYMENT_METHOD_INVOICE;
+        return BillpaySharedConfig::PAYMENT_METHOD_INVOICE;
     }
 
     /**
@@ -45,7 +45,7 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm implements InvoiceBil
      */
     public function getTemplatePath()
     {
-        return BillpayConfig::PROVIDER_NAME . '/' . self::PAYMENT_METHOD;
+        return BillpaySharedConfig::PROVIDER_NAME . '/' . self::PAYMENT_METHOD;
     }
 
     /**
@@ -53,7 +53,7 @@ class InvoiceBillpaySubForm extends AbstractBillpaySubForm implements InvoiceBil
      */
     protected function getAlternateTemplatePath()
     {
-        return BillpayConfig::PROVIDER_NAME . '/' . self::PAYMENT_METHOD_NOT_AVAILABLE;
+        return BillpaySharedConfig::PROVIDER_NAME . '/' . self::PAYMENT_METHOD_NOT_AVAILABLE;
     }
 
     /**

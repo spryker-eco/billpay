@@ -9,7 +9,7 @@ namespace SprykerEco\Yves\Billpay\Handler;
 
 use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use SprykerEco\Shared\Billpay\BillpayConfig;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 use SprykerEco\Yves\Billpay\Exception\PaymentMethodNotFoundException;
 
 class BillpayPaymentHandler implements BillpayPaymentHandlerInterface
@@ -18,7 +18,7 @@ class BillpayPaymentHandler implements BillpayPaymentHandlerInterface
      * @var array
      */
     protected static $paymentMethods = [
-        BillpayConfig::PAYMENT_METHOD_INVOICE => BillpayConfig::INVOICE,
+        BillpaySharedConfig::PAYMENT_METHOD_INVOICE => BillpaySharedConfig::INVOICE,
     ];
 
     /**
@@ -64,7 +64,7 @@ class BillpayPaymentHandler implements BillpayPaymentHandlerInterface
     {
         $quoteTransfer
             ->getPayment()
-            ->setPaymentProvider(BillpayConfig::PAYMENT_PROVIDER)
+            ->setPaymentProvider(BillpaySharedConfig::PAYMENT_PROVIDER)
             ->setPaymentMethod(self::$paymentMethods[$paymentSelection]);
     }
 
