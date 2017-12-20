@@ -338,7 +338,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge
+     * @return \SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridgeInterface
      */
     public function getCountry()
     {
