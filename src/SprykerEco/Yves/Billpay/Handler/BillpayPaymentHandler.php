@@ -12,7 +12,7 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Yves\Billpay\Exception\PaymentMethodNotFoundException;
 
-class BillpayPaymentHandler
+class BillpayPaymentHandler implements BillpayPaymentHandlerInterface
 {
     /**
      * @var array

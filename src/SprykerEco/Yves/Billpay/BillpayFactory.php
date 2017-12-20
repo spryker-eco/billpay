@@ -26,7 +26,7 @@ class BillpayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Billpay\Form\DataProvider\BillpayInvoiceFormDataProvider
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
      */
     public function createInvoiceFormDataProvider()
     {
@@ -37,7 +37,7 @@ class BillpayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Billpay\Handler\BillpayPaymentHandler
+     * @return \SprykerEco\Yves\Billpay\Handler\BillpayPaymentHandlerInterface
      */
     public function createBillpayHandler()
     {
@@ -45,7 +45,7 @@ class BillpayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Client\Billpay\BillpayClient
+     * @return \SprykerEco\Client\Billpay\BillpayClientInterface
      */
     public function getBillpayClient()
     {
