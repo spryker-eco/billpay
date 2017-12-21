@@ -1,7 +1,10 @@
 build:
     dependencies:
         before:
+            - composer config repositories.spryker git git@github.com:spryker/spryker.git
+            - composer config repositories.spryker-private composer https://code.spryker.com/repo/private
             - composer config repositories.spryker composer https://code.spryker.com/repo/private
+
     environment:
         php:
             version: 7.1
