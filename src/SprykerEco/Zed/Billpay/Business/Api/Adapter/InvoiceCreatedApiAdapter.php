@@ -14,7 +14,6 @@ use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManagerInterf
 
 class InvoiceCreatedApiAdapter extends AbstractApiAdapter
 {
-
     /**
      * @var \ipl_invoice_created_request
      */
@@ -85,5 +84,4 @@ class InvoiceCreatedApiAdapter extends AbstractApiAdapter
     {
         return $this->xmlRequest;
     }
-
 }

@@ -12,11 +12,10 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
 
 /**
- * @method \SprykerEco\Zed\Billpay\Business\BillpayFacade getFacade()
+ * @method \SprykerEco\Zed\Billpay\Business\BillpayFacadeInterface getFacade()
  */
 class GatewayController extends AbstractGatewayController
 {
-
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
@@ -39,7 +38,7 @@ class GatewayController extends AbstractGatewayController
     }
 
     /**
-     * @return string
+     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function getSessionIdAction()
     {
@@ -47,5 +46,4 @@ class GatewayController extends AbstractGatewayController
         $quoteTransfer->setBillpaySessionId(md5(session_id()));
         return $quoteTransfer;
     }
-
 }

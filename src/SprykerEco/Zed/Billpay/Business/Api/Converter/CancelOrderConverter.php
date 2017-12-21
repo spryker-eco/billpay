@@ -14,7 +14,6 @@ use SprykerEco\Zed\Billpay\Business\Exception\BillpayConverterException;
 
 class CancelOrderConverter extends AbstractConverter
 {
-
     /**
      * @param \ipl_xml_request|\ipl_cancel_request $xmlRequest
      *
@@ -33,5 +32,4 @@ class CancelOrderConverter extends AbstractConverter
 
         return $billpayCancelTransfer;
     }
-
 }

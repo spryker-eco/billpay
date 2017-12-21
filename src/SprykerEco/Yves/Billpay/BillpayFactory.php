@@ -7,8 +7,8 @@
 
 namespace SprykerEco\Yves\Billpay;
 
-use Generated\Shared\Transfer\CountryTransfer;
 use Spryker\Yves\Kernel\AbstractFactory;
+use SprykerEco\Yves\Billpay\Dependency\Facade\BillpayToStoreInterface;
 use SprykerEco\Yves\Billpay\Form\DataProvider\BillpayInvoiceFormDataProvider;
 use SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm;
 use SprykerEco\Yves\Billpay\Handler\BillpayPaymentHandler;
@@ -17,9 +17,8 @@ use SprykerEco\Yves\Billpay\Handler\BillpayPaymentHandler;
  */
 class BillpayFactory extends AbstractFactory
 {
-
     /**
-     * @return \SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm
+     * @return \SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubFormInterface
      */
     public function createInvoiceForm()
     {
@@ -27,15 +26,18 @@ class BillpayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Billpay\Form\DataProvider\BillpayInvoiceFormDataProvider
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
      */
     public function createInvoiceFormDataProvider()
     {
-        return new BillpayInvoiceFormDataProvider($this->getBillpayClient());
+        return new BillpayInvoiceFormDataProvider(
+            $this->getBillpayClient(),
+            $this->getConfig()
+        );
     }
 
     /**
-     * @return \SprykerEco\Yves\Billpay\Handler\BillpayPaymentHandler
+     * @return \SprykerEco\Yves\Billpay\Handler\BillpayPaymentHandlerInterface
      */
     public function createBillpayHandler()
     {
@@ -43,7 +45,7 @@ class BillpayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Client\Billpay\BillpayClient
+     * @return \SprykerEco\Client\Billpay\BillpayClientInterface
      */
     public function getBillpayClient()
     {
@@ -55,7 +57,7 @@ class BillpayFactory extends AbstractFactory
     /**
      * @return \Spryker\Client\Customer\CustomerClientInterface
      */
-    public function createCustomerClient()
+    public function getCustomerClient()
     {
         return $this->getProvidedDependency(
             BillpayDependencyProvider::CLIENT_CUSTOMER
@@ -71,21 +73,10 @@ class BillpayFactory extends AbstractFactory
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CountryTransfer $countryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer
-     */
-    public function getCurrentCountry(CountryTransfer $countryTransfer)
-    {
-        return $this->getBillpayClient()->getCountry($countryTransfer);
-    }
-
-    /**
-     * @return \Spryker\Shared\Kernel\Store
+     * @return \SprykerEco\Yves\Billpay\Dependency\Facade\BillpayToStoreInterface
      */
     public function getStore()
     {
         return $this->getProvidedDependency(BillpayDependencyProvider::STORE);
     }
-
 }

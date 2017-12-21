@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\BillpayResponseHeaderTransfer;
 
 interface BillpayResponseLoggerInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\BillpayResponseHeaderTransfer $header
      * @param string $method
@@ -19,5 +18,4 @@ interface BillpayResponseLoggerInterface
      * @return \Orm\Zed\Billpay\Persistence\SpyPaymentBillpayApiLog
      */
     public function log(BillpayResponseHeaderTransfer $header, $method);
-
 }

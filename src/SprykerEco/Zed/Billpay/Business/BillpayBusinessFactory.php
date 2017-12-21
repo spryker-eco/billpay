@@ -13,7 +13,6 @@ use ipl_invoice_created_request;
 use ipl_preauthorize_request;
 use ipl_prescore_request;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
-use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayDependencyProvider;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\CancelOrderApiAdapter;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\EditCartContentApiAdapter;
@@ -25,7 +24,6 @@ use SprykerEco\Zed\Billpay\Business\Api\Converter\EditCartContentConverter;
 use SprykerEco\Zed\Billpay\Business\Api\Converter\InvoiceCreatedConverter;
 use SprykerEco\Zed\Billpay\Business\Api\Converter\PreauthorizeConverter;
 use SprykerEco\Zed\Billpay\Business\Api\Converter\PrescoreConverter;
-use SprykerEco\Zed\Billpay\Business\Exception\BillpayPaymentMethodException;
 use SprykerEco\Zed\Billpay\Business\Order\OrderManager;
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\CancelResponseHandler;
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\EditCartResponseHandler;
@@ -33,7 +31,7 @@ use SprykerEco\Zed\Billpay\Business\Payment\Handler\Invoice\InvoiceCreatedRespon
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLogger;
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandler;
 use SprykerEco\Zed\Billpay\Business\Payment\Handler\PrescoreResponseHandler;
-use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountPersister;
+use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountSaver;
 use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManager;
 use SprykerEco\Zed\Billpay\Business\Payment\Request\CancelOrderPaymentRequest;
 use SprykerEco\Zed\Billpay\Business\Payment\Request\EditCartContentPaymentRequest;
@@ -47,7 +45,6 @@ use SprykerEco\Zed\Billpay\Business\Payment\Request\PrescorePaymentRequest;
  */
 class BillpayBusinessFactory extends AbstractBusinessFactory
 {
-
     /**
      * @return \SprykerEco\Zed\Billpay\Business\Payment\Request\QuoteTransactionInterface
      */
@@ -57,7 +54,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->createPrescoreAdapter(),
             $this->createPrescoreConverter(),
             $this->getQueryContainer(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createPrescoreResponseHandler()
         );
 
         //have no clue what is this
@@ -79,7 +77,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->createPreauthorizeAdapter($paymentMethod),
             $this->createPreauthorizeConverter(),
             $this->getQueryContainer(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createPreauthorizeResponseHandler()
         );
 
         $preauthorizePaymentRequest->registerManager(
@@ -98,7 +97,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->createInvoiceCreatedAdapter(),
             $this->createInvoiceCreatedConverter(),
             $this->getQueryContainer(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createInvoiceCreatedResponseHandler()
         );
 
         $invoiceCreatedPaymentRequest->registerManager(
@@ -117,7 +117,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->createCancelOrderAdapter(),
             $this->createCancelOrderConverter(),
             $this->getQueryContainer(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createCancelResponseHandler()
         );
 
         $cancelOrderPaymentRequest->registerManager(
@@ -128,7 +129,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Request\OrderTransactionInterface
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Request\OrderItemTransactionInterface
      */
     public function createEditCartContentTransactionHandler()
     {
@@ -136,7 +137,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->createEditCartContentAdapter(),
             $this->createEditCartContentConverter(),
             $this->getQueryContainer(),
-            $this->getConfig()
+            $this->getConfig(),
+            $this->createEditCartResponseHandler()
         );
 
         $paymentTransactionHandler->registerManager(
@@ -147,19 +149,19 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandler
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandlerInterface
      */
     public function createPreauthorizeResponseHandler()
     {
         return new PreauthorizeResponseHandler(
             $this->getQueryContainer(),
             $this->createBillpayLogger(),
-            $this->createInvoiceBankAccountPersister()
+            $this->createInvoiceBankAccountSaver()
         );
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\PrescoreResponseHandler
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\PrescoreResponseHandlerInterface
      */
     public function createPrescoreResponseHandler()
     {
@@ -170,7 +172,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\CancelResponseHandler
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\CancelResponseHandlerInterface
      */
     public function createCancelResponseHandler()
     {
@@ -181,7 +183,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\EditCartResponseHandler
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\EditCartResponseHandlerInterface
      */
     public function createEditCartResponseHandler()
     {
@@ -192,14 +194,14 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\Invoice\InvoiceCreatedResponseHandler
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\Invoice\InvoiceCreatedResponseHandlerInterface
      */
     public function createInvoiceCreatedResponseHandler()
     {
         return new InvoiceCreatedResponseHandler(
             $this->getQueryContainer(),
             $this->createBillpayLogger(),
-            $this->createInvoiceBankAccountPersister()
+            $this->createInvoiceBankAccountSaver()
         );
     }
 
@@ -233,22 +235,6 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
             $this->getConfig(),
             $this->createPreauthorizeApiRequest($paymentMethod)
         );
-    }
-
-    /**
-     * @param string $methodName
-     *
-     * @throws \SprykerEco\Zed\Billpay\Business\Exception\BillpayPaymentMethodException
-     *
-     * @return int
-     */
-    protected function extractPaymentTypeFromMethod($methodName)
-    {
-        if (!array_key_exists($methodName, BillpayConstants::PAYMENT_METHODS_MAP)) {
-            throw new BillpayPaymentMethodException();
-        }
-
-        return BillpayConstants::PAYMENT_METHODS_MAP[$methodName];
     }
 
     /**
@@ -336,7 +322,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLogger
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLoggerInterface
      */
     protected function createBillpayLogger()
     {
@@ -344,15 +330,15 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountPersister
+     * @return \SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceBankAccountSaverInterface
      */
-    protected function createInvoiceBankAccountPersister()
+    protected function createInvoiceBankAccountSaver()
     {
-        return new InvoiceBankAccountPersister();
+        return new InvoiceBankAccountSaver();
     }
 
     /**
-     * @return \SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridge
+     * @return \SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridgeInterface
      */
     public function getCountry()
     {
@@ -364,7 +350,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \ipl_invoice_created_request
      */
-    protected function createInvoiceCreatedApiRequest(): \ipl_invoice_created_request
+    protected function createInvoiceCreatedApiRequest()
     {
         return new ipl_invoice_created_request($this->getConfig()->getGatewayUrl());
     }
@@ -372,7 +358,7 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \ipl_cancel_request
      */
-    protected function createCancelApiRequest(): \ipl_cancel_request
+    protected function createCancelApiRequest()
     {
         return new ipl_cancel_request($this->getConfig()->getGatewayUrl());
     }
@@ -382,18 +368,18 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
      *
      * @return \ipl_preauthorize_request
      */
-    protected function createPreauthorizeApiRequest($paymentMethod): \ipl_preauthorize_request
+    protected function createPreauthorizeApiRequest($paymentMethod)
     {
         return new ipl_preauthorize_request(
             $this->getConfig()->getGatewayUrl(),
-            $this->extractPaymentTypeFromMethod($paymentMethod)
+            $this->getConfig()->extractPaymentTypeFromMethod($paymentMethod)
         );
     }
 
     /**
      * @return \ipl_prescore_request
      */
-    protected function createPrescoreApiRequest(): \ipl_prescore_request
+    protected function createPrescoreApiRequest()
     {
         return new ipl_prescore_request($this->getConfig()->getGatewayUrl());
     }
@@ -401,9 +387,8 @@ class BillpayBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \ipl_edit_cart_content_request
      */
-    protected function createEditCartContentApiRequest(): \ipl_edit_cart_content_request
+    protected function createEditCartContentApiRequest()
     {
         return new ipl_edit_cart_content_request($this->getConfig()->getGatewayUrl());
     }
-
 }

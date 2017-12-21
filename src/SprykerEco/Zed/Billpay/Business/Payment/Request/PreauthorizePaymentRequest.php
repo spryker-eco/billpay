@@ -11,27 +11,34 @@ use Generated\Shared\Transfer\OrderTransfer;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface;
 use SprykerEco\Zed\Billpay\Business\Api\Converter\ConverterInterface;
+use SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandler;
 use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 class PreauthorizePaymentRequest extends AbstractPaymentRequest implements TransactionInterface, OrderTransactionInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface
      */
     protected $queryContainer;
 
     /**
+     * @var \SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandler
+     */
+    protected $preauthorizeResponseHandler;
+
+    /**
      * @param \SprykerEco\Zed\Billpay\Business\Api\Adapter\AdapterInterface $adapter
      * @param \SprykerEco\Zed\Billpay\Business\Api\Converter\ConverterInterface $converter
      * @param \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface $queryContainer
      * @param \SprykerEco\Zed\Billpay\BillpayConfig $config
+     * @param \SprykerEco\Zed\Billpay\Business\Payment\Handler\PreauthorizeResponseHandler $preauthorizeResponseHandler
      */
     public function __construct(
         AdapterInterface $adapter,
         ConverterInterface $converter,
         BillpayQueryContainerInterface $queryContainer,
-        BillpayConfig $config
+        BillpayConfig $config,
+        PreauthorizeResponseHandler $preauthorizeResponseHandler
     ) {
         parent::__construct(
             $adapter,
@@ -40,6 +47,7 @@ class PreauthorizePaymentRequest extends AbstractPaymentRequest implements Trans
         );
 
         $this->queryContainer = $queryContainer;
+        $this->preauthorizeResponseHandler = $preauthorizeResponseHandler;
     }
 
     /**
@@ -55,7 +63,11 @@ class PreauthorizePaymentRequest extends AbstractPaymentRequest implements Trans
             ->getMethodMapper($paymentMethod)
             ->buildPreauthorizeOrderRequest($orderTransfer);
 
-        return $this->sendRequest($requestData);
-    }
+        $billpayResponseTransfer = $this->sendRequest($requestData);
 
+        $this->preauthorizeResponseHandler
+            ->handle($billpayResponseTransfer, $orderTransfer);
+
+        return $billpayResponseTransfer;
+    }
 }

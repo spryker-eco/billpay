@@ -15,7 +15,6 @@ use Spryker\Client\Kernel\AbstractClient;
  */
 class BillpayClient extends AbstractClient implements BillpayClientInterface
 {
-
     /**
      * Recalculates the given quote and returns an updated one.
      *
@@ -62,5 +61,4 @@ class BillpayClient extends AbstractClient implements BillpayClientInterface
         $quoteTransfer = $this->getFactory()->createZedStub()->getSessionId();
         return $quoteTransfer->getBillpaySessionId();
     }
-
 }

@@ -18,7 +18,6 @@ use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToSalesBridge;
 
 class BillpayDependencyProvider extends AbstractBundleDependencyProvider
 {
-
     const FACADE_OMS = 'oms facade';
     const FACADE_REFUND = 'refund facade';
     const FACADE_SALES = 'sales facade';
@@ -77,5 +76,4 @@ class BillpayDependencyProvider extends AbstractBundleDependencyProvider
 
         return $container;
     }
-
 }

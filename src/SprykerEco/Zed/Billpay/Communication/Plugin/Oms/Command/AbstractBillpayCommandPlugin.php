@@ -17,12 +17,11 @@ use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
- * @method \SprykerEco\Zed\Billpay\Business\BillpayFacade getFacade()
+ * @method \SprykerEco\Zed\Billpay\Business\BillpayFacadeInterface getFacade()
  * @method \SprykerEco\Zed\Billpay\Communication\BillpayCommunicationFactory getFactory()
  */
 abstract class AbstractBillpayCommandPlugin extends AbstractPlugin
 {
-
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $orderEntity
      * @param array $salesOrderItems
@@ -44,7 +43,6 @@ abstract class AbstractBillpayCommandPlugin extends AbstractPlugin
             );
 
         if (count($orderEntity->getItems()) != count($salesOrderItems)) {
-
             $selectedItems = new ArrayObject();
             foreach ($salesOrderItems as $salesOrderItem) {
                 $salesOrderItemTransfer = $this->buildItemTransfer($salesOrderItem);
@@ -90,7 +88,7 @@ abstract class AbstractBillpayCommandPlugin extends AbstractPlugin
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected  function getCustomerTransfer(SpySalesOrder $orderEntity)
+    protected function getCustomerTransfer(SpySalesOrder $orderEntity)
     {
         $customerTransfer = new CustomerTransfer();
 
@@ -121,5 +119,4 @@ abstract class AbstractBillpayCommandPlugin extends AbstractPlugin
         $salesOrderItemTransfer->setUnitGrossPrice($salesOrderItem->getGrossPrice());
         return $salesOrderItemTransfer;
     }
-
 }

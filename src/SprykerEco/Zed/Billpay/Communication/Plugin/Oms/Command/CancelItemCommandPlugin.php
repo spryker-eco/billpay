@@ -7,23 +7,23 @@
 
 namespace SprykerEco\Zed\Billpay\Communication\Plugin\Oms\Command;
 
+use Generated\Shared\Transfer\MessageTransfer;
 use Orm\Zed\Sales\Persistence\Base\SpySalesOrderItemQuery;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface;
-use SprykerEco\Shared\Billpay\BillpayConstants;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 
 /**
- * @method \SprykerEco\Zed\Billpay\Business\BillpayFacade getFacade()
+ * @method \SprykerEco\Zed\Billpay\Business\BillpayFacadeInterface getFacade()
  */
 class CancelItemCommandPlugin extends AbstractBillpayCommandPlugin implements CommandByItemInterface
 {
-
     /**
      *
-     * Command which is executed per order item basis
+     * Command which is executed per order item basis cancels specific item from order
      *
      * @api
      *
@@ -39,9 +39,7 @@ class CancelItemCommandPlugin extends AbstractBillpayCommandPlugin implements Co
 
         if (count($orderItems) === 0) {
             //TODO: add translation
-            $message = $this
-                ->getFactory()
-                ->createMessage()
+            $message = (new MessageTransfer())
                 ->setValue('In order to cancel the last item in an order, please use the cancel order button.');
 
             $this->getFactory()
@@ -74,15 +72,14 @@ class CancelItemCommandPlugin extends AbstractBillpayCommandPlugin implements Co
             ->filterByIdSalesOrderItem($orderItem->getIdSalesOrderItem(), Criteria::NOT_EQUAL)
                 ->useStateQuery()
                     ->filterByName(
-                        BillpayConstants::BILLPAY_OMS_STATUS_CANCELLED,
+                        BillpaySharedConfig::BILLPAY_OMS_STATUS_CANCELLED,
                         Criteria::NOT_EQUAL
                     )
                     ->filterByName(
-                        BillpayConstants::BILLPAY_OMS_STATUS_ITEM_CANCELLED,
+                        BillpaySharedConfig::BILLPAY_OMS_STATUS_ITEM_CANCELLED,
                         Criteria::NOT_EQUAL
                     )
                 ->endUse()
             ->find();
     }
-
 }

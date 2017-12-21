@@ -15,7 +15,6 @@ use SprykerEco\Zed\Billpay\Business\Exception\BillpayConverterException;
 
 class InvoiceCreatedConverter extends AbstractConverter
 {
-
     /**
      * @param \ipl_xml_request|\ipl_invoice_created_request $xmlRequest
      *
@@ -54,5 +53,4 @@ class InvoiceCreatedConverter extends AbstractConverter
 
         return $billpayInvoiceBankAccountTransfer;
     }
-
 }

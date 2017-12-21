@@ -8,29 +8,28 @@
 namespace SprykerEco\Zed\Billpay\Business\Payment\Handler;
 
 use Generated\Shared\Transfer\BillpayResponseHeaderTransfer;
-use SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLogger;
+use SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLoggerInterface;
 use SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface;
 
 abstract class AbstractResponseHandler
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface
      */
     protected $queryContainer;
 
     /**
-     * @var \SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLogger
+     * @var \SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLoggerInterface
      */
     protected $logger;
 
     /**
      * @param \SprykerEco\Zed\Billpay\Persistence\BillpayQueryContainerInterface $queryContainer
-     * @param \SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLogger $logger
+     * @param \SprykerEco\Zed\Billpay\Business\Payment\Handler\Logger\BillpayResponseLoggerInterface $logger
      */
     public function __construct(
         BillpayQueryContainerInterface $queryContainer,
-        BillpayResponseLogger $logger
+        BillpayResponseLoggerInterface $logger
     ) {
         $this->queryContainer = $queryContainer;
         $this->logger = $logger;
@@ -46,5 +45,4 @@ abstract class AbstractResponseHandler
     {
         return $this->logger->log($headerTransfer, $method);
     }
-
 }

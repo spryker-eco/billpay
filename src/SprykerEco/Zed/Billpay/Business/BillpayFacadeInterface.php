@@ -17,7 +17,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
  */
 interface BillpayFacadeInterface
 {
-
     /**
      * Specification:
      * - Sends pre-score payment request to Billpay gateway.
@@ -103,5 +102,4 @@ interface BillpayFacadeInterface
      * @return \Generated\Shared\Transfer\CountryTransfer
      */
     public function getCountry($iso2code);
-
 }

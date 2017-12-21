@@ -19,13 +19,13 @@ use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Shipment\ShipmentConstants;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig as BillpayConfig1;
 use SprykerEco\Shared\Billpay\BillpayConstants;
 use SprykerEco\Zed\Billpay\BillpayConfig;
 use SprykerEco\Zed\Billpay\Dependency\Facade\BillpayToCountryBridgeInterface;
 
 abstract class AbstractManager implements AbstractManagerInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Billpay\BillpayConfig
      */
@@ -287,10 +287,10 @@ abstract class AbstractManager implements AbstractManagerInterface
     protected function mapCustomerType(CustomerTransfer $customer)
     {
         if ($customer->getIdCustomer()) {
-            return BillpayConstants::CUSTOMER_TYPE_EXISTING_CUSTOMER;
+            return BillpayConfig1::CUSTOMER_TYPE_EXISTING_CUSTOMER;
         }
 
-        return BillpayConstants::CUSTOMER_TYPE_GUEST;
+        return BillpayConfig1::CUSTOMER_TYPE_GUEST;
     }
 
     /**
@@ -341,7 +341,7 @@ abstract class AbstractManager implements AbstractManagerInterface
             self::BIRTHDAY => $quoteTransfer->getPayment()->getBillpay()->getDateOfBirth(),
             self::LANGUAGE => Store::getInstance()->getCurrentLanguage(),
             self::IP => $quoteTransfer->getPayment()->getBillpay()->getClientIp(),
-            self::CUSTOMER_GROUP => BillpayConstants::CUSTOMER_GROUP_B2C,
+            self::CUSTOMER_GROUP => BillpayConfig1::CUSTOMER_GROUP_B2C,
         ];
 
         return $data;
@@ -373,7 +373,7 @@ abstract class AbstractManager implements AbstractManagerInterface
             self::BIRTHDAY => $orderTransfer->getBillpayPayment()->getDateOfBirth(),
             self::LANGUAGE => Store::getInstance()->getCurrentLanguage(),
             self::IP => $orderTransfer->getBillpayPayment()->getClientIp(),
-            self::CUSTOMER_GROUP => BillpayConstants::CUSTOMER_GROUP_B2C,
+            self::CUSTOMER_GROUP => BillpayConfig1::CUSTOMER_GROUP_B2C,
         ];
 
         return $data;
@@ -397,9 +397,16 @@ abstract class AbstractManager implements AbstractManagerInterface
      */
     protected function preparePrescoreData($bptid)
     {
+        if ($this->config->isPrescoreUsed()) {
+            return [
+                self::IS_PRESCORED => 1,
+                self::BPTID => $bptid,
+            ];
+        }
+
         return [
-            self::IS_PRESCORED => 1,
-            self::BPTID => $bptid,
+            self::IS_PRESCORED => false,
+            self::BPTID => null,
         ];
     }
 
@@ -430,5 +437,4 @@ abstract class AbstractManager implements AbstractManagerInterface
 
         return array_shift($selectedShipmentMethods)->getCarrierName();
     }
-
 }

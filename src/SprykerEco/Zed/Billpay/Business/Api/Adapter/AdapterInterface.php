@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\Billpay\Business\Api\Adapter;
 
 interface AdapterInterface
 {
-
     /**
      * @param array $data
      *
@@ -18,5 +17,4 @@ interface AdapterInterface
      * @return \ipl_xml_request
      */
     public function sendRequest(array $data);
-
 }

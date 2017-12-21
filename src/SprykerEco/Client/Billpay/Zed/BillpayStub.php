@@ -10,9 +10,8 @@ namespace SprykerEco\Client\Billpay\Zed;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Client\ZedRequest\Stub\ZedRequestStub;
 
-class BillpayStub extends ZedRequestStub
+class BillpayStub extends ZedRequestStub implements BillpayStubInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
@@ -40,5 +39,4 @@ class BillpayStub extends ZedRequestStub
     {
         return $this->zedStub->call('/billpay/gateway/get-session-id', new QuoteTransfer());
     }
-
 }

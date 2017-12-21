@@ -107,6 +107,10 @@
         <property name="country" type="Country"/>
     </transfer>
 
+    <transfer name="Item">
+        <property name="description" type="string"/>
+    </transfer>
+
     <transfer name="Payment">
         <property name="billpay" type="BillpayPayment" />
         <property name="billpayInvoice" type="BillpayPayment" />

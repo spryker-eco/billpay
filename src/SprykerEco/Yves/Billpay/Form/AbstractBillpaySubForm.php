@@ -9,15 +9,16 @@ namespace SprykerEco\Yves\Billpay\Form;
 
 use Spryker\Yves\StepEngine\Dependency\Form\AbstractSubFormType;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
+use Spryker\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-abstract class AbstractBillpaySubForm extends AbstractSubFormType implements SubFormInterface
+abstract class AbstractBillpaySubForm extends AbstractSubFormType implements SubFormInterface, SubFormProviderNameInterface
 {
-
     const FIELD_API_KEY = 'api_key';
     const FIELD_SALUTATION = 'salutation';
     const FIELD_FIRST_NAME = 'first_name';
@@ -33,6 +34,14 @@ abstract class AbstractBillpaySubForm extends AbstractSubFormType implements Sub
     const BILLPAY_DATE_FORMAT = 'Ymd';
 
     const INVOICE_PAYMENT_METHOD_AVAILABLE = 'INVOICE_PAYMENT_METHOD_AVAILABLE';
+
+    /**
+     * @return string
+     */
+    public function getProviderName()
+    {
+        return BillpaySharedConfig::PROVIDER_NAME;
+    }
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -108,5 +117,4 @@ abstract class AbstractBillpaySubForm extends AbstractSubFormType implements Sub
             'groups' => $this->getPropertyPath(),
         ]);
     }
-
 }

@@ -14,7 +14,6 @@ use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManagerInterf
 
 class EditCartContentApiAdapter extends AbstractApiAdapter
 {
-
     /**
      * @var \ipl_edit_cart_content_request
      */
@@ -89,5 +88,4 @@ class EditCartContentApiAdapter extends AbstractApiAdapter
     {
         return $this->xmlRequest;
     }
-
 }

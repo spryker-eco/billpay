@@ -12,11 +12,10 @@ use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 
 /**
- * @method \SprykerEco\Zed\Billpay\Business\BillpayFacade getFacade()
+ * @method \SprykerEco\Zed\Billpay\Business\BillpayFacadeInterface getFacade()
  */
 class InvoiceCreatedCommandPlugin extends AbstractBillpayCommandPlugin implements CommandByOrderInterface
 {
-
     /**
      * @inheritdoc
      */
@@ -30,5 +29,4 @@ class InvoiceCreatedCommandPlugin extends AbstractBillpayCommandPlugin implement
 
         return [];
     }
-
 }

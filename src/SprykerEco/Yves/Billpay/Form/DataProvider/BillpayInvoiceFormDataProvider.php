@@ -11,25 +11,31 @@ use Generated\Shared\Transfer\BillpayPaymentTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
-use SprykerEco\Client\Billpay\BillpayClient;
-use SprykerEco\Shared\Billpay\BillpayConstants;
+use SprykerEco\Client\Billpay\BillpayClientInterface;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig as BillpayConfig1;
+use SprykerEco\Yves\Billpay\BillpayConfig;
 use SprykerEco\Yves\Billpay\Form\InvoiceBillpaySubForm;
 
 class BillpayInvoiceFormDataProvider implements StepEngineFormDataProviderInterface
 {
-
-    /** @var \Spryker\Shared\Config\Config */
-    protected $config;
-
-    /** @var \SprykerEco\Client\Billpay\BillpayClient */
+    /**
+     * @var \SprykerEco\Client\Billpay\BillpayClientInterface
+     */
     protected $client;
 
     /**
-     * @param \SprykerEco\Client\Billpay\BillpayClient $client
+     * @var \SprykerEco\Yves\Billpay\BillpayConfig
      */
-    public function __construct(BillpayClient $client)
+    protected $config;
+
+    /**
+     * @param \SprykerEco\Client\Billpay\BillpayClientInterface $client
+     * @param \SprykerEco\Yves\Billpay\BillpayConfig $config
+     */
+    public function __construct(BillpayClientInterface $client, BillpayConfig $config)
     {
         $this->client = $client;
+        $this->config = $config;
     }
 
     /**
@@ -69,14 +75,31 @@ class BillpayInvoiceFormDataProvider implements StepEngineFormDataProviderInterf
      */
     protected function isInvoicePaymentAllowed(AbstractTransfer $quoteTransfer)
     {
-        $paymentMethods = $quoteTransfer->getPayment()->getBillpay()->getBillpayPrescoringTransactionResponse()->getAvailablePaymentMethods();
-
+        $paymentMethods = $this->getPaymentMethods($quoteTransfer);
         foreach ($paymentMethods as $paymentMethod) {
-            if (in_array($paymentMethod->getName(), BillpayConstants::AVAILABLE_PROVIDER_METHODS)) {
+            if (in_array($paymentMethod->getName(), BillpayConfig1::AVAILABLE_PROVIDER_METHODS)) {
                 return true;
             }
         }
+
         return false;
     }
 
+    /**
+     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer|\Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return array
+     */
+    protected function getPaymentMethods(AbstractTransfer $quoteTransfer)
+    {
+        if ($this->config->isPrescoreUsed()) {
+            return $quoteTransfer
+                ->getPayment()
+                ->getBillpay()
+                ->getBillpayPrescoringTransactionResponse()
+                ->getAvailablePaymentMethods();
+        }
+
+        return $this->config->getAvailableProviderMethods();
+    }
 }

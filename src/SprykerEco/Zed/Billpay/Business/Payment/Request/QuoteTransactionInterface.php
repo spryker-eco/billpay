@@ -11,12 +11,10 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 interface QuoteTransactionInterface extends TransactionInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return mixed
      */
     public function request(QuoteTransfer $quoteTransfer);
-
 }

@@ -18,7 +18,6 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
  */
 class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
 {
-
     /**
      * {@inheritdoc}
      *
@@ -30,17 +29,10 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
      */
     public function prescorePayment(QuoteTransfer $quoteTransfer)
     {
-        $billpayResponseTransfer = $this
+        return $this
             ->getFactory()
             ->createPrescorePaymentRequest()
             ->request($quoteTransfer);
-
-        $this
-            ->getFactory()
-            ->createPrescoreResponseHandler()
-            ->handle($billpayResponseTransfer, $quoteTransfer);
-
-        return $billpayResponseTransfer;
     }
 
     /**
@@ -54,19 +46,10 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
      */
     public function preauthorizePayment(OrderTransfer $orderTransfer)
     {
-        $paymentMethod = $orderTransfer->getBillpayPayment()->getPaymentMethod();
-
-        $billpayResponseTransfer = $this
+        return $this
             ->getFactory()
-            ->createPreauthorizePaymentRequest($paymentMethod)
+            ->createPreauthorizePaymentRequest($orderTransfer->getBillpayPayment()->getPaymentMethod())
             ->request($orderTransfer);
-
-        $this
-            ->getFactory()
-            ->createPreauthorizeResponseHandler()
-            ->handle($billpayResponseTransfer);
-
-        return $billpayResponseTransfer;
     }
 
     /**
@@ -80,17 +63,10 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
      */
     public function invoiceCreated(OrderTransfer $orderTransfer)
     {
-        $billpayResponseTransfer = $this
+        return $this
             ->getFactory()
             ->createInvoiceCreatedPaymentRequest()
             ->request($orderTransfer);
-
-        $this
-            ->getFactory()
-            ->createInvoiceCreatedResponseHandler()
-            ->handle($billpayResponseTransfer, $orderTransfer);
-
-        return $billpayResponseTransfer;
     }
 
     /**
@@ -104,17 +80,10 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
      */
     public function cancelOrder(OrderTransfer $orderTransfer)
     {
-        $billpayResponseTransfer = $this
+        return $this
             ->getFactory()
             ->createCancelOrderRequest()
             ->request($orderTransfer);
-
-        $this
-            ->getFactory()
-            ->createCancelResponseHandler()
-            ->handle($billpayResponseTransfer, $orderTransfer);
-
-        return $billpayResponseTransfer;
     }
 
     /**
@@ -129,14 +98,10 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
      */
     public function editCartContent(OrderTransfer $orderTransfer, ItemTransfer $itemTransfer)
     {
-        $billpayResponseTransfer = $this
+        return $this
             ->getFactory()
             ->createEditCartContentTransactionHandler()
-            ->request($orderTransfer);
-
-        $this->getFactory()->createEditCartResponseHandler()->handle($billpayResponseTransfer, $itemTransfer);
-
-        return $billpayResponseTransfer;
+            ->request($orderTransfer, $itemTransfer);
     }
 
     /**
@@ -171,5 +136,4 @@ class BillpayFacade extends AbstractFacade implements BillpayFacadeInterface
     {
         return $this->getFactory()->getCountry()->getCountryByIso2Code($iso2code);
     }
-
 }

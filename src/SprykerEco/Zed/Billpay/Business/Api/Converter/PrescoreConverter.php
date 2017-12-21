@@ -16,7 +16,6 @@ use SprykerEco\Zed\Billpay\Business\Exception\BillpayConverterException;
 
 class PrescoreConverter extends AbstractConverter
 {
-
     /**
      * @param \ipl_xml_request|\ipl_prescore_request $xmlRequest
      *
@@ -61,5 +60,4 @@ class PrescoreConverter extends AbstractConverter
 
         return $correctedAddress;
     }
-
 }

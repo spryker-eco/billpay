@@ -16,7 +16,6 @@ use SprykerEco\Zed\Billpay\Business\Exception\BillpayConverterException;
 
 class PreauthorizeConverter extends AbstractConverter
 {
-
     /**
      * @param \ipl_xml_request|\ipl_preauthorize_request $xmlRequest
      *
@@ -74,5 +73,4 @@ class PreauthorizeConverter extends AbstractConverter
 
         return $billpayInvoiceBankAccountTransfer;
     }
-
 }

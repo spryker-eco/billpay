@@ -14,7 +14,6 @@ use SprykerEco\Zed\Billpay\Business\Exception\BillpayConverterException;
 
 class EditCartContentConverter extends AbstractConverter
 {
-
     /**
      * @param \ipl_xml_request|\ipl_edit_cart_content_request $xmlRequest
      *
@@ -33,5 +32,4 @@ class EditCartContentConverter extends AbstractConverter
 
         return $billpayEditCartResponseTransfer;
     }
-
 }

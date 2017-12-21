@@ -14,7 +14,6 @@ use SprykerEco\Zed\Billpay\Business\Payment\Manager\Invoice\InvoiceManagerInterf
 
 class CancelOrderApiAdapter extends AbstractApiAdapter
 {
-
     /**
      * @var \ipl_cancel_request
      */
@@ -28,7 +27,6 @@ class CancelOrderApiAdapter extends AbstractApiAdapter
     {
         parent::__construct($config);
 
-        //$this->xmlRequest = new ipl_cancel_request($this->gatewayUrl);
         $this->xmlRequest = $xmlRequest;
     }
 
@@ -53,5 +51,4 @@ class CancelOrderApiAdapter extends AbstractApiAdapter
     {
         return $this->xmlRequest;
     }
-
 }

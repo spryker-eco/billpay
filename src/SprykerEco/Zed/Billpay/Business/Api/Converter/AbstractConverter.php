@@ -12,7 +12,6 @@ use ipl_xml_request;
 
 abstract class AbstractConverter implements ConverterInterface
 {
-
     /**
      * @param \ipl_xml_request $xmlRequest
      *
@@ -58,5 +57,4 @@ abstract class AbstractConverter implements ConverterInterface
     {
         return $xmlRequest->get_customer_error_message() ? $xmlRequest->get_customer_error_message(): '';
     }
-
 }

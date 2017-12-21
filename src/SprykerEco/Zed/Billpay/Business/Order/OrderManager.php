@@ -15,11 +15,10 @@ use Orm\Zed\Billpay\Persistence\SpyPaymentBillpay;
 use Orm\Zed\Billpay\Persistence\SpyPaymentBillpayOrderItem;
 
 use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
-use SprykerEco\Shared\Billpay\BillpayConstants;
+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
 
 class OrderManager implements OrderManagerInterface
 {
-
     use DatabaseTransactionHandlerTrait;
 
     /**
@@ -30,7 +29,7 @@ class OrderManager implements OrderManagerInterface
      */
     public function saveOrderPayment(QuoteTransfer $quoteTransfer, CheckoutResponseTransfer $checkoutResponseTransfer)
     {
-        if ($quoteTransfer->getPayment()->getPaymentProvider() === BillpayConstants::PAYMENT_PROVIDER) {
+        if ($quoteTransfer->getPayment()->getPaymentProvider() === BillpaySharedConfig::PAYMENT_PROVIDER) {
             $this->handleDatabaseTransaction(function () use ($quoteTransfer, $checkoutResponseTransfer) {
 
                 $paymentEntity = $this->savePaymentForOrder(
@@ -58,7 +57,10 @@ class OrderManager implements OrderManagerInterface
         $paymentEntity->setClientIp($paymentTransfer->getBillpay()->getClientIp());
         $paymentEntity->setPaymentMethod($paymentTransfer->getPaymentMethod());
         $paymentEntity->setReference($saveOrderTransfer->getOrderReference());
-        $paymentEntity->setBptid($paymentTransfer->getBillpay()->getBillpayPrescoringTransactionResponse()->getHeader()->getBptid());
+
+        if ($paymentTransfer->getBillpay()->getBillpayPrescoringTransactionResponse() !== null) {
+            $paymentEntity->setBptid($paymentTransfer->getBillpay()->getBillpayPrescoringTransactionResponse()->getHeader()->getBptid());
+        }
         $paymentEntity->setFkSalesOrder($saveOrderTransfer->getIdSalesOrder());
         $paymentEntity->setDateOfBirth($paymentTransfer->getBillpay()->getDateOfBirth());
         $paymentEntity->save();
@@ -80,10 +82,9 @@ class OrderManager implements OrderManagerInterface
             $paymentOrderItemEntity
                 ->setFkPaymentBillpay($idPayment)
                 ->setFkSalesOrderItem($orderItemTransfer->getIdSalesOrderItem());
-            $paymentOrderItemEntity->setStatus(BillpayConstants::BILLPAY_OMS_STATUS_NEW);
+            $paymentOrderItemEntity->setStatus(BillpaySharedConfig::BILLPAY_OMS_STATUS_NEW);
 
             $paymentOrderItemEntity->save();
         }
     }
-
 }
