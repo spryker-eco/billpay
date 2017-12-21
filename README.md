@@ -204,6 +204,33 @@ Add
             new BillpaySaveOrderPlugin(),
         ];
     }
+    
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function providePlugins(Container $container)
+    {
+        $container = parent::providePlugins($container);
+
+
+        $container[self::PAYMENT_SUB_FORMS] = function () {
+            $paymentSubForms = new SubFormPluginCollection();
+            $paymentSubForms->add(new BillpayInvoiceSubFormPlugin());
+            return $paymentSubForms;
+        };
+
+        $container[self::PAYMENT_METHOD_HANDLER] = function () {
+            $paymentMethodHandler =  new StepHandlerPluginCollection();
+            $paymentMethodHandler->add(
+                new BillpayPaymentHandlerPlugin(),
+                BillpaySharedConfig::PAYMENT_METHOD_INVOICE
+            );
+            return $paymentMethodHandler;
+        };
+    
+    
 ```
 
 7 In Pyz\Zed\Oms\OmsDependencyProvider.php
@@ -295,3 +322,9 @@ codecept run Unit vendor/spryker-eco/billpay/tests/Unit
 ## BillPay debug info
 
 Use 'spy_payment_billpay_api_log' table
+
+## Scrutinizer checks
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-eco/billpay/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spryker-eco/billpay/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/spryker-eco/billpay/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/spryker-eco/billpay/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/spryker-eco/billpay/badges/build.png?b=master)](https://scrutinizer-ci.com/g/spryker-eco/billpay/build-status/master)
