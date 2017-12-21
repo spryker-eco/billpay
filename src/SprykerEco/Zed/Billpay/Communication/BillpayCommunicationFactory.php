@@ -66,12 +66,4 @@ class BillpayCommunicationFactory extends AbstractCommunicationFactory
             BillpayDependencyProvider::FACADE_FLASH_MESSENGER
         );
     }
-
-    /**
-     * @return \Generated\Shared\Transfer\MessageTransfer
-     */
-    public function createMessage()
-    {
-         return new MessageTransfer();
-    }
 }

@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\Billpay\Communication\Plugin\Oms\Command;
 
+use Generated\Shared\Transfer\MessageTransfer;
 use Orm\Zed\Sales\Persistence\Base\SpySalesOrderItemQuery;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
@@ -38,9 +39,7 @@ class CancelItemCommandPlugin extends AbstractBillpayCommandPlugin implements Co
 
         if (count($orderItems) === 0) {
             //TODO: add translation
-            $message = $this
-                ->getFactory()
-                ->createMessage()
+            $message = (new MessageTransfer())
                 ->setValue('In order to cancel the last item in an order, please use the cancel order button.');
 
             $this->getFactory()
