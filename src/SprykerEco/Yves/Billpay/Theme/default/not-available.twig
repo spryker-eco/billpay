@@ -1,0 +1,14 @@
+<div class="small-12 medium-9 large-6">
+    <div class="small-12 columns">
+        <label>
+            {{ 'payment method not available' | trans }}
+        </label>
+    </div>
+</div>
+
+{# use this to hide all the fields that are not needed#}
+{% for field in form %}
+    {% if field.vars.name != '_token' %}
+        {% do field.setRendered %}
+    {% endif %}
+{% endfor %}

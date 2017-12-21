@@ -1,0 +1,44 @@
+<script type="application/javascript">
+    billpayCheckout('options', {
+        "checkout": {"form": "#payment-form"},
+        "shop": {
+            "apiKey": "{{ billpay('apiKey') }}",
+            // for live modus set the live flag to true
+            "live": false
+        },
+        "order": {
+            "cartAmount": {{ billpay('cartAmount') }},
+            "orderAmount": {{ billpay('orderAmount') }},
+            "currency": "{{ billpay('currency') }}"
+        },
+        "customer": {
+            "billing":{
+                "salutation": "{{ billpay('salutation') }}",
+                "firstName": "{{ billpay('firstName') }}",
+                "lastName": "{{ billpay('lastName') }}",
+                "street": "{{ billpay('address') }}",
+                "streetNo": "{{ billpay('addressNo') }}",
+                "zip": "{{ billpay('zip') }}",
+                "city": "{{ billpay('city') }}",
+                "phoneNumber": "{{ billpay('phone') }}",
+                "countryIso2": "{{ billpay('countryIso2Code') }}",
+                "countryIso3": "{{ billpay('countryIso3Code') }}",
+                "dayOfBirth": "{{ billpay('dateOfBirth') }}",
+                "companyName": "",
+                "legalForm": "",
+                "taxNumber": "",
+                "registerNumber": "",
+                "companyHolder": ""
+            },
+            "language": "{{ billpay('language') }}",
+            "identifier": "{{ billpay('identifier') }}",
+            "customerGroup": "private",
+            "forceCustomerGroup": true
+        },
+        "inputNames": {
+            "customer": {
+                "dayOfBirth": "paymentForm[billpayInvoice][date_of_birth]",
+            }
+        }
+    });
+</script>
