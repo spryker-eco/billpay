@@ -1,71 +1,74 @@
 {
-  "name": "spryker-eco/billpay",
-  "description": "Billpay Module",
-  "autoload": {
-    "psr-4": {
-      "SprykerEco\\": "src/SprykerEco/",
-      "SprykerEcoTest\\": "tests/SprykerEcoTest/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "SprykerEcoTest\\": "tests/SprykerEcoTest/"
-    }
-  },
-  "require": {
-    "billpay/lib": "1.6.0",
-    "spryker/kernel": "^3.8.0",
-    "spryker/application": "^3.0.0",
-    "spryker/config": "^3.0.0",
-    "spryker/country": "^3.0.0",
-    "spryker/currency": "^3.0.0",
-    "spryker/gui": "^3.0.0",
-    "spryker/messenger": "^3.0.0",
-    "spryker/oms": "^7.0.0",
-    "spryker/payment": "^4.0.0",
-    "spryker/propel": "^3.0.0",
-    "spryker/refund": "^5.0.0",
-    "spryker/sales": "^8.0.0",
-    "spryker/step-engine": "^3.0.0",
-    "spryker/symfony": "^3.0.0",
-    "spryker/transfer": "^3.0.0",
-    "spryker/url": "^3.0.0",
-    "php": "^7.1"
-  },
-  "require-dev": {
-    "spryker/code-sniffer": "*",
-    "spryker/customer": "^2.0.0 || ^3.0.0",
-    "spryker/testify": "*"
-  },
-  "license": "proprietary",
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0.x-dev"
-    }
-  },
-  "config": {
-    "sort-packages": true
-  },
-  "repositories": [
-    {
-      "type": "package",
-      "package": {
-        "name": "billpay/lib",
-        "version": "1.6.0",
-        "dist": {
-          "url": "https://www.billpay.de/wp-content/uploads/2016/11/billpay_core_api_php_v1.6.0.zip",
-          "type": "zip"
-        },
-        "autoload": {
-          "classmap": [
-            "",
-            "php5/"
-          ]
+    "name": "spryker-eco/billpay",
+    "description": "Billpay Module",
+    "autoload": {
+        "psr-4": {
+            "SprykerEco\\": "src/SprykerEco/",
+            "SprykerEcoTest\\": "tests/SprykerEcoTest/"
         }
-      }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SprykerEcoTest\\": "tests/SprykerEcoTest/"
+        }
+    },
+    "require": {
+        "billpay/lib": "1.6.0",
+        "spryker/kernel": "^3.8.0",
+        "spryker/application": "^3.0.0",
+        "spryker/config": "^3.0.0",
+        "spryker/country": "^3.0.0",
+        "spryker/currency": "^3.0.0",
+        "spryker/gui": "^3.0.0",
+        "spryker/messenger": "^3.0.0",
+        "spryker/oms": "^7.0.0",
+        "spryker/payment": "^4.0.0",
+        "spryker/propel": "^3.0.0",
+        "spryker/refund": "^5.0.0",
+        "spryker/sales": "^8.0.0",
+        "spryker/step-engine": "^3.0.0",
+        "spryker/symfony": "^3.0.0",
+        "spryker/transfer": "^3.0.0",
+        "spryker/url": "^3.0.0",
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "spryker/code-sniffer": "*",
+        "spryker/customer": "^6.0.0 || ^7.0.0",
+        "spryker/testify": "*"
+    },
+    "license": "proprietary",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "repositories": {
+        "0": {
+            "type": "package",
+            "package": {
+                "name": "billpay/lib",
+                "version": "1.6.0",
+                "dist": {
+                    "url": "https://www.billpay.de/wp-content/uploads/2016/11/billpay_core_api_php_v1.6.0.zip",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "classmap": [
+                        "",
+                        "php5/"
+                    ]
+                }
+            }
+        },
+        "spryker": {
+            "type": "composer",
+            "url": "https://code.spryker.com/repo/private"
+        }
     }
-  ]
 }
-
